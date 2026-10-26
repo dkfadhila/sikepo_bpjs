@@ -42,7 +42,8 @@ export function createApp({ db, investigate, config, captureException = () => {}
     if (!parsed.success) return res.status(400).json({ error: 'Email atau kata sandi tidak valid.' });
     const email = parsed.data.email.toLowerCase();
     const user = await db.collection('users').findOne({ email, demo: true });
-    if (!await verifyPassword(parsed.data.password, user?.passwordHash || config.dummyPasswordHash)) return res.status(401).json({ error: 'Email atau kata sandi tidak cocok.' });
+    const valid = await verifyPassword(parsed.data.password, user?.passwordHash || config.dummyPasswordHash);
+    if (!user || !valid) return res.status(401).json({ error: 'Email atau kata sandi tidak cocok.' });
     const old = req.cookies.sikepo_session;
     if (typeof old === 'string') await db.collection('sessions').deleteOne({ tokenHash: sessionHash(old) });
     const token = newToken(), csrf = newToken();
