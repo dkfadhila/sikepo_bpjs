@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: sikepo
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /api/health
+    domains:
+      - sikepo.tech
+      - dashboard.sikepo.tech
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22.22.0
+      - key: APP_ORIGIN
+        value: https://sikepo.tech
+      - key: DASHBOARD_ORIGIN
+        value: https://dashboard.sikepo.tech
+      - key: MONGODB_DATABASE
+        value: sikepo
+      - key: MONGODB_URI
+        sync: false
+      - key: GOOGLE_GENERATIVE_AI_API_KEY
+        sync: false
+      - key: GEMMA_MODEL
+        value: gemma-4-26b-a4b-it
+      - key: SENTRY_DSN
+        sync: false
+      - key: AI_DAILY_LIMIT
+        value: '20'

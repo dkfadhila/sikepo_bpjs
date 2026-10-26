@@ -1,0 +1,207 @@
+/* Local recreation: suppress provider badges, including late runtime mounts. */
+#__framer-badge-container, .__framer-badge,
+a[title="Framer templates by Delani Studio"] { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* SiKePO typography and copy: media files remain untouched. */
+[hidden]{display:none!important}
+.framer-1yegjmg{display:none!important}
+.framer-1devfad{position:relative!important;min-height:40px}
+.framer-1devfad>div{visibility:hidden}
+.framer-1devfad::after{content:'SIKEPO';position:absolute;inset:0;display:flex;align-items:center;color:#fff;font-size:30px;line-height:36px;font-weight:600;letter-spacing:-1px}
+.framer-1vhbjqe{display:none!important}
+.framer-lbcy4s-container>*,.framer-1njuey2-container>*{display:none!important}
+.framer-lbcy4s-container::after{content:'3';font-size:43px;line-height:1;color:inherit}
+.framer-1njuey2-container::after{content:'4';font-size:43px;line-height:1;color:inherit}
+#fokus-risiko,#catatan,#tentang,#capabilities,#pricing{scroll-margin-top:100px}
+
+/* Keep the two hero statements on intentional lines. */
+
+.framer-1ulft50 img[src*="sikepo-hero-meadow"]{object-position:center bottom!important}
+.framer-1qnk6jn img[src*="sikepo-footer-forest"]{object-position:center top!important}
+
+/* Selective SIKEPO accents. Neutral surfaces and editorial text stay unchanged. */
+:root{--sikepo-green:#206b4a;--sikepo-green-hover:#19583d;--sikepo-sage:#e4eee7}
+a.framer-vm9ze[data-framer-name="Primary"],
+a.framer-vm9ze[data-framer-name="Primary"] .framer-yk1t5j{background-color:var(--sikepo-green)!important}
+a.framer-vm9ze[data-framer-name="Primary"]:hover,
+a.framer-vm9ze[data-framer-name="Primary"]:hover .framer-yk1t5j{background-color:var(--sikepo-green-hover)!important}
+a.framer-vm9ze[data-framer-name="Primary"] .framer-1emdssz{background-color:#f0f7f2!important}
+a.framer-vm9ze[data-framer-name="Primary small"] .framer-1emdssz{background-color:var(--sikepo-green)!important}
+a.framer-vm9ze[data-framer-name="Primary small"]:hover{background-color:var(--sikepo-sage)!important}
+
+.framer-121pp28{--border-color:var(--sikepo-green)!important}
+a[href$="#capabilities"]:hover .framer-text,
+a[href$="#pricing"]:hover .framer-text{color:var(--sikepo-green)!important;--framer-text-color:var(--sikepo-green)!important}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sikepo-green);outline-offset:4px}
+
+/* Restore the reference navigation's compact sentence-case typography. */
+@media(min-width:810px){
+ .framer-TFhzF a.framer-12kasyw .framer-text{
+  text-transform:none!important;white-space:nowrap;
+ }
+}
+
+/* Supplied monochrome SIKEPO symbols on light and dark surfaces. */
+.framer-TFhzF a.framer-bgd74x{
+ --border-top-width:0px!important;--border-right-width:0px!important;
+ --border-bottom-width:0px!important;--border-left-width:0px!important;
+ border:0!important;border-radius:0!important;
+ background:transparent url('/assets/sikepo-symbol-black.png') center/36px 36px no-repeat!important;
+ min-width:48px;min-height:40px;
+}
+.framer-TFhzF a.framer-bgd74x::after{border:0!important}
+.framer-1s4pmjs .framer-8njqwr{
+ --border-top-width:0px!important;--border-right-width:0px!important;
+ --border-bottom-width:0px!important;--border-left-width:0px!important;
+ border:0!important;border-radius:0!important;
+ background:transparent url('/assets/sikepo-symbol-white.png') center/contain no-repeat!important;
+ width:40px!important;height:40px!important;
+}
+.framer-1s4pmjs .framer-8njqwr::after{border:0!important}
+
+/* Section-label symbols: white on dark sections, black on light sections. */
+.framer-e1K44 :is(.framer-1g5hqjf,.framer-t82j9z,.framer-j2nrvx,.framer-18a5q2a){
+ --border-top-width:0px!important;--border-right-width:0px!important;
+ --border-bottom-width:0px!important;--border-left-width:0px!important;
+ border:0!important;border-radius:0!important;aspect-ratio:1!important;
+ width:36px!important;height:36px!important;
+ background:transparent url('/assets/sikepo-symbol-white.png') center/contain no-repeat!important;
+}
+.framer-e1K44 .framer-18a5q2a{background-image:url('/assets/sikepo-symbol-black.png')!important}
+.framer-e1K44 :is(.framer-1g5hqjf,.framer-t82j9z,.framer-j2nrvx,.framer-18a5q2a)::after{display:none!important;border:0!important}
+
+/* Hero copy and removal of the obsolete product-preview card. */
+.framer-amm35g-container{display:none!important}
+
+
+
+
+
+/* Audit repair: retain the reference typeface, weights, and responsive scale. */
+.framer-e1K44 .framer-1g8n9hz>.framer-1v63p98{min-width:0;flex:1 0 0;width:1px}
+.framer-e1K44 .framer-o1dxza{max-width:760px!important;width:100%!important;word-break:normal!important;overflow-wrap:normal!important;white-space:normal!important}
+.framer-e1K44 .framer-o1dxza h1{font-size:var(--framer-font-size)!important;font-weight:var(--framer-font-weight)!important;letter-spacing:var(--framer-letter-spacing)!important;line-height:var(--framer-line-height)!important;text-wrap:wrap;word-break:normal!important}
+.framer-e1K44 .framer-o1dxza h1>span{display:block;font-size:inherit!important;line-height:inherit!important;letter-spacing:inherit!important;font-weight:inherit!important}
+@media(max-width:809.98px){.framer-e1K44 .framer-1g8n9hz>.framer-1v63p98{flex:none;width:100%}}
+/* The ticker mark is a separate template component from the section labels. */
+.framer-ighnd .framer-121pp28{width:28px!important;height:28px!important;aspect-ratio:1!important;border-radius:0!important;background:url('/assets/sikepo-symbol-black.png') center/contain no-repeat!important;--border-top-width:0px!important;--border-right-width:0px!important;--border-bottom-width:0px!important;--border-left-width:0px!important}
+.framer-ighnd .framer-121pp28::after{display:none!important}
+/* Keep the original card photography visible without requiring a hover. */
+.framer-cFRyW .framer-1cj72p0{opacity:1!important;filter:none!important}
+.framer-cFRyW .framer-jh1g71{filter:none!important}
+/* Avoid clipping the longer translated CTA inside the reference button. */
+
+
+.framer-vm9ze[data-framer-name="Primary"] .framer-1xuhufw{font-size:16px!important}
+
+/* Remaining testimonial and process marks. */
+.framer-azibb :is(.framer-9y77zj,.framer-noxayh),.framer-5FXXb .framer-zb8487{
+ --border-top-width:0px!important;--border-right-width:0px!important;--border-bottom-width:0px!important;--border-left-width:0px!important;
+ border:0!important;border-radius:0!important;aspect-ratio:1!important;
+ background:url('/assets/sikepo-symbol-black.png') center/contain no-repeat!important;
+}
+.framer-azibb .framer-9y77zj{background-image:url('/assets/sikepo-symbol-white.png')!important}
+.framer-azibb :is(.framer-9y77zj,.framer-noxayh){height:28px!important;width:28px!important}
+.framer-5FXXb .framer-zb8487{height:96px!important;width:96px!important}
+.framer-azibb :is(.framer-9y77zj,.framer-noxayh)::after,.framer-5FXXb .framer-zb8487::after{display:none!important}
+
+/* Keep type family, color, tracking and leading under the reference presets. */
+.framer-e1K44 .framer-o1dxza h1{
+ font-family:var(--framer-font-family)!important;
+ color:var(--token-d3bc1994-3a14-4152-a790-1b3882b755dc,rgba(26,26,26,.4))!important;
+}
+.framer-e1K44 .framer-o1dxza h1>span{color:var(--token-2ddcea38-bb42-4986-8e36-4a45eb0c9596,#1a1a1a)!important}
+.framer-ighnd .framer-1eb6sba .framer-text{color:var(--token-2ddcea38-bb42-4986-8e36-4a45eb0c9596,#1a1a1a)!important}
+
+
+/* Shared template CTA geometry, covering primary/secondary and compact variants. */
+a.framer-vm9ze.framer-1wpq3gf{
+ box-sizing:border-box!important;display:flex!important;align-items:center!important;
+ width:max-content!important;min-width:0!important;max-width:100%!important;
+ padding:3px 24px 3px 3px!important;gap:16px!important;
+ border-radius:16px!important;overflow:hidden!important;
+}
+a.framer-vm9ze .framer-1emdssz{
+ box-sizing:border-box!important;flex:0 0 65px!important;
+ width:65px!important;height:59px!important;border-radius:14px!important;
+}
+a.framer-vm9ze .framer-yk1t5j{
+ flex:0 0 auto!important;width:auto!important;min-width:0!important;height:59px!important;
+ padding:0!important;background:transparent!important;overflow:visible!important;
+}
+a.framer-vm9ze .framer-1xuhufw{width:auto!important;white-space:nowrap!important}
+a.framer-vm9ze:is(.framer-v-1owf9ff,.framer-v-85k2wm){
+ padding:3px 10px 3px 3px!important;gap:6px!important;border-radius:12px!important;
+}
+a.framer-vm9ze:is(.framer-v-1owf9ff,.framer-v-85k2wm) .framer-1emdssz{
+ flex:0 0 40px!important;width:40px!important;height:36px!important;border-radius:10px!important;
+}
+a.framer-vm9ze:is(.framer-v-1owf9ff,.framer-v-85k2wm) .framer-yk1t5j{height:36px!important}
+/* Preserve green branding while matching the reference's inset white tile. */
+a.framer-vm9ze[data-framer-name="Primary"] .framer-1emdssz{background-color:#fff!important}
+/* Keep only the icon on the tile: duplicate text is a runtime hover layer. */
+a.framer-vm9ze .framer-1emdssz .framer-1c4wyp7{display:none!important}
+
+/* Prevent the template's fixed-width parent from centering an overflowing CTA. */
+a.framer-vm9ze.framer-1wpq3gf{
+ justify-content:flex-start!important;flex-shrink:0!important;
+ width:max-content!important;min-width:max-content!important;max-width:none!important;
+}
+
+/* Removed at user request: user-carousel and watch-video sections. */
+section.framer-1t99cj0,section.framer-s7sf2i{display:none!important}
+
+/* Overview statistics: explicit contrast and matching reference counter type. */
+.framer-e1K44 .framer-lbcy4s-container::after,
+.framer-e1K44 .framer-1njuey2-container::after{
+ font-family:"Inter","Inter Placeholder",sans-serif!important;
+ font-size:43px!important;font-weight:400!important;
+ line-height:1em!important;letter-spacing:-2px!important;
+}
+.framer-e1K44 .framer-lbcy4s-container::after{color:#fff!important}
+.framer-e1K44 .framer-1njuey2-container::after{color:#292828!important}
+.framer-e1K44 .framer-1sq7818 .framer-text{--framer-text-color:#fff!important;color:#fff!important}
+.framer-e1K44 .framer-phw5pd .framer-text{--framer-text-color:#1a1a1a!important;color:#1a1a1a!important}
+.framer-e1K44 .framer-1q77v8 .framer-text{--framer-text-color:rgba(26,26,26,.6)!important;color:rgba(26,26,26,.6)!important}
+
+/* Generated SIKEPO artwork contains its own wordmark; remove third-party overlays. */
+.framer-cFRyW .framer-jh1g71{display:none!important}
+.framer-cFRyW .framer-1cj72p0 img{object-position:center!important}
+
+/* Remove Catatan article section and its obsolete navigation links. */
+.framer-7g7zfn,.framer-3xy3nb,a.framer-vjofyj,.framer-17ilxic-container{display:none!important}
+
+/* SiKePO overview: content-specific cards without avatars or third-party branding. */
+.framer-ntzpvd{display:none!important}
+.sikepo-summary{display:grid;grid-template-columns:1.1fr 1fr 1.1fr 1.1fr;gap:10px;width:100%;font-family:"Inter",sans-serif;color:#1a1a1a}
+.sikepo-summary *{box-sizing:border-box;margin:0}
+.sk-summary-card{display:flex;flex-direction:column;align-items:flex-start;padding:24px;border-radius:28px;min-width:0;background:#e4e4e4}
+.sk-summary-dark{background:#1a1a1a;color:#fff;min-height:280px}
+.sk-summary-kicker{font-size:12px;line-height:18px;color:rgba(26,26,26,.55)}
+.sk-summary-dark .sk-summary-kicker{color:#b8b8b8}
+.sk-summary-number{display:block;font-family:"Inter Display",sans-serif;font-size:43px;line-height:1;letter-spacing:-2px;font-weight:400;margin:24px 0}
+.sk-summary-card p{font-size:14px;line-height:21px;color:rgba(26,26,26,.6);text-wrap:pretty}
+.sk-summary-dark p{color:#fff;margin-top:auto;max-width:340px}
+.sk-summary-column{display:flex;flex-direction:column;gap:10px;min-width:0}
+.sk-summary-data{flex:1;background:transparent;border:1px dashed #999;justify-content:center;gap:12px}
+.sk-summary-card h3{font-family:"Inter Display",sans-serif;font-size:24px;line-height:1.2;letter-spacing:-.04em;font-weight:500}
+.sk-summary-focus{flex-direction:row;align-items:center;gap:24px;padding:20px 24px}
+.sk-summary-focus .sk-summary-number{margin:0}
+.sk-summary-focus p{font-size:12px;line-height:18px}
+.sk-summary-risk .sk-summary-number{margin:32px 0 auto}
+.sk-summary-risk h3{margin-top:24px;margin-bottom:8px;font-size:20px}
+.sk-summary-review{background:#fff}
+.sk-summary-review h3{margin-top:auto;margin-bottom:12px}
+.sk-summary-review small{font-size:12px;line-height:18px;color:#888;margin-top:24px}
+@media(max-width:1199px){.sikepo-summary{grid-template-columns:1fr 1fr}.sk-summary-card{min-height:220px}.sk-summary-column .sk-summary-card{min-height:0}.sk-summary-data{padding:24px}}
+@media(max-width:600px){.sikepo-summary{grid-template-columns:1fr;gap:12px}.sk-summary-card{min-height:200px}.sk-summary-data{min-height:160px!important}.sk-summary-focus{min-height:100px!important}.sk-summary-review h3{margin-top:32px}}
+
+/* Minimal reference-style icon tiles in the overview cards. */
+.sk-summary-icon{display:grid;place-items:center;flex-shrink:0;width:54px;height:54px;border-radius:14px;margin-top:20px}
+.sk-summary-icon svg{display:block;width:26px;height:26px}
+.sk-flow-icon{background:#fff;color:#1a1a1a}
+.sk-rocket-icon{background:#1a1a1a;color:#fff;border-radius:50%}
+.sk-summary-dark .sk-summary-number{margin-top:16px}
+.sk-summary-risk .sk-summary-number{margin:16px 0 auto}

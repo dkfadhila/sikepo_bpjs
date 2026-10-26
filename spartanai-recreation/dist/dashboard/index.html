@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Panel audit klaim SiKePo. Ringkasan risiko, antrean investigasi, dan pipeline audit dalam satu workspace."><meta name="robots" content="noindex,nofollow">
+  <title>SIKEPO</title><link rel="stylesheet" href="dashboard.css">
+<link rel="icon" type="image/png" href="/assets/sikepo-symbol-black.png?v=1" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="/assets/sikepo-symbol-white.png?v=1" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="/assets/sikepo-symbol-black.png?v=1">
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten</a>
+<div class="layout">
+  <aside class="sidebar" id="sidebar" aria-label="Navigasi workspace">
+    <a class="brand" href="../" aria-label="SiKePo, kembali ke landing page"><img src="sikepo-logo.png" alt="SiKePo"></a>
+    <div class="workspace"><span class="workspace-icon" data-icon="building"></span><div><strong>BPJS Kesehatan</strong><small>Workspace demonstrasi</small></div><span class="workspace-dot"></span></div>
+    <span class="eyebrow nav-label">WORKSPACE</span>
+    <nav class="nav">
+      <button data-view="overview" class="active" aria-current="page"><span data-icon="grid"></span>Overview</button>
+      <button data-view="claims"><span data-icon="stack"></span>Antrean klaim <span class="nav-count" id="queue-count">—</span></button>
+      <button data-view="investigations"><span data-icon="scan"></span>Investigasi risiko</button>
+      <button data-view="pipeline"><span data-icon="flow"></span>Pipeline audit <span class="live-dot"></span></button>
+      <button data-view="reports"><span data-icon="chart"></span>Laporan</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="help-card"><span data-icon="shield"></span><strong>Setiap klaim, lebih terjaga.</strong><p>Tiga lapis pemeriksaan untuk keputusan yang lebih terarah.</p><button class="text-button" id="about-button">Tentang demo <span data-icon="arrow"></span></button></div>
+      <a href="../" class="landing-link"><span data-icon="external"></span>Kembali ke landing page</a>
+      <div class="profile"><span class="avatar">AD</span><div><strong>Admin demo</strong><small>Super admin · sandbox</small></div><span class="profile-status"></span></div>
+    </div>
+  </aside>
+  <div class="app">
+    <header class="topbar"><div class="breadcrumb"><button id="menu-button" class="icon-button mobile-only" aria-label="Buka navigasi" aria-expanded="false" aria-controls="sidebar"><span data-icon="menu"></span></button><span>Workspace</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div><div class="top-actions"><span class="demo-badge"><span></span>Data simulasi</span><button class="icon-button" id="notification-button" aria-label="Lihat notifikasi"><span data-icon="bell"></span><i></i></button><span class="avatar small">AD</span></div></header>
+    <main id="main">
+      <section class="page-heading"><div><span class="eyebrow">CLAIM INTELLIGENCE / SIKEPO</span><h1 id="page-title">Overview<span class="title-dot">.</span></h1><p id="page-subtitle">Satu pandangan untuk setiap klaim yang perlu perhatian Anda.</p></div><div class="heading-actions"><label class="select-wrap"><span data-icon="calendar"></span><select id="period" aria-label="Periode data"><option value="30">30 hari terakhir</option><option value="7">7 hari terakhir</option></select></label><button class="button black" id="export-top"><span data-icon="download"></span>Ekspor laporan</button></div></section>
+
+      <div id="overview-content">
+        <section class="intro-strip"><div class="intro-copy"><span class="eyebrow">AUDIT DENGAN PERSPEKTIF BARU</span><h2>Klaim lebih transparan.<br><span>Keputusan lebih terarah.</span></h2><p>Prioritaskan anomali. Telusuri temuan.<br>Jaga setiap keputusan tetap dalam kendali Anda.</p><button class="button black" id="start-audit">Tinjau antrean <span data-icon="arrow"></span></button></div><div class="intro-visual" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><img src="sikepo-symbol.png" alt=""><span class="visual-chip chip-one"><span class="live-dot"></span>Risk intelligence</span><span class="visual-chip chip-two"><span data-icon="shield"></span>Human in the loop</span><span class="orbit-point"></span></div><div class="intro-note"><span class="live-dot"></span> A1 + A2 + A3<br><small>Tiga tahap. Satu perspektif.</small></div></section>
+        <section class="metrics" aria-label="Ringkasan klaim" id="metrics"></section>
+        <section class="analytics-grid">
+          <article class="card activity-card"><div class="card-header"><div><span class="eyebrow">AKTIVITAS AUDIT</span><h3>Setiap klaim, terpetakan.</h3></div><span class="muted text-xs" id="chart-range"></span></div><div class="chart-summary"><strong id="chart-total">—</strong><span>klaim masuk pada periode ini</span><div class="chart-legend"><span><i class="legend-dot dark-dot"></i>Sudah ditinjau</span><span><i class="legend-dot pale-dot"></i>Menunggu</span></div></div><div class="bar-chart" id="bar-chart" role="img" aria-label="Grafik jumlah klaim harian"></div><div class="chart-foot"><span data-icon="spark"></span>Data sintetis untuk eksplorasi tampilan dan alur audit.</div></article>
+          <article class="card risk-card"><div class="card-header"><div><span class="eyebrow">PETA RISIKO</span><h3>Kenali prioritas Anda.</h3></div><span data-icon="scan" class="muted"></span></div><div class="risk-body"><div class="donut"><svg viewBox="0 0 160 160" role="img" aria-label="Komposisi tingkat risiko" id="donut-svg"></svg><div class="donut-label"><strong id="risk-percent">—</strong><small>risiko tinggi</small></div></div><div id="risk-legend" class="risk-legend"></div></div><div class="risk-note"><span data-icon="info"></span>Skor adalah sinyal investigasi,<br>bukan putusan fraud.</div></article>
+        </section>
+      </div>
+
+      <section class="card queue-card" id="queue-section"><div class="card-header queue-header"><div><span class="eyebrow">WORKSPACE VERIFIKASI</span><h3 id="table-title">Klaim yang perlu perhatian<span class="count-badge" id="result-count">—</span></h3></div><button class="text-button" id="all-claims">Semua klaim <span data-icon="arrow"></span></button></div><div class="table-toolbar"><div class="filter-tabs" aria-label="Filter status"><button class="selected" data-status="all" aria-pressed="true">Semua</button><button data-status="HOLD" aria-pressed="false">Perlu review</button><button data-status="APPROVED" aria-pressed="false">Disetujui</button><button data-status="REJECTED" aria-pressed="false">Ditolak</button></div><div class="table-filters"><label class="search"><span data-icon="search"></span><input id="search" type="search" placeholder="Cari klaim atau faskes…" aria-label="Cari klaim, faskes, atau diagnosis"><kbd>/</kbd></label><label class="select-wrap compact"><span data-icon="filter"></span><select id="risk-filter" aria-label="Filter tingkat risiko"><option value="all">Semua risiko</option><option value="high">Risiko tinggi</option><option value="medium">Risiko sedang</option><option value="low">Risiko rendah</option></select></label></div></div><div class="table-scroll"><table><thead><tr><th>ID klaim / diagnosis</th><th>Fasilitas kesehatan</th><th>Nilai pengajuan</th><th><button class="sort-button" id="sort-risk">Skor risiko <span data-icon="sort"></span></button></th><th>Status</th><th><span class="sr-only">Tindakan</span></th></tr></thead><tbody id="claim-rows"></tbody></table></div><div class="table-footer"><span id="page-info" role="status"></span><div><button class="icon-button" id="previous-page" aria-label="Halaman sebelumnya"><span data-icon="left"></span></button><span id="page-number"></span><button class="icon-button" id="next-page" aria-label="Halaman berikutnya"><span data-icon="right"></span></button></div></div></section>
+
+      <section id="pipeline-section" class="pipeline-section" hidden><div class="section-heading"><span class="eyebrow">AUDIT PIPELINE</span><h2>Tiga lapis pemeriksaan.<br><span>Satu alur yang dapat ditelusuri.</span></h2><p>Visualisasi arsitektur dari handover. Panel ini belum terhubung ke model atau layanan LLM.</p></div><div class="pipeline-grid"><article class="card"><span class="stage-number">01 / A1</span><h3>Triage berbasis aturan</h3><p>Rasio biaya terhadap tarif INA CBG, durasi rawat, dan penggunaan obat restriksi.</p><span class="tag neutral">Deterministic rules</span></article><article class="card"><span class="stage-number">02 / A2</span><h3>Investigasi anomali</h3><p>IsolationForest menilai tujuh fitur numerik untuk menemukan pola yang perlu perhatian.</p><span class="tag neutral">Machine learning</span></article><article class="card dark-card"><span class="stage-number">03 / A3</span><h3>Rekomendasi adjudikasi</h3><p>Temuan aturan dan skor anomali dirangkum sebagai bahan pertimbangan verifikator.</p><span class="tag">LLM + human review</span></article></div></section>
+      <section id="reports-section" class="card report-section" hidden><span class="eyebrow">REPORT CENTER</span><h2>Temuan yang bisa<br>dibawa ke langkah berikutnya.</h2><p>Ekspor data sintetis pada periode terpilih. File CSV berisi ID, fasilitas kesehatan, diagnosis, nilai klaim, skor, dan status.</p><button class="button black" id="export-report"><span data-icon="download"></span>Unduh CSV periode ini</button><div class="report-details"><span data-icon="shield"></span>Data demonstrasi · Tanpa informasi pasien riil</div></section>
+      <footer class="main-footer"><span>SiKePo <span class="muted">/ Claim intelligence workspace</span></span><span><span class="live-dot"></span> Prototipe interaktif · Data sintetis</span></footer>
+    </main>
+  </div>
+</div>
+<dialog id="claim-dialog" class="detail-dialog" aria-labelledby="detail-title"><div class="dialog-top"><span class="eyebrow">CLAIM INSPECTOR</span><button class="icon-button" id="close-detail" aria-label="Tutup detail klaim"><span data-icon="close"></span></button></div><div id="detail-body"></div></dialog>
+<dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title"><div class="dialog-top"><span class="eyebrow">SIKEPO / SANDBOX</span><button class="icon-button" id="close-about" aria-label="Tutup informasi demo"><span data-icon="close"></span></button></div><h2 id="about-title">Ruang eksplorasi<br>audit klaim.</h2><p>Dashboard ini adalah prototipe antarmuka dengan 64 klaim sintetis. Pencarian, filter, detail, dan ekspor berjalan di browser. Tidak ada koneksi ke BPJS, mesin audit, atau layanan AI.</p><p>Skor dan temuan hanya ilustrasi. Panel tidak mengesahkan atau menolak klaim riil.</p></dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="dashboard.js"></script>
+<script src="auth.js"></script>
+</body></html>

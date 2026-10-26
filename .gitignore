@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.dev.vars*
+.secrets/
+.cloudflare/
+.wrangler/
+*.log
+coverage/
+spartanai-recreation/reference.html
+spartanai-recreation/*preview*.png
+spartanai-recreation/audit-cards.png

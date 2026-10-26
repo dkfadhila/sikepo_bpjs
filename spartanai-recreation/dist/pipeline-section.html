@@ -1,0 +1,25 @@
+<section id="pipeline" class="sikepo-pipeline" aria-labelledby="pipeline-title">
+  <div class="sp-intro">
+    <div class="sp-kicker"><img src="/assets/sikepo-symbol-white.png" alt="" width="36" height="36"><span class="sp-rule"></span><span>PIPELINE</span></div>
+    <p class="sp-lead">Dari data pengajuan hingga rekomendasi. SiKePO menyatukan pemeriksaan aturan dan deteksi anomali dalam alur yang dapat ditelusuri.</p>
+    <div class="sp-intro-bottom"><h2 id="pipeline-title">Tiga lapis pemeriksaan.<br><span>Satu konteks yang utuh.</span></h2><a class="sp-cta" href="/dashboard/#pipeline"><span aria-hidden="true">↗</span>Jelajahi pipeline</a></div>
+  </div>
+  <div class="sp-workflow">
+    <figure class="sp-diagram" aria-labelledby="pipeline-diagram-caption">
+      <div class="sp-input"><span class="sp-mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H6V3h1Zm7 0v5h4M9 12h6m-6 4h6"/></svg></span><div><strong>Berkas klaim</strong><span>Diagnosis · biaya · durasi rawat · obat</span></div><span class="sp-tiny-label">INPUT</span></div>
+      <div class="sp-split" aria-hidden="true"><span></span></div>
+      <div class="sp-analysis">
+        <article class="sp-stage"><div class="sp-stage-heading"><span class="sp-stage-id">A1</span><span>TRIAGE AGENT</span></div><div class="sp-stage-art"><img src="/assets/sikepo-card-upcoding.png" alt="Ilustrasi pemeriksaan berkas dan diagnosis" loading="lazy"></div><h3>Triage berbasis aturan</h3><p>Periksa rasio biaya terhadap tarif INA CBG, durasi rawat, dan penggunaan obat restriksi.</p><div class="sp-output"><span>OUTPUT</span>Risiko awal</div></article>
+        <article class="sp-stage"><div class="sp-stage-heading"><span class="sp-stage-id">A2</span><span>INVESTIGATOR AGENT</span></div><div class="sp-stage-art"><img src="/assets/sikepo-card-inflated-bills.png" alt="Ilustrasi pola biaya dan analisis anomali" loading="lazy"></div><h3>Investigasi anomali</h3><p>IsolationForest membaca tujuh fitur numerik untuk mengenali pola yang tidak biasa.</p><div class="sp-output"><span>OUTPUT</span>Risiko anomali</div></article>
+      </div>
+      <div class="sp-merge" aria-hidden="true"><span></span></div>
+      <div class="sp-fused"><div><span class="sp-status-dot"></span><strong>Skor risiko gabungan</strong><small>Skala 0–99</small></div><p><span>45%</span> aturan <b>+</b> <span>55%</span> anomali</p></div>
+      <div class="sp-connector" aria-hidden="true"></div>
+      <article class="sp-adjudicator"><div class="sp-adjudicator-copy"><div class="sp-stage-heading"><span class="sp-stage-id">A3</span><span>ADJUDICATOR AGENT</span></div><h3>Rangkum temuan.<br>Susun rekomendasi.</h3><p>LLM menelaah konteks klaim, temuan A1, dan hasil A2 untuk merangkum alasan serta rekomendasi adjudikasi.</p><span class="sp-fallback">Fallback deterministik saat LLM tidak tersedia.</span></div><img class="sp-adjudicator-art" src="/assets/sikepo-card-clinical-review.png" alt="Ilustrasi penelaahan berkas dan konteks klinis" loading="lazy"></article>
+      <div class="sp-connector" aria-hidden="true"></div>
+      <div class="sp-review"><span class="sp-mini-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Zm-4 9 3 3 5-6"/></svg></span><div><strong>Peninjauan oleh pengguna</strong><span>Telusuri alasan. Cocokkan bukti. Tinjau rekomendasi.</span></div></div>
+      <figcaption id="pipeline-diagram-caption">Visualisasi rancangan SiKePO berdasarkan handover. Diagram ini menjelaskan alur, bukan menampilkan proses audit yang sedang berjalan.</figcaption>
+    </figure>
+    <details class="sp-feature-details"><summary>Apa saja tujuh fitur yang diperiksa A2?<span aria-hidden="true">+</span></summary><p>Rasio biaya terhadap tarif INA CBG, proporsi selisih biaya, selisih durasi rawat, rasio durasi rawat, jumlah obat restriksi, jumlah obat, dan usia pasien.</p></details>
+  </div>
+</section>
