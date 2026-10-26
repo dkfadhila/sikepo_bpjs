@@ -14,7 +14,7 @@ html { scroll-behavior: smooth; }
 .framer-lbcy4s-container>*,.framer-1njuey2-container>*{display:none!important}
 .framer-lbcy4s-container::after{content:'3';font-size:43px;line-height:1;color:inherit}
 .framer-1njuey2-container::after{content:'4';font-size:43px;line-height:1;color:inherit}
-#fokus-risiko,#catatan,#tentang,#capabilities,#pricing{scroll-margin-top:100px}
+#fokus-risiko,#catatan,#tentang,#capabilities,#peran{scroll-margin-top:100px}
 
 /* Keep the two hero statements on intentional lines. */
 
@@ -33,7 +33,7 @@ a.framer-vm9ze[data-framer-name="Primary small"]:hover{background-color:var(--si
 
 .framer-121pp28{--border-color:var(--sikepo-green)!important}
 a[href$="#capabilities"]:hover .framer-text,
-a[href$="#pricing"]:hover .framer-text{color:var(--sikepo-green)!important;--framer-text-color:var(--sikepo-green)!important}
+a[href$="#peran"]:hover .framer-text{color:var(--sikepo-green)!important;--framer-text-color:var(--sikepo-green)!important}
 a:focus-visible,button:focus-visible{outline:2px solid var(--sikepo-green);outline-offset:4px}
 
 /* Restore the reference navigation's compact sentence-case typography. */
@@ -205,3 +205,47 @@ section.framer-1t99cj0,section.framer-s7sf2i{display:none!important}
 .sk-rocket-icon{background:#1a1a1a;color:#fff;border-radius:50%}
 .sk-summary-dark .sk-summary-number{margin-top:16px}
 .sk-summary-risk .sk-summary-number{margin:16px 0 auto}
+
+/* Responsive SIKEPO hero: keep copy and the emblem in separate readable areas. */
+html,body{max-width:100%;overflow-x:clip}
+#peran,#pipeline{scroll-margin-top:100px}
+.framer-e1K44 .framer-hmw7d8{height:auto!important;min-height:100svh}
+.framer-e1K44 .framer-1w8qob2{height:auto!important;min-height:max(680px,calc(100svh - 24px));padding:clamp(150px,20vh,190px) 0 160px!important}
+.framer-e1K44 .framer-1g8n9hz{justify-content:flex-start!important;align-items:flex-start!important;overflow:visible!important}
+.framer-e1K44 .framer-1g8n9hz>.framer-1v63p98{flex:none!important;width:48%!important;max-width:700px!important;min-width:0!important;overflow:visible!important}
+.framer-e1K44 .framer-o1dxza{max-width:100%!important}
+.framer-e1K44 .framer-o1dxza h1{font-size:clamp(40px,3.4vw,64px)!important;line-height:1.08!important;letter-spacing:-.055em!important}
+.framer-e1K44 .framer-ifhldj{max-width:390px!important}
+.framer-1ulft50 img[src*="sikepo-hero-meadow"]{object-position:left bottom!important}
+@media(max-width:1099px){
+ .framer-e1K44 .framer-hmw7d8{min-height:0!important;padding:8px!important}
+ .framer-e1K44 .framer-1w8qob2{display:flex!important;flex-direction:column!important;min-height:0!important;padding:120px 0 0!important;gap:32px!important;border-radius:20px!important}
+ .framer-e1K44 .framer-1g8n9hz{order:1;flex:none!important;width:100%!important;padding:0 24px!important;gap:24px!important}
+ .framer-e1K44 .framer-1g8n9hz>.framer-1v63p98{width:100%!important;max-width:680px!important;gap:24px!important}
+ .framer-e1K44 .framer-vsdi6k{overflow:visible!important;gap:16px!important}
+ .framer-e1K44 .framer-o1dxza h1{font-size:clamp(36px,6.6vw,60px)!important;line-height:1.08!important}
+ .framer-e1K44 .framer-ifhldj{max-width:460px!important}
+ .framer-e1K44 .framer-1ulft50{order:2;position:relative!important;inset:auto!important;width:100%!important;height:clamp(320px,48vw,460px)!important;flex:none!important;transform:none!important}
+ .framer-1ulft50 img[src*="sikepo-hero-meadow"]{object-position:center bottom!important}
+ .framer-e1K44 .framer-ksfjr4{order:3;position:relative!important;inset:auto!important;min-width:0;width:100%!important;padding:24px!important;margin-top:-32px;background:#14211b;gap:24px!important}
+ .framer-e1K44 .framer-ksfjr4 .framer-text{color:#fff!important;--framer-text-color:#fff!important}
+}
+@media(min-width:810px) and (max-width:1099px){.framer-TFhzF .framer-12kasyw .framer-text{font-size:12px!important}}
+@media(max-width:600px){
+ .framer-e1K44 .framer-1g8n9hz{padding:0 20px!important}
+ .framer-e1K44 .framer-o1dxza h1{font-size:clamp(32px,8.3vw,48px)!important}
+ .framer-e1K44 .framer-ifhldj .framer-text{font-size:14px!important;line-height:1.6!important}
+ .framer-e1K44 .framer-ksfjr4{padding:20px!important}
+ a.framer-vm9ze.framer-1wpq3gf{min-width:0!important;max-width:100%!important}
+ .framer-e1K44 .framer-xvtoea{max-width:100%!important;min-width:0!important}
+ .sikepo-summary{grid-template-columns:minmax(0,1fr)!important}
+}
+
+/* Clip animated ticker tracks at the page boundary without widening mobile layout. */
+body{min-width:0!important}
+#main,.framer-e1K44{max-width:100%!important;min-width:0!important;overflow-x:clip!important}
+@media(max-width:600px){
+ .framer-e1K44>section{min-width:0!important;max-width:100%!important}
+ .framer-e1K44 .framer-1ulft50{overflow:hidden!important}
+ .framer-e1K44 .framer-13qu1zz{min-width:0!important;max-width:100%!important}
+}
