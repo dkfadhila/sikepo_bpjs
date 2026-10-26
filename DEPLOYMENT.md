@@ -2,22 +2,33 @@
 
 Source: https://github.com/dkfadhila/sikepo_bpjs
 
-## Siap
+## Infrastruktur aktif
 
-- Landing dan dashboard yang telah disesuaikan, seluruh asset lokal dipertahankan.
-- Panel `/login` dengan pilihan empat akun demo.
-- Backend Node/Express, session MongoDB, kontrol akses API dan dashboard.
-- Database `sikepo` terpisah dari `scopenote`; koneksi dan login/logout empat peran sudah diperiksa lokal.
-- Workflow Mastra untuk penjelasan Gemma, validasi output, dan batas panggilan harian.
-- Integrasi Sentry server dengan penyaringan data request.
-- Blueprint Render, health check, serta pemeriksaan autentikasi otomatis.
+- Landing: https://sikepo.tech
+- Login: https://sikepo.tech/login
+- Dashboard: https://dashboard.sikepo.tech/dashboard/
+- Render service: `sikepo`, ID `srv-dbfjha0n74is73elgjq0`, region Singapore, paket Free.
+- Origin Render: https://sikepo.onrender.com
+- Cloudflare Worker: `sikepo-dashboard`, custom domain `dashboard.sikepo.tech`.
+- DNS apex memakai proxy Cloudflare ke Render. TLS Full (strict).
+- Database MongoDB `sikepo` terpisah dari ScopeNote. Tidak ada perubahan allowlist Atlas atau data ScopeNote.
+- Gemma `gemma-4-26b-a4b-it` melalui workflow Mastra dua langkah.
+- Sentry memakai integrasi yang diizinkan dari ScopeNote; tag server `service=sikepo` membedakan event.
 
-## Belum live
+## Verifikasi
 
-Pembuatan service Render menunggu login akun pemilik di BrowserOS. Google API key dan Sentry DSN ScopeNote berada dalam environment Render, bukan `.env` lokal. Keduanya belum disalin dan belum diverifikasi pada SIKEPO.
+- Build Render dan startup MongoDB berhasil. Health endpoint publik mengonfirmasi database, Gemma, dan monitoring terkonfigurasi.
+- Uji Gemma sungguhan menghasilkan JSON penjelasan tervalidasi melalui workflow Mastra.
+- Endpoint ingest Sentry menerima event uji sintetis dengan HTTP 200.
+- Checks menguji login, origin, proteksi dashboard termasuk URL terenkode, role auditor, rotasi sesi, CSRF, logout, dan proxy Cloudflare tanpa cache privat.
+- GitHub Actions `Verify SIKEPO` menjalankan pemeriksaan pada branch main.
 
-Setelah login, buat service dari blueprint `render.yaml`, isi environment yang belum tersedia, dan pastikan database tetap `sikepo`. Gunakan hostname Render yang benar untuk CNAME Cloudflare `sikepo.tech` dan `dashboard.sikepo.tech`. Pertahankan MX/TXT email yang sudah ada. Verifikasi custom domain dan TLS di Render sebelum mengaktifkan trafik publik.
+## Pengoperasian
 
-Periksa langsung: landing HTTPS, login, redirect ke dashboard, empat peran demo, logout, akses dashboard tanpa sesi, Gemma dengan klaim sintetis, serta penerimaan error uji Sentry yang tidak memuat data pasien. Belum ada klaim bahwa model ML telah dilatih.
+Render Free dapat tidur saat tidak aktif; permintaan pertama dapat menunggu sekitar 50 detik atau lebih. Belum ada upgrade paket berbayar. Google API mengikuti kuota/billing akun pemilik. Demo membatasi total panggilan AI harian menjadi 20, tersimpan atomik dalam MongoDB.
 
-Jalankan lokal dengan `npm start` pada port 7731. Server preview statis lama port 7730 hanya untuk desain; tidak menyediakan autentikasi backend.
+Konfigurasi server disimpan di environment Render, bukan Git. File `.env` lokal diabaikan Git. Semua klaim dashboard sintetis. Skor risiko adalah ilustrasi; belum ada model ML terlatih atau keputusan pembayaran otomatis.
+
+Perubahan source diunggah ke branch main. Jika Render tidak memicu build otomatis untuk repository publik, gunakan Manual Deploy > Deploy latest commit. Untuk Worker, unggah source `cloudflare/dashboard-proxy.js` dan pertahankan custom domain serta pengaturan observability yang ada.
+
+Jalankan lokal dengan `npm start` pada port 7731. Preview statis lama port 7730 hanya untuk desain dan tidak menyediakan autentikasi backend.

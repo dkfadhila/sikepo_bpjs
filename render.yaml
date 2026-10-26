@@ -8,7 +8,6 @@ services:
     healthCheckPath: /api/health
     domains:
       - sikepo.tech
-      - dashboard.sikepo.tech
     envVars:
       - key: NODE_ENV
         value: production

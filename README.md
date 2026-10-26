@@ -8,7 +8,9 @@ Node.js 22.22 atau lebih baru. Jalankan `npm ci`, salin `.env.example` menjadi `
 
 ## Deployment
 
-`render.yaml` mendefinisikan satu Node web service yang melayani landing, login, dashboard, dan API. Tambahkan domain `sikepo.tech` serta `dashboard.sikepo.tech` di Render dan arahkan DNS Cloudflare ke hostname service Render yang benar. Konfigurasi TLS harus selesai sebelum dipakai.
+`render.yaml` mendefinisikan satu Node web service yang melayani landing, login, dashboard, dan API. Domain `sikepo.tech` diarahkan Cloudflare ke `sikepo.onrender.com` dengan proxy aktif dan TLS Full (strict). Render otomatis menambahkan alias `www`, tanpa memerlukan penambahan domain dashboard di Render.
+
+`dashboard.sikepo.tech` memakai custom domain Worker `sikepo-dashboard`. Source proxy ada di `cloudflare/dashboard-proxy.js`. Proxy hanya meneruskan ke origin tetap `https://sikepo.onrender.com`, mempertahankan cookie sesi, dan selalu mengirim `Cache-Control: no-store`. Autentikasi dashboard tetap diperiksa oleh backend Render. Log dan trace Worker memakai sampling 10%, dengan query string disamarkan.
 
 Isi variabel server `MONGODB_URI`, `GOOGLE_GENERATIVE_AI_API_KEY`, dan `SENTRY_DSN` di Render. Database SIKEPO memakai nama `sikepo`, terpisah dari ScopeNote. Izinkan hanya rentang egress Render yang diperlukan di Atlas. Jangan membuka Atlas ke seluruh internet. Jangan commit `.env` atau credential Cloudflare/R2.
 

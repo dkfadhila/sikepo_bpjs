@@ -8,6 +8,7 @@ node_modules/
 .wrangler/
 *.log
 coverage/
+artifacts/
 spartanai-recreation/reference.html
 spartanai-recreation/*preview*.png
 spartanai-recreation/audit-cards.png
