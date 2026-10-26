@@ -19,7 +19,9 @@ test('technology section owns eleven local logos in three groups before FAQ',asy
   assert.equal((html.match(/id="teknologi"/g)||[]).length,1);
   assert.ok(html.indexOf('id="teknologi"')<html.indexOf('class="framer-1lgli9y"'));
   const page=await fs.readFile(path.join(assets,(await fs.readdir(assets)).find(n=>n.startsWith('iHx0Y')&&n.endsWith('.mjs'))),'utf8');
-  assert.match(page,/children:stackTickerItems\(\)/);
+  assert.match(page,/children:stackTickerItems\(\)\.map\(item=>p\(E,/,'ticker items use Framer layout wrappers');
+  const view=await fs.readFile('spartanai-recreation/sikepo-stack.mjs','utf8');
+  assert.match(view,/style:\{width:item\.id===/,'ticker logos declare dimensions before image loading');
   assert.match(page,/p\(SikepoStack,\{\}\)/);
 });
 

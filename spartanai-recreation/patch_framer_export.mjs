@@ -10,7 +10,7 @@ import { parse } from 'acorn';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist'),assets=path.join(dist,'assets');
 const names=fs.readdirSync(assets),find=prefix=>names.find(name=>name.startsWith(prefix)&&name.endsWith('.mjs'));
 const main=find('script_main.'),page=find('iHx0Y'),faq=find('jOQBH'),button=find('AuyE7'),card=find('d3MrXgarR');
-const version='sikepo-source-sync-12';
+const version='sikepo-source-sync-13';
 const copy=JSON.parse(fs.readFileSync(path.join(root,'sikepo-copy.json'),'utf8'));
 Object.assign(copy,{
   'SIKEPO · Audit klaim lebih terarah':'SIKEPO',
@@ -71,7 +71,7 @@ function structural(source,filename){
     const props=node.arguments[1],className=value(property(props,'className')?.value);
     if(filename===page&&className==='framer-15vldg4'){
       const children=property(props,'children')?.value;
-      if(children?.type==='ArrayExpression')edits.push({start:children.start,end:children.end,text:'stackTickerItems()'});
+      if(children&&source.slice(children.start,children.end)!=='stackTickerItems().map(item=>p(E,{style:{width:item.props.style.width,height:54},children:item}))')edits.push({start:children.start,end:children.end,text:'stackTickerItems().map(item=>p(E,{style:{width:item.props.style.width,height:54},children:item}))'});
       const gap=property(props,'tickerEffectGap')?.value;
       if(gap&&value(gap)!==36)edits.push({start:gap.start,end:gap.end,text:'36'});
     }

@@ -346,3 +346,23 @@ body{min-width:0!important}
 .sikepo-stack-ticker-logo:has(img[alt="BPJS Kesehatan"]){width:240px}
 .sikepo-stack-ticker-logo img[alt="BPJS Kesehatan"]{width:220px;max-width:220px;height:auto;max-height:44px}
 @media(max-width:600px){.sikepo-stack-ticker-logo span{font-size:22px}}
+
+/* Give the footer its own complete scroll area. Keep its Framer content/motion,
+   but remove the fixed viewport clipping and the old 86vh reveal spacer. */
+.framer-Z8hVM .framer-no1ell-container{
+ position:relative!important;inset:auto!important;order:1002;
+ height:auto!important;min-height:100svh;flex:none!important;width:100%!important;
+}
+.framer-Z8hVM .framer-uug7ug{display:none!important}
+.framer-no1ell-container .framer-HsZvR.framer-vxj4yz{
+ box-sizing:border-box;height:auto!important;min-height:100svh!important;
+ padding:clamp(105px,13svh,170px) 40px 40px!important;justify-content:flex-start!important;
+}
+.framer-no1ell-container .framer-13wo9yw{padding-bottom:clamp(100px,22svh,250px)!important;overflow:visible!important}
+.framer-no1ell-container .framer-1qnk6jn{inset:0!important;mask:none!important;-webkit-mask:none!important}
+@media(max-width:809px){
+ .framer-no1ell-container .framer-HsZvR.framer-vxj4yz{padding:110px 24px 32px!important}
+ .framer-no1ell-container .framer-13wo9yw{padding-bottom:40px!important}
+}
+/* Framer ticker items must have measurable layout dimensions on first render. */
+.framer-15vldg4 .sikepo-stack-ticker-logo{min-width:0;box-sizing:border-box}
