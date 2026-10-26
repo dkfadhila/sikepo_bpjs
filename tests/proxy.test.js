@@ -7,7 +7,10 @@ test('dashboard proxy keeps sessions private and forwards only to the fixed Rend
   const context=vm.createContext({URL,Request,Response,Headers,addEventListener:(_type,fn)=>handler=fn,fetch:async(request)=>{seen=request;return new Response('private',{headers:{'Cache-Control':'public, max-age=3600'}});}});
   vm.runInContext(await readFile('cloudflare/dashboard-proxy.js','utf8'),context);
   const invoke=async request=>{let result;handler({request,respondWith:p=>result=p});return result;};
-  const result=await invoke(new Request('https://dashboard.sikepo.tech/',{headers:{Cookie:'sikepo_session=test-session','X-Forwarded-Host':'evil.example'}}));
+  const root=await invoke(new Request('https://dashboard.sikepo.tech/'));
+  assert.equal(root.status,302);assert.equal(root.headers.get('location'),'/dashboard/');
+  assert.equal(seen,undefined,'root must redirect so browser-relative asset paths remain correct');
+  const result=await invoke(new Request('https://dashboard.sikepo.tech/dashboard/',{headers:{Cookie:'sikepo_session=test-session','X-Forwarded-Host':'evil.example'}}));
   assert.equal(seen.url,'https://sikepo.onrender.com/dashboard/');
   assert.equal(seen.headers.get('cookie'),'sikepo_session=test-session');
   assert.equal(seen.headers.get('x-forwarded-host'),null);

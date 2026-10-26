@@ -4,9 +4,10 @@ addEventListener('fetch', event => event.respondWith(handleDashboard(event.reque
 async function handleDashboard(request) {
   const incoming = new URL(request.url);
   if (incoming.hostname !== 'dashboard.sikepo.tech') return new Response('Not found', { status: 404 });
+  if (incoming.pathname === '/') return new Response(null, { status: 302, headers: { Location: '/dashboard/' , 'Cache-Control': 'no-store' } });
   if (incoming.pathname === '/login' || incoming.pathname === '/login/') return Response.redirect('https://sikepo.tech/login', 302);
   const upstream = new URL('https://sikepo.onrender.com');
-  upstream.pathname = incoming.pathname === '/' ? '/dashboard/' : incoming.pathname;
+  upstream.pathname = incoming.pathname;
   upstream.search = incoming.search;
   const headers = new Headers(request.headers);
   headers.set('Host', 'sikepo.onrender.com');
