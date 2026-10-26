@@ -10,7 +10,7 @@ import { parse } from 'acorn';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist'),assets=path.join(dist,'assets');
 const names=fs.readdirSync(assets),find=prefix=>names.find(name=>name.startsWith(prefix)&&name.endsWith('.mjs'));
 const main=find('script_main.'),page=find('iHx0Y'),faq=find('jOQBH'),button=find('AuyE7'),card=find('d3MrXgarR');
-const version='sikepo-source-sync-4';
+const version='sikepo-source-sync-5';
 const copy=JSON.parse(fs.readFileSync(path.join(root,'sikepo-copy.json'),'utf8'));
 Object.assign(copy,{
   'SIKEPO · Audit klaim lebih terarah':'SIKEPO',
@@ -64,6 +64,10 @@ function structural(source,filename){
       if(children?.type==='ArrayExpression'&&children.elements[0]?.arguments?.[0]?.name==='SikepoPipeline'&&value(property(children.elements[1]?.arguments?.[1],'className')?.value)==='framer-1abrxhm')edits.push({start:node.start,end:node.end,text:source.slice(children.elements[1].start,children.elements[1].end)});
     }
     const props=node.arguments[1],className=value(property(props,'className')?.value);
+    if(filename===page&&['framer-12kvm91','framer-1kcu8ck'].includes(className)){
+      const gap=property(props,'tickerEffectGap')?.value;
+      if(value(gap)===60||value(gap)==='60px')edits.push({start:gap.start,end:gap.end,text:value(gap)===60?'30':'"30px"'});
+    }
     if(filename===page&&className==='framer-ntzpvd')edits.push({start:node.start,end:node.end,text:'p(SikepoSummary,{})'});
     if(filename===page&&className==='framer-1oh96en'&&!source.includes('/*sikepo-capabilities-pipeline*/'))edits.push({start:node.start,end:node.end,text:`/*sikepo-capabilities-pipeline*/d(a,{children:[${source.slice(node.start,node.end)},p(SikepoPipeline,{})]})`});
     if(filename===main&&className==='framer-4474yi')edits.push({start:node.start,end:node.end,text:'y(W,{label:"Buka dashboard",link:"/login",variant:"Primary",style:{width:220,maxWidth:"100%"}})'});

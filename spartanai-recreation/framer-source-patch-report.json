@@ -1,12 +1,12 @@
 {
-  "version": "sikepo-source-sync-4",
+  "version": "sikepo-source-sync-5",
   "modules": {
     "script_main.BqIetn0O-cffcfd11af10.mjs": {
-      "structural": 1,
+      "structural": 0,
       "configuration": 0
     },
     "iHx0YHW8g2RWzyjl-ERpJM8IXOP9U4UxAU34eOIPq3k.CfK6tqXm-e6ca00d24380.mjs": {
-      "structural": 0,
+      "structural": 2,
       "configuration": 0
     },
     "jOQBHXGPX.CoUEyO6b-5647a2709729.mjs": {

@@ -249,3 +249,16 @@ body{min-width:0!important}
  .framer-e1K44 .framer-1ulft50{overflow:hidden!important}
  .framer-e1K44 .framer-13qu1zz{min-width:0!important;max-width:100%!important}
 }
+
+/* Compact section marquees: 50% of the original type, symbol and track gap. */
+.framer-e1K44 :is(.framer-12kvm91,.framer-1kcu8ck) h2.framer-text{
+ --framer-font-size:100px!important;font-size:100px!important;
+}
+.framer-e1K44 :is(.framer-12kvm91,.framer-1kcu8ck) :is(.framer-1jgx5m,.framer-svo312){width:75.5px!important;height:75.5px!important}
+.framer-e1K44 :is(.framer-12kvm91,.framer-1kcu8ck)>ul{gap:30px!important}
+@media(min-width:810px) and (max-width:1199.98px){
+ .framer-e1K44 :is(.framer-12kvm91,.framer-1kcu8ck) h2.framer-text{--framer-font-size:80px!important;font-size:80px!important}
+}
+@media(max-width:809.98px){
+ .framer-e1K44 :is(.framer-12kvm91,.framer-1kcu8ck) h2.framer-text{--framer-font-size:64px!important;font-size:64px!important}
+}
