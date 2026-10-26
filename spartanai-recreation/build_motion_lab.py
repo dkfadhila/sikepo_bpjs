@@ -36,6 +36,8 @@ for link in page.select('a[href]'):
     anchors = {'/project': '#fokus-risiko', '/about': '#tentang', '/digital-brain': '#capabilities'}
     if destination in anchors:
         link['href'] = anchors[destination]
+for meta in list(page.select('meta[name="robots"]')):
+    meta.decompose()
 page.head.append(page.new_tag('meta', attrs={'name': 'robots', 'content': 'noindex,nofollow'}))
 page.html['data-motion-lab'] = 'true'
 
