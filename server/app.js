@@ -75,7 +75,7 @@ export function createApp({ db, investigate, config, captureException = () => {}
   app.use('/dashboard', async (req,res,next) => {
     res.set('Cache-Control','no-store');
     if (!await session(req)) return res.redirect(302, config.appOrigin + '/login');
-    if (production && req.hostname !== new URL(config.dashboardOrigin).hostname) return res.redirect(302, config.dashboardOrigin + '/dashboard/' + (req.path === '/' ? '' : req.path.replace(/^\//,'')));
+    if (production && req.hostname === new URL(config.appOrigin).hostname) return res.redirect(302, config.dashboardOrigin + '/dashboard/' + (req.path === '/' ? '' : req.path.replace(/^\//,'')));
     next();
   }, express.static(path.join(publicRoot, 'dashboard'), { dotfiles: 'deny', maxAge: 0 }));
   app.get('/', (req,res,next) => {

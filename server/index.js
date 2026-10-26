@@ -17,6 +17,7 @@ const config = {
 };
 Sentry.init({ dsn: config.sentryDsn || undefined, enabled: Boolean(config.sentryDsn), environment: config.production ? 'production' : 'development', tracesSampleRate: 0.1, sendDefaultPii: false,
   beforeSend(event) { if(event.request) { delete event.request.cookies; delete event.request.data; delete event.request.headers; delete event.request.query_string; } if(event.user) delete event.user; return event; } });
+Sentry.setTag('service', 'sikepo');
 let db, client;
 if (process.env.MONGODB_URI) {
   client = new MongoClient(process.env.MONGODB_URI, { maxPoolSize: 10, serverSelectionTimeoutMS: 15000 });
