@@ -31,3 +31,4 @@
  addEventListener('load',()=>{repairRoleAnchor();new MutationObserver(repairRoleAnchor).observe(document.body,{subtree:true,childList:true});});
  addEventListener('hashchange',repairRoleAnchor);
 })();
+
