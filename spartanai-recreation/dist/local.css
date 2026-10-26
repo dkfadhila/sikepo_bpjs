@@ -262,3 +262,20 @@ body{min-width:0!important}
 @media(max-width:809.98px){
  .framer-e1K44 :is(.framer-12kvm91,.framer-1kcu8ck) h2.framer-text{--framer-font-size:64px!important;font-size:64px!important}
 }
+
+/* Mobile artwork has its own tall meadow; the caption sits over its foreground. */
+@media(max-width:1099px){
+ .framer-e1K44 .framer-1ulft50{
+  height:clamp(480px,110vw,700px)!important;
+  background:url('/assets/sikepo-hero-meadow-mobile-v1.png') center bottom / cover no-repeat;
+ }
+ .framer-1ulft50 img[src*="sikepo-hero-meadow"]{visibility:hidden!important}
+ .framer-e1K44 .framer-ksfjr4{
+  position:absolute!important;inset:auto 0 0!important;margin:0!important;
+  padding:64px 24px 24px!important;z-index:2;
+  background:linear-gradient(transparent,rgba(8,24,16,.72) 55%,rgba(8,24,16,.82));
+ }
+}
+@media(max-width:600px){
+ .framer-e1K44 .framer-ksfjr4{padding:64px 20px 24px!important}
+}

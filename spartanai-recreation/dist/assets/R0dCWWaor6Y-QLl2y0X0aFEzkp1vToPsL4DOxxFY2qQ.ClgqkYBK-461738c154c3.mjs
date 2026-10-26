@@ -1,4 +1,4 @@
-import{t as e}from"./rolldown-runtime.Dh6celcD-e487e8d97ab7.mjs?v=sikepo-source-sync-5";async function t(e,t,i){let a=r[e],o=a?await a(t,i):void 0,s={bodyEnd:[],bodyStart:[],headEnd:[],headStart:[]};for(let t of n){if(t.pageIds&&!t.pageIds.has(e))continue;let n=t.code(o);n&&s[t.placement].push({...t,code:n})}return s}var n,r,i,a;e((()=>{n=[{code:e=>`<!-- Spartan SEO -->
+import{t as e}from"./rolldown-runtime.Dh6celcD-e487e8d97ab7.mjs?v=sikepo-source-sync-6";async function t(e,t,i){let a=r[e],o=a?await a(t,i):void 0,s={bodyEnd:[],bodyStart:[],headEnd:[],headStart:[]};for(let t of n){if(t.pageIds&&!t.pageIds.has(e))continue;let n=t.code(o);n&&s[t.placement].push({...t,code:n})}return s}var n,r,i,a;e((()=>{n=[{code:e=>`<!-- Spartan SEO -->
 <meta name="description" content="Spartan is a premium Framer template for AI research labs, technical consultancies, and neural engineering firms. Built by Delani.pro." />
 <meta property="og:title" content="Spartan — AI Agency Framer Template" />
 <meta property="og:description" content="A premium Framer template for AI research labs and technical consultancies." />
