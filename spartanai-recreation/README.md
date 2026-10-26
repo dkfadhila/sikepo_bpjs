@@ -2,6 +2,14 @@
 
 Reference: https://spartanai.framer.website/
 
+## Current SIKEPO source workflow
+
+The production landing retains Framer motion and renders SIKEPO content from
+patched component configuration. See [FRAMER_SOURCE.md](FRAMER_SOURCE.md) for
+the current authoring and verification workflow. The older snapshot and
+`customize_landing.py` commands below are historical and must not overwrite the
+adapted landing. `/motion-lab/` is an isolated native-motion experiment.
+
 ## Run
 
 Double-click `start.bat`, then open http://127.0.0.1:7730.

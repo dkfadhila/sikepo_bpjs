@@ -28,6 +28,6 @@
   document.querySelectorAll('a[href*="#pricing"]').forEach(link=>link.setAttribute('href',link.getAttribute('href').replace('#pricing','#peran')));
   if(location.hash==='#pricing'){history.replaceState(null,'',location.pathname+location.search+'#peran');role?.scrollIntoView({block:'start'});}
  }
- addEventListener('load',()=>{repairRoleAnchor();new MutationObserver(repairRoleAnchor).observe(document.body,{subtree:true,childList:true});});
+ addEventListener('load',repairRoleAnchor);
  addEventListener('hashchange',repairRoleAnchor);
 })();

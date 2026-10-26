@@ -1,0 +1,7 @@
+[
+  {"image":"sikepo-card-upcoding","slug":"cigna-smart-health-systems","label":"Upcoding","stages":"A1 + A2","reference":"ICD-10","action":"HOLD","focus":"Klinis"},
+  {"image":"sikepo-card-phantom-billing","slug":"aetna-health-data-ecosystem","label":"Phantom billing","stages":"A1 + A3","reference":"Resume","action":"Review","focus":"Bukti"},
+  {"image":"sikepo-card-clinical-review","slug":"anthem-neural-care-network","label":"Review klinis","stages":"A1 + A2","reference":"INA CBG","action":"Review","focus":"Biaya"},
+  {"image":"sikepo-card-inflated-bills","slug":"cvs-smart-supply-chain-hub","label":"Inflated bills","stages":"A1 + A2","reference":"Tarif","action":"Review","focus":"Klaim"},
+  {"image":"sikepo-card-duplicate-claims","slug":"united-ai-security-protocol","label":"Duplikasi klaim","stages":"A1 + A3","reference":"ID klaim","action":"Review","focus":"Berkas"}
+]
