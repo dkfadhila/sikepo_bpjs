@@ -210,13 +210,13 @@ section.framer-1t99cj0,section.framer-s7sf2i{display:none!important}
 html,body{max-width:100%;overflow-x:clip}
 #peran,#pipeline{scroll-margin-top:100px}
 .framer-e1K44 .framer-hmw7d8{height:auto!important;min-height:100svh}
-.framer-e1K44 .framer-1w8qob2{height:auto!important;min-height:max(680px,calc(100svh - 24px));padding:clamp(150px,20vh,190px) 0 160px!important}
+.framer-e1K44 .framer-1w8qob2{height:auto!important;min-height:max(680px,calc(100svh - 24px),calc((100vw - 24px)*855/1840));padding:clamp(150px,20vh,190px) 0 160px!important}
 .framer-e1K44 .framer-1g8n9hz{justify-content:flex-start!important;align-items:flex-start!important;overflow:visible!important}
 .framer-e1K44 .framer-1g8n9hz>.framer-1v63p98{flex:none!important;width:48%!important;max-width:700px!important;min-width:0!important;overflow:visible!important}
 .framer-e1K44 .framer-o1dxza{max-width:100%!important}
 .framer-e1K44 .framer-o1dxza h1{font-size:clamp(40px,3.4vw,64px)!important;line-height:1.08!important;letter-spacing:-.055em!important}
 .framer-e1K44 .framer-ifhldj{max-width:390px!important}
-.framer-1ulft50 img[src*="sikepo-hero-meadow"]{object-position:left bottom!important}
+.framer-1ulft50 img[src*="sikepo-hero-meadow"]{object-position:center bottom!important}
 @media(max-width:1099px){
  .framer-e1K44 .framer-hmw7d8{min-height:0!important;padding:8px!important}
  .framer-e1K44 .framer-1w8qob2{display:flex!important;flex-direction:column!important;min-height:0!important;padding:120px 0 0!important;gap:32px!important;border-radius:20px!important}
@@ -263,11 +263,12 @@ body{min-width:0!important}
  .framer-e1K44 :is(.framer-12kvm91,.framer-1kcu8ck) h2.framer-text{--framer-font-size:64px!important;font-size:64px!important}
 }
 
-/* Mobile artwork has its own tall meadow; the caption sits over its foreground. */
+/* Portrait phones and wide tablets use different artwork proportions.
+   Size by the hero width, never viewport height, so landscape cannot crop the emblem. */
 @media(max-width:1099px){
  .framer-e1K44 .framer-1ulft50{
-  height:clamp(480px,110vw,700px)!important;
-  background:url('/assets/sikepo-hero-meadow-mobile-v1.png') center bottom / cover no-repeat;
+  height:clamp(360px,60vw,660px)!important;
+  background:url('/assets/sikepo-hero-meadow.png') center bottom / cover no-repeat;
  }
  .framer-1ulft50 img[src*="sikepo-hero-meadow"]{visibility:hidden!important}
  .framer-e1K44 .framer-ksfjr4{
@@ -277,5 +278,10 @@ body{min-width:0!important}
  }
 }
 @media(max-width:600px){
+ .framer-e1K44 .framer-1ulft50{
+  height:auto!important;aspect-ratio:3 / 4;min-height:440px!important;
+  background-image:url('/assets/sikepo-hero-meadow-mobile-v1.png');
+  background-size:100% auto;
+ }
  .framer-e1K44 .framer-ksfjr4{padding:64px 20px 24px!important}
 }

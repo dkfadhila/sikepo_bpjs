@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
-VERSION = 'sikepo-source-sync-6'
+VERSION = 'sikepo-source-sync-8'
 page = BeautifulSoup((DIST / 'index.html').read_text(encoding='utf-8'), 'html5lib')
 page.select_one('#main')['data-sikepo-client-render'] = 'true'
 copy = json.loads((ROOT / 'sikepo-copy.json').read_text(encoding='utf-8'))
