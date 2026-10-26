@@ -10,7 +10,7 @@ import { parse } from 'acorn';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist'),assets=path.join(dist,'assets');
 const names=fs.readdirSync(assets),find=prefix=>names.find(name=>name.startsWith(prefix)&&name.endsWith('.mjs'));
 const main=find('script_main.'),page=find('iHx0Y'),faq=find('jOQBH'),button=find('AuyE7'),card=find('d3MrXgarR');
-const version='sikepo-source-sync-9';
+const version='sikepo-source-sync-12';
 const copy=JSON.parse(fs.readFileSync(path.join(root,'sikepo-copy.json'),'utf8'));
 Object.assign(copy,{
   'SIKEPO · Audit klaim lebih terarah':'SIKEPO',
@@ -24,6 +24,11 @@ const summary=fs.readFileSync(path.join(root,'sikepo-summary.html'),'utf8').trim
 const pipeline=fs.readFileSync(path.join(dist,'pipeline-section.html'),'utf8').trim();
 const cards=JSON.parse(fs.readFileSync(path.join(root,'sikepo-risk-cards.json'),'utf8'));
 const react=find('react.');
+const stackData=fs.readFileSync(path.join(root,'sikepo-stack.json'),'utf8');
+fs.writeFileSync(path.join(assets,'sikepo-stack.mjs'),fs.readFileSync(path.join(root,'sikepo-stack.mjs'),'utf8')
+ .replace('__REACT__',`./${react}?v=${version}`)
+ .replace('__MOTION__',`./${find('motion.')}?v=${version}`)
+ .replace('__STACK_DATA__',stackData));
 const inner=html=>html.slice(html.indexOf('>')+1,html.lastIndexOf('</'));
 fs.writeFileSync(path.join(assets,'sikepo-sections.mjs'),`/* Authored SIKEPO content, rendered inside Framer's React tree. */
 import{o as jsx}from"./${react}?v=${version}";
@@ -64,6 +69,13 @@ function structural(source,filename){
       if(children?.type==='ArrayExpression'&&children.elements[0]?.arguments?.[0]?.name==='SikepoPipeline'&&value(property(children.elements[1]?.arguments?.[1],'className')?.value)==='framer-1abrxhm')edits.push({start:node.start,end:node.end,text:source.slice(children.elements[1].start,children.elements[1].end)});
     }
     const props=node.arguments[1],className=value(property(props,'className')?.value);
+    if(filename===page&&className==='framer-15vldg4'){
+      const children=property(props,'children')?.value;
+      if(children?.type==='ArrayExpression')edits.push({start:children.start,end:children.end,text:'stackTickerItems()'});
+      const gap=property(props,'tickerEffectGap')?.value;
+      if(gap&&value(gap)!==36)edits.push({start:gap.start,end:gap.end,text:'36'});
+    }
+    if(filename===page&&className==='framer-1lgli9y'&&!source.includes('/*sikepo-stack-before-faq*/'))edits.push({start:node.start,end:node.end,text:`/*sikepo-stack-before-faq*/d(a,{children:[p(SikepoStack,{}),${source.slice(node.start,node.end)}]})`});
     if(filename===page&&['framer-12kvm91','framer-1kcu8ck'].includes(className)){
       const gap=property(props,'tickerEffectGap')?.value;
       if(value(gap)===60||value(gap)==='60px')edits.push({start:gap.start,end:gap.end,text:value(gap)===60?'30':'"30px"'});
@@ -76,6 +88,7 @@ function structural(source,filename){
     if(filename===page&&['framer-1h8eal1','framer-16mkske'].includes(className)&&!property(props,'id'))edits.push({start:props.start+1,end:props.start+1,text:`id:"${className==='framer-1h8eal1'?'fokus-risiko':'tentang'}",`});
   });
   source=edit(source,edits);
+  if(filename===page&&!source.includes('import{SikepoStack,'))source=`import{SikepoStack,stackTickerItems}from"./sikepo-stack.mjs?v=${version}";`+source;
   if(filename===page&&!source.includes('import{SikepoSummary'))source=`import{SikepoSummary,SikepoPipeline}from"./sikepo-sections.mjs?v=${version}";`+source;
   if(filename===card&&!source.includes('import{adaptRiskCard'))source=`import{adaptRiskCard}from"./sikepo-sections.mjs?v=${version}";`+source;
   return {source,count:edits.length};

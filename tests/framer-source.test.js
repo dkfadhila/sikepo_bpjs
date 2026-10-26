@@ -6,6 +6,23 @@ import { parse } from 'acorn';
 
 const assets=path.resolve('spartanai-recreation/dist/assets');
 
+test('technology section owns eleven local logos in three groups before FAQ',async()=>{
+  const items=JSON.parse(await fs.readFile('spartanai-recreation/sikepo-stack.json','utf8'));
+  assert.equal(new Set(items.map(item=>item.id)).size,11);
+  assert.equal(new Set(items.map(item=>item.group)).size,3);
+  for(const item of items){
+    const png=await fs.readFile(path.join(assets,'stack',item.id+'-white.png'));
+    assert.equal(png.subarray(1,4).toString(),'PNG',item.name+' must have a local PNG');
+    assert.ok(item.description&&item.detail&&item.url.startsWith('https://'));
+  }
+  const html=await fs.readFile('spartanai-recreation/dist/index.html','utf8');
+  assert.equal((html.match(/id="teknologi"/g)||[]).length,1);
+  assert.ok(html.indexOf('id="teknologi"')<html.indexOf('class="framer-1lgli9y"'));
+  const page=await fs.readFile(path.join(assets,(await fs.readdir(assets)).find(n=>n.startsWith('iHx0Y')&&n.endsWith('.mjs'))),'utf8');
+  assert.match(page,/children:stackTickerItems\(\)/);
+  assert.match(page,/p\(SikepoStack,\{\}\)/);
+});
+
 test('risk cards keep their domain copy when fresh CMS numbers and links arrive',async()=>{
   const source=await fs.readFile(path.join(assets,'sikepo-sections.mjs'),'utf8');
   // The tested adapter is pure. Its sibling view factories do not need a browser.

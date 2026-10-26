@@ -18,6 +18,10 @@ available for the older motion experiment.
 - `dist/pipeline-section.html`: pipeline content owned by a React view component.
 - `dist/local.css`: visual overrides, logos, selective green accent and hidden
   template sections.
+- `sikepo-stack.json` and `sikepo-stack.mjs`: three technology groups, their
+  explanations, accessible dialogs and Motion animations. The hero keeps its
+  original Framer ticker, populated with these logos. White PNGs are local in
+  `dist/assets/stack`; source attribution is in `stack-logo-sources.md`.
 
 `patch_framer_export.mjs` parses the exported modules with Acorn and edits known
 component nodes and configuration values. It retains transition definitions,

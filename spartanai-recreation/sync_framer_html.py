@@ -7,9 +7,35 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).parent
 DIST = ROOT / 'dist'
-VERSION = 'sikepo-source-sync-9'
+VERSION = 'sikepo-source-sync-12'
 page = BeautifulSoup((DIST / 'index.html').read_text(encoding='utf-8'), 'html5lib')
 page.select_one('#main')['data-sikepo-client-render'] = 'true'
+stack = json.loads((ROOT / 'sikepo-stack.json').read_text(encoding='utf-8'))
+for ticker in page.select('.framer-15vldg4 ul'):
+    ticker.clear()
+    ticker['style'] = ticker.get('style','') + ';gap:36px'
+    for item in stack:
+        li = page.new_tag('li', attrs={'class':'ticker-item'})
+        a = page.new_tag('a', href='#teknologi', attrs={'class':'sikepo-stack-ticker-logo','aria-label':item['name']})
+        a.append(page.new_tag('img', src='/assets/stack/'+item['id']+'-white.png?v='+VERSION, alt=item['name'], width='48', height='48'))
+        if item['id'] != 'bpjs':
+            label=page.new_tag('span');label.string=item['name'];a.append(label)
+        li.append(a)
+        ticker.append(li)
+for old_stack in list(page.select('#teknologi')):
+    old_stack.decompose()
+stack_section = page.new_tag('section',id='teknologi',attrs={'class':'sikepo-stack','aria-label':'Teknologi SiKePO'})
+heading = page.new_tag('h2'); heading.string = 'Teknologi yang saling terhubung.';stack_section.append(heading)
+for group in dict.fromkeys(item['group'] for item in stack):
+    row=page.new_tag('div',attrs={'class':'sikepo-stack-row'})
+    label=page.new_tag('h3');label.string=group;row.append(label)
+    for item in [i for i in stack if i['group']==group]:
+        button=page.new_tag('button',type='button',attrs={'class':'sikepo-stack-icon','aria-label':'Tentang '+item['name']})
+        asset = 'bpjs-symbol' if item['id']=='bpjs' else item['id']
+        button.append(page.new_tag('img',src='/assets/stack/'+asset+'-white.png?v='+VERSION,alt=item['name'],width='48',height='48'))
+        row.append(button)
+    stack_section.append(row)
+page.select_one('.framer-1lgli9y').insert_before(stack_section)
 copy = json.loads((ROOT / 'sikepo-copy.json').read_text(encoding='utf-8'))
 
 for node in page.find_all(string=True):
