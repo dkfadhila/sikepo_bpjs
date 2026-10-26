@@ -217,7 +217,7 @@ html,body{max-width:100%;overflow-x:clip}
 .framer-e1K44 .framer-o1dxza h1{font-size:clamp(40px,3.4vw,64px)!important;line-height:1.08!important;letter-spacing:-.055em!important}
 .framer-e1K44 .framer-ifhldj{max-width:390px!important}
 .framer-1ulft50 img[src*="sikepo-hero-meadow"]{object-position:center bottom!important}
-@media(max-width:1099px){
+@media(max-width:1099px),(max-aspect-ratio:4/5){
  .framer-e1K44 .framer-hmw7d8{min-height:0!important;padding:8px!important}
  .framer-e1K44 .framer-1w8qob2{display:flex!important;flex-direction:column!important;min-height:0!important;padding:120px 0 0!important;gap:32px!important;border-radius:20px!important}
  .framer-e1K44 .framer-1g8n9hz{order:1;flex:none!important;width:100%!important;padding:0 24px!important;gap:24px!important}
@@ -265,7 +265,7 @@ body{min-width:0!important}
 
 /* Portrait phones and wide tablets use different artwork proportions.
    Size by the hero width, never viewport height, so landscape cannot crop the emblem. */
-@media(max-width:1099px){
+@media(max-width:1099px),(max-aspect-ratio:4/5){
  .framer-e1K44 .framer-1ulft50{
   height:clamp(360px,60vw,660px)!important;
   background:url('/assets/sikepo-hero-meadow.png') center bottom / cover no-repeat;
