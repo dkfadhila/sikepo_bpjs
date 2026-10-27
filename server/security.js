@@ -15,7 +15,7 @@ export async function verifyPassword(password, stored) {
   return timingSafeEqual(key, Buffer.from(digest, 'hex'));
 }
 export function allowedOrigin(origin, origins) { return typeof origin === 'string' && origins.includes(origin); }
-export function publicUser(user) { return { email: user.email, name: user.name, role: user.role, demo: true }; }
+export function publicUser(user) { return { email: user.email, name: user.name.replace(/\s+demo$/i, ''), role: user.role }; }
 export const demoAccounts = [
   { email: 'admin@demo.sikepo.tech', name: 'Admin demo', role: 'SA', password: 'SikepoDemo!2026' },
   { email: 'verifikator@demo.sikepo.tech', name: 'Verifikator demo', role: 'VK', password: 'SikepoDemo!2026' },

@@ -1,0 +1,41 @@
+{
+  "version": "sikepo-synthetic-1.0",
+  "seed": 2702026,
+  "generator": "scripts/generate-synthetic.mjs",
+  "anchorDate": "2026-10-26",
+  "count": 240,
+  "provenance": "Fully synthetic: generated from authored ranges and scenarios; no participant records, BPJS extracts, or learned patient distributions used.",
+  "tariffSource": "Authored scenario values; not official INA-CBG tariffs.",
+  "scenarioCounts": {
+    "baseline": 40,
+    "cost_and_stay": 40,
+    "drug_evidence": 40,
+    "service_mismatch": 40,
+    "billing_mismatch": 40,
+    "duplicate": 40
+  },
+  "sha256": "4f1e5f5abf42061cfc819d69605ec05b464d65eb8d6eecc1b1128639c8e20349",
+  "fields": [
+    "id",
+    "synthetic",
+    "episodeId",
+    "facilityId",
+    "facility",
+    "city",
+    "type",
+    "diagnosis",
+    "icd",
+    "tariff",
+    "amount",
+    "invoiceTotal",
+    "los",
+    "normalLos",
+    "date",
+    "daysAgo",
+    "serviceCount",
+    "documentedServiceCount",
+    "restrictedDrug",
+    "drugEvidence",
+    "duplicateCount"
+  ]
+}

@@ -1,0 +1,241 @@
+id,synthetic,episodeId,facilityId,facility,city,type,diagnosis,icd,tariff,amount,invoiceTotal,los,normalLos,date,daysAgo,serviceCount,documentedServiceCount,restrictedDrug,drugEvidence,duplicateCount
+"SYN-2610-0001",true,"SYN-EP-0001","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,9236000,9236000,6,6,"2026-10-15",11,5,5,false,true,1
+"SYN-2610-0002",true,"SYN-EP-0002","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,7485000,7485000,13,5,"2026-09-29",27,2,2,true,true,1
+"SYN-2610-0003",true,"SYN-EP-0003","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,8415000,8415000,3,4,"2026-10-15",11,6,6,true,false,1
+"SYN-2610-0004",true,"SYN-EP-0004","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,3360000,3360000,2,3,"2026-10-10",16,6,5,false,true,1
+"SYN-2610-0005",true,"SYN-EP-0005","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Persalinan sesar","O82",7400000,8493000,6115000,4,4,"2026-10-04",22,5,5,false,true,2
+"SYN-2610-0006",true,"SYN-EP-0005","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4550000,4550000,4,5,"2026-10-04",22,5,5,false,true,2
+"SYN-2610-0007",true,"SYN-EP-0007","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,9284000,9284000,7,7,"2026-10-25",1,7,7,false,true,1
+"SYN-2610-0008",true,"SYN-EP-0008","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Gastroenteritis","A09",2950000,5438000,5438000,8,3,"2026-10-13",13,6,6,false,true,1
+"SYN-2610-0009",true,"SYN-EP-0009","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,8004000,8004000,5,6,"2026-10-01",25,7,7,true,false,1
+"SYN-2610-0010",true,"SYN-EP-0010","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,5034000,5034000,5,5,"2026-10-13",13,3,2,false,true,1
+"SYN-2610-0011",true,"SYN-EP-0011","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,11048000,7955000,8,7,"2026-10-19",7,3,3,false,true,2
+"SYN-2610-0012",true,"SYN-EP-0011","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,6781000,6781000,5,4,"2026-10-19",7,2,2,false,true,2
+"SYN-2610-0013",true,"SYN-EP-0013","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5611000,5611000,6,5,"2026-10-14",12,7,7,false,true,1
+"SYN-2610-0014",true,"SYN-EP-0014","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,6735000,6735000,11,4,"2026-09-30",26,7,7,true,true,1
+"SYN-2610-0015",true,"SYN-EP-0015","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,3554000,3554000,3,4,"2026-10-19",7,4,4,true,false,1
+"SYN-2610-0016",true,"SYN-EP-0016","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,4053000,4053000,3,4,"2026-10-15",11,4,3,false,true,1
+"SYN-2610-0017",true,"SYN-EP-0017","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5756000,4144000,6,5,"2026-10-15",11,6,6,false,true,2
+"SYN-2610-0018",true,"SYN-EP-0017","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,4752000,4752000,5,5,"2026-10-15",11,7,7,false,true,2
+"SYN-2610-0019",true,"SYN-EP-0019","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Pneumonia","J18.9",6200000,5692000,5692000,5,6,"2026-10-01",25,2,2,false,true,1
+"SYN-2610-0020",true,"SYN-EP-0020","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,13467000,13467000,9,6,"2026-10-15",11,7,7,false,true,1
+"SYN-2610-0021",true,"SYN-EP-0021","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4903000,4903000,4,5,"2026-10-25",1,7,7,true,false,1
+"SYN-2610-0022",true,"SYN-EP-0022","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,4604000,4604000,4,5,"2026-10-24",2,8,7,true,true,1
+"SYN-2610-0023",true,"SYN-EP-0023","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,6858000,4938000,4,4,"2026-10-16",10,7,7,false,true,2
+"SYN-2610-0024",true,"SYN-EP-0023","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,8493000,8493000,4,4,"2026-10-16",10,4,4,false,true,2
+"SYN-2610-0025",true,"SYN-EP-0025","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,2720000,2720000,2,3,"2026-10-26",0,7,7,false,true,1
+"SYN-2610-0026",true,"SYN-EP-0026","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Persalinan sesar","O82",7400000,14049000,14049000,12,4,"2026-10-26",0,4,4,true,true,1
+"SYN-2610-0027",true,"SYN-EP-0027","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,3702000,3702000,4,4,"2026-10-06",20,7,7,true,false,1
+"SYN-2610-0028",true,"SYN-EP-0028","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4177000,4177000,4,5,"2026-10-12",14,2,1,false,true,1
+"SYN-2610-0029",true,"SYN-EP-0029","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6904000,4971000,6,6,"2026-10-23",3,3,3,false,true,2
+"SYN-2610-0030",true,"SYN-EP-0029","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4183000,4183000,4,5,"2026-10-23",3,8,8,false,true,2
+"SYN-2610-0031",true,"SYN-EP-0031","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5153000,5153000,5,5,"2026-10-14",12,8,8,true,true,1
+"SYN-2610-0032",true,"SYN-EP-0032","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,5736000,5736000,12,4,"2026-09-29",27,8,8,false,true,1
+"SYN-2610-0033",true,"SYN-EP-0033","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4625000,4625000,4,5,"2026-10-16",10,8,8,true,false,1
+"SYN-2610-0034",true,"SYN-EP-0034","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6884000,6884000,7,6,"2026-10-19",7,6,5,false,true,1
+"SYN-2610-0035",true,"SYN-EP-0035","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4590000,3305000,4,5,"2026-10-10",16,4,4,false,true,2
+"SYN-2610-0036",true,"SYN-EP-0035","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,11095000,11095000,8,7,"2026-10-10",16,4,4,false,true,2
+"SYN-2610-0037",true,"SYN-EP-0037","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7427000,7427000,4,4,"2026-10-16",10,8,8,false,true,1
+"SYN-2610-0038",true,"SYN-EP-0038","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Pneumonia","J18.9",6200000,11843000,11843000,14,6,"2026-10-12",14,2,2,false,true,1
+"SYN-2610-0039",true,"SYN-EP-0039","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Persalinan sesar","O82",7400000,8003000,8003000,5,4,"2026-10-12",14,4,4,true,false,1
+"SYN-2610-0040",true,"SYN-EP-0040","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4548000,4548000,6,5,"2026-10-07",19,3,2,false,true,1
+"SYN-2610-0041",true,"SYN-EP-0041","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,3077000,2215000,2,3,"2026-10-06",20,4,4,false,true,2
+"SYN-2610-0042",true,"SYN-EP-0041","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7427000,7427000,4,4,"2026-10-06",20,5,5,false,true,2
+"SYN-2610-0043",true,"SYN-EP-0043","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,8764000,8764000,5,6,"2026-09-29",27,5,5,false,true,1
+"SYN-2610-0044",true,"SYN-EP-0044","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,7260000,7260000,11,5,"2026-10-25",1,7,7,false,true,1
+"SYN-2610-0045",true,"SYN-EP-0045","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5593000,5593000,4,5,"2026-10-05",21,8,8,true,false,1
+"SYN-2610-0046",true,"SYN-EP-0046","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,7578000,7578000,6,6,"2026-10-13",13,3,2,false,true,1
+"SYN-2610-0047",true,"SYN-EP-0047","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,10204000,7347000,6,7,"2026-09-29",27,3,3,true,true,2
+"SYN-2610-0048",true,"SYN-EP-0047","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4708000,4708000,4,5,"2026-09-29",27,6,6,false,true,2
+"SYN-2610-0049",true,"SYN-EP-0049","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,8433000,8433000,6,6,"2026-10-22",4,7,7,true,true,1
+"SYN-2610-0050",true,"SYN-EP-0050","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Pneumonia","J18.9",6200000,11787000,11787000,14,6,"2026-10-24",2,4,4,false,true,1
+"SYN-2610-0051",true,"SYN-EP-0051","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6155000,6155000,6,6,"2026-10-24",2,2,2,true,false,1
+"SYN-2610-0052",true,"SYN-EP-0052","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,8865000,8865000,8,7,"2026-09-30",26,4,3,false,true,1
+"SYN-2610-0053",true,"SYN-EP-0053","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,7753000,5582000,6,6,"2026-10-20",6,2,2,false,true,2
+"SYN-2610-0054",true,"SYN-EP-0053","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,9969000,9969000,7,7,"2026-10-20",6,6,6,false,true,2
+"SYN-2610-0055",true,"SYN-EP-0055","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,4192000,4192000,4,4,"2026-10-20",6,8,8,false,true,1
+"SYN-2610-0056",true,"SYN-EP-0056","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,16743000,16743000,14,7,"2026-10-05",21,8,8,true,true,1
+"SYN-2610-0057",true,"SYN-EP-0057","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gastroenteritis","A09",2950000,3198000,3198000,2,3,"2026-10-10",16,5,5,true,false,1
+"SYN-2610-0058",true,"SYN-EP-0058","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,11244000,11244000,8,7,"2026-10-20",6,7,6,true,true,1
+"SYN-2610-0059",true,"SYN-EP-0059","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,10092000,7266000,8,7,"2026-10-07",19,8,8,false,true,2
+"SYN-2610-0060",true,"SYN-EP-0059","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6416000,6416000,7,6,"2026-10-07",19,2,2,false,true,2
+"SYN-2610-0061",true,"SYN-EP-0061","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4686000,4686000,6,5,"2026-10-13",13,2,2,true,true,1
+"SYN-2610-0062",true,"SYN-EP-0062","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,10765000,10765000,11,4,"2026-10-09",17,6,6,false,true,1
+"SYN-2610-0063",true,"SYN-EP-0063","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Gastroenteritis","A09",2950000,2780000,2780000,2,3,"2026-10-13",13,2,2,true,false,1
+"SYN-2610-0064",true,"SYN-EP-0064","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4771000,4771000,6,5,"2026-10-02",24,7,6,true,true,1
+"SYN-2610-0065",true,"SYN-EP-0065","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7276000,5239000,4,4,"2026-10-20",6,8,8,false,true,2
+"SYN-2610-0066",true,"SYN-EP-0065","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,4275000,4275000,4,4,"2026-10-20",6,5,5,false,true,2
+"SYN-2610-0067",true,"SYN-EP-0067","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,3958000,3958000,5,4,"2026-10-21",5,5,5,false,true,1
+"SYN-2610-0068",true,"SYN-EP-0068","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,7421000,7421000,11,4,"2026-10-21",5,6,6,false,true,1
+"SYN-2610-0069",true,"SYN-EP-0069","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,8555000,8555000,7,6,"2026-10-03",23,4,4,true,false,1
+"SYN-2610-0070",true,"SYN-EP-0070","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,8908000,8908000,7,6,"2026-10-25",1,8,7,false,true,1
+"SYN-2610-0071",true,"SYN-EP-0071","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7637000,5499000,3,4,"2026-10-02",24,3,3,false,true,2
+"SYN-2610-0072",true,"SYN-EP-0071","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,10090000,10090000,7,7,"2026-10-02",24,4,4,true,true,2
+"SYN-2610-0073",true,"SYN-EP-0073","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,11032000,11032000,7,7,"2026-10-05",21,8,8,false,true,1
+"SYN-2610-0074",true,"SYN-EP-0074","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Gastroenteritis","A09",2950000,4656000,4656000,7,3,"2026-10-15",11,5,5,false,true,1
+"SYN-2610-0075",true,"SYN-EP-0075","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,10293000,10293000,7,7,"2026-09-29",27,2,2,true,false,1
+"SYN-2610-0076",true,"SYN-EP-0076","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,5250000,5250000,5,5,"2026-10-06",20,5,4,false,true,1
+"SYN-2610-0077",true,"SYN-EP-0077","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Gastroenteritis","A09",2950000,2884000,2076000,4,3,"2026-10-24",2,7,7,false,true,2
+"SYN-2610-0078",true,"SYN-EP-0077","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,4307000,4307000,3,4,"2026-10-24",2,3,3,false,true,2
+"SYN-2610-0079",true,"SYN-EP-0079","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,5122000,5122000,4,5,"2026-09-29",27,4,4,false,true,1
+"SYN-2610-0080",true,"SYN-EP-0080","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,18614000,18614000,14,7,"2026-10-26",0,3,3,false,true,1
+"SYN-2610-0081",true,"SYN-EP-0081","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,7311000,7311000,3,4,"2026-10-17",9,5,5,true,false,1
+"SYN-2610-0082",true,"SYN-EP-0082","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,10974000,10974000,6,7,"2026-10-09",17,5,4,false,true,1
+"SYN-2610-0083",true,"SYN-EP-0083","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,3985000,2869000,5,4,"2026-10-16",10,3,3,false,true,2
+"SYN-2610-0084",true,"SYN-EP-0083","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,4679000,4679000,4,5,"2026-10-16",10,3,3,false,true,2
+"SYN-2610-0085",true,"SYN-EP-0085","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Pneumonia","J18.9",6200000,5914000,5914000,5,6,"2026-10-03",23,5,5,false,true,1
+"SYN-2610-0086",true,"SYN-EP-0086","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,5660000,5660000,9,4,"2026-10-16",10,5,5,false,true,1
+"SYN-2610-0087",true,"SYN-EP-0087","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,8672000,8672000,7,6,"2026-10-04",22,3,3,true,false,1
+"SYN-2610-0088",true,"SYN-EP-0088","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,5153000,5153000,6,5,"2026-10-11",15,8,7,false,true,1
+"SYN-2610-0089",true,"SYN-EP-0089","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Persalinan sesar","O82",7400000,7691000,5538000,4,4,"2026-10-07",19,2,2,false,true,2
+"SYN-2610-0090",true,"SYN-EP-0089","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5846000,5846000,5,5,"2026-10-07",19,3,3,false,true,2
+"SYN-2610-0091",true,"SYN-EP-0091","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Persalinan sesar","O82",7400000,8020000,8020000,5,4,"2026-10-02",24,3,3,false,true,1
+"SYN-2610-0092",true,"SYN-EP-0092","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,7214000,7214000,7,4,"2026-10-07",19,6,6,true,true,1
+"SYN-2610-0093",true,"SYN-EP-0093","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7311000,7311000,4,4,"2026-10-18",8,3,3,true,false,1
+"SYN-2610-0094",true,"SYN-EP-0094","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Gastroenteritis","A09",2950000,3105000,3105000,4,3,"2026-10-14",12,8,7,false,true,1
+"SYN-2610-0095",true,"SYN-EP-0095","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6393000,4603000,5,6,"2026-10-17",9,2,2,false,true,2
+"SYN-2610-0096",true,"SYN-EP-0095","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gastroenteritis","A09",2950000,2942000,2942000,2,3,"2026-10-17",9,3,3,false,true,2
+"SYN-2610-0097",true,"SYN-EP-0097","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,5472000,5472000,4,5,"2026-10-10",16,7,7,false,true,1
+"SYN-2610-0098",true,"SYN-EP-0098","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Persalinan sesar","O82",7400000,11962000,11962000,10,4,"2026-10-21",5,3,3,false,true,1
+"SYN-2610-0099",true,"SYN-EP-0099","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,5024000,5024000,6,5,"2026-10-14",12,5,5,true,false,1
+"SYN-2610-0100",true,"SYN-EP-0100","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6514000,6514000,6,6,"2026-10-23",3,6,5,false,true,1
+"SYN-2610-0101",true,"SYN-EP-0101","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6579000,4737000,5,6,"2026-09-27",29,8,8,false,true,2
+"SYN-2610-0102",true,"SYN-EP-0101","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Gastroenteritis","A09",2950000,3229000,3229000,4,3,"2026-09-27",29,5,5,false,true,2
+"SYN-2610-0103",true,"SYN-EP-0103","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6235000,6235000,6,6,"2026-10-20",6,5,5,false,true,1
+"SYN-2610-0104",true,"SYN-EP-0104","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,14949000,14949000,10,4,"2026-10-23",3,4,4,false,true,1
+"SYN-2610-0105",true,"SYN-EP-0105","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,7593000,7593000,6,6,"2026-10-07",19,7,7,true,false,1
+"SYN-2610-0106",true,"SYN-EP-0106","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,11167000,11167000,7,7,"2026-10-21",5,4,3,false,true,1
+"SYN-2610-0107",true,"SYN-EP-0107","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,6914000,4978000,3,4,"2026-10-03",23,7,7,false,true,2
+"SYN-2610-0108",true,"SYN-EP-0107","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,8593000,8593000,6,6,"2026-10-03",23,4,4,false,true,2
+"SYN-2610-0109",true,"SYN-EP-0109","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gastroenteritis","A09",2950000,3184000,3184000,2,3,"2026-10-15",11,4,4,false,true,1
+"SYN-2610-0110",true,"SYN-EP-0110","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,7424000,7424000,9,5,"2026-10-07",19,2,2,false,true,1
+"SYN-2610-0111",true,"SYN-EP-0111","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4279000,4279000,5,5,"2026-10-17",9,5,5,true,false,1
+"SYN-2610-0112",true,"SYN-EP-0112","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,9716000,9716000,6,7,"2026-10-01",25,2,1,false,true,1
+"SYN-2610-0113",true,"SYN-EP-0113","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,5775000,4158000,5,5,"2026-09-28",28,3,3,true,true,2
+"SYN-2610-0114",true,"SYN-EP-0113","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,9355000,9355000,7,6,"2026-09-28",28,3,3,false,true,2
+"SYN-2610-0115",true,"SYN-EP-0115","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Persalinan sesar","O82",7400000,8061000,8061000,4,4,"2026-10-13",13,3,3,false,true,1
+"SYN-2610-0116",true,"SYN-EP-0116","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,14873000,14873000,13,7,"2026-10-24",2,7,7,false,true,1
+"SYN-2610-0117",true,"SYN-EP-0117","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4711000,4711000,5,5,"2026-10-08",18,3,3,true,false,1
+"SYN-2610-0118",true,"SYN-EP-0118","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,5092000,5092000,4,5,"2026-10-03",23,2,1,false,true,1
+"SYN-2610-0119",true,"SYN-EP-0119","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,3928000,2828000,4,4,"2026-09-27",29,8,8,false,true,2
+"SYN-2610-0120",true,"SYN-EP-0119","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4403000,4403000,4,5,"2026-09-27",29,7,7,false,true,2
+"SYN-2610-0121",true,"SYN-EP-0121","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6590000,6590000,7,6,"2026-09-28",28,8,8,false,true,1
+"SYN-2610-0122",true,"SYN-EP-0122","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,7149000,7149000,11,4,"2026-10-04",22,8,8,false,true,1
+"SYN-2610-0123",true,"SYN-EP-0123","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Gastroenteritis","A09",2950000,3340000,3340000,3,3,"2026-10-20",6,8,8,true,false,1
+"SYN-2610-0124",true,"SYN-EP-0124","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7530000,7530000,3,4,"2026-10-20",6,8,7,false,true,1
+"SYN-2610-0125",true,"SYN-EP-0125","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,9529000,6861000,7,6,"2026-10-06",20,8,8,false,true,2
+"SYN-2610-0126",true,"SYN-EP-0125","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Gastroenteritis","A09",2950000,2884000,2884000,2,3,"2026-10-06",20,3,3,true,true,2
+"SYN-2610-0127",true,"SYN-EP-0127","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,4161000,4161000,4,4,"2026-10-06",20,3,3,false,true,1
+"SYN-2610-0128",true,"SYN-EP-0128","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,6060000,6060000,12,4,"2026-10-26",0,7,7,false,true,1
+"SYN-2610-0129",true,"SYN-EP-0129","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,8842000,8842000,7,7,"2026-10-25",1,3,3,true,false,1
+"SYN-2610-0130",true,"SYN-EP-0130","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4784000,4784000,5,5,"2026-10-21",5,3,2,false,true,1
+"SYN-2610-0131",true,"SYN-EP-0131","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Persalinan sesar","O82",7400000,6752000,4861000,5,4,"2026-10-19",7,6,6,true,true,2
+"SYN-2610-0132",true,"SYN-EP-0131","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6172000,6172000,5,6,"2026-10-19",7,7,7,false,true,2
+"SYN-2610-0133",true,"SYN-EP-0133","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5536000,5536000,5,5,"2026-10-04",22,2,2,false,true,1
+"SYN-2610-0134",true,"SYN-EP-0134","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,7225000,7225000,10,5,"2026-10-09",17,3,3,true,true,1
+"SYN-2610-0135",true,"SYN-EP-0135","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,4751000,4751000,4,5,"2026-10-12",14,8,8,true,false,1
+"SYN-2610-0136",true,"SYN-EP-0136","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6372000,6372000,6,6,"2026-10-15",11,5,4,false,true,1
+"SYN-2610-0137",true,"SYN-EP-0137","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,7044000,5072000,4,4,"2026-10-17",9,3,3,false,true,2
+"SYN-2610-0138",true,"SYN-EP-0137","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4354000,4354000,4,5,"2026-10-17",9,3,3,true,true,2
+"SYN-2610-0139",true,"SYN-EP-0139","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6551000,6551000,7,6,"2026-10-02",24,8,8,false,true,1
+"SYN-2610-0140",true,"SYN-EP-0140","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,7130000,7130000,9,4,"2026-10-07",19,3,3,false,true,1
+"SYN-2610-0141",true,"SYN-EP-0141","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4711000,4711000,5,5,"2026-10-10",16,6,6,true,false,1
+"SYN-2610-0142",true,"SYN-EP-0142","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,3452000,3452000,3,4,"2026-10-06",20,7,6,false,true,1
+"SYN-2610-0143",true,"SYN-EP-0143","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,6805000,4900000,5,4,"2026-10-24",2,7,7,false,true,2
+"SYN-2610-0144",true,"SYN-EP-0143","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4360000,4360000,6,5,"2026-10-24",2,2,2,false,true,2
+"SYN-2610-0145",true,"SYN-EP-0145","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,9082000,9082000,8,7,"2026-10-20",6,6,6,false,true,1
+"SYN-2610-0146",true,"SYN-EP-0146","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,14176000,14176000,9,4,"2026-10-21",5,8,8,false,true,1
+"SYN-2610-0147",true,"SYN-EP-0147","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,8269000,8269000,3,4,"2026-10-06",20,6,6,true,false,1
+"SYN-2610-0148",true,"SYN-EP-0148","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6730000,6730000,5,6,"2026-09-29",27,7,6,false,true,1
+"SYN-2610-0149",true,"SYN-EP-0149","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Persalinan sesar","O82",7400000,8486000,6110000,3,4,"2026-10-09",17,2,2,true,true,2
+"SYN-2610-0150",true,"SYN-EP-0149","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,8549000,8549000,7,6,"2026-10-09",17,8,8,false,true,2
+"SYN-2610-0151",true,"SYN-EP-0151","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Pneumonia","J18.9",6200000,5883000,5883000,7,6,"2026-10-06",20,8,8,true,true,1
+"SYN-2610-0152",true,"SYN-EP-0152","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,14646000,14646000,12,4,"2026-10-26",0,6,6,false,true,1
+"SYN-2610-0153",true,"SYN-EP-0153","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,8952000,8952000,8,7,"2026-10-07",19,2,2,true,false,1
+"SYN-2610-0154",true,"SYN-EP-0154","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,10621000,10621000,8,7,"2026-10-23",3,6,5,false,true,1
+"SYN-2610-0155",true,"SYN-EP-0155","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gastroenteritis","A09",2950000,3317000,2388000,3,3,"2026-10-23",3,7,7,false,true,2
+"SYN-2610-0156",true,"SYN-EP-0155","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,8635000,8635000,5,6,"2026-10-23",3,8,8,true,true,2
+"SYN-2610-0157",true,"SYN-EP-0157","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6078000,6078000,6,6,"2026-10-26",0,2,2,false,true,1
+"SYN-2610-0158",true,"SYN-EP-0158","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,15644000,15644000,15,7,"2026-10-11",15,6,6,false,true,1
+"SYN-2610-0159",true,"SYN-EP-0159","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6910000,6910000,6,6,"2026-10-01",25,2,2,true,false,1
+"SYN-2610-0160",true,"SYN-EP-0160","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,4271000,4271000,4,4,"2026-10-10",16,2,1,false,true,1
+"SYN-2610-0161",true,"SYN-EP-0161","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Pneumonia","J18.9",6200000,7093000,5107000,5,6,"2026-10-23",3,7,7,true,true,2
+"SYN-2610-0162",true,"SYN-EP-0161","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4841000,4841000,6,5,"2026-10-23",3,7,7,false,true,2
+"SYN-2610-0163",true,"SYN-EP-0163","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4180000,4180000,6,5,"2026-10-19",7,3,3,false,true,1
+"SYN-2610-0164",true,"SYN-EP-0164","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Pneumonia","J18.9",6200000,11324000,11324000,10,6,"2026-10-21",5,5,5,false,true,1
+"SYN-2610-0165",true,"SYN-EP-0165","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,2937000,2937000,2,3,"2026-10-22",4,2,2,true,false,1
+"SYN-2610-0166",true,"SYN-EP-0166","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Gastroenteritis","A09",2950000,2935000,2935000,2,3,"2026-10-15",11,2,1,false,true,1
+"SYN-2610-0167",true,"SYN-EP-0167","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,3890000,2801000,5,4,"2026-10-06",20,8,8,false,true,2
+"SYN-2610-0168",true,"SYN-EP-0167","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,9747000,9747000,8,7,"2026-10-06",20,3,3,false,true,2
+"SYN-2610-0169",true,"SYN-EP-0169","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,5113000,5113000,6,5,"2026-10-18",8,4,4,false,true,1
+"SYN-2610-0170",true,"SYN-EP-0170","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,16691000,16691000,11,6,"2026-10-07",19,2,2,false,true,1
+"SYN-2610-0171",true,"SYN-EP-0171","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,4823000,4823000,4,5,"2026-09-30",26,4,4,true,false,1
+"SYN-2610-0172",true,"SYN-EP-0172","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,9261000,9261000,7,7,"2026-10-08",18,4,3,false,true,1
+"SYN-2610-0173",true,"SYN-EP-0173","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,8265000,5951000,5,6,"2026-10-21",5,7,7,false,true,2
+"SYN-2610-0174",true,"SYN-EP-0173","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,9356000,9356000,5,6,"2026-10-21",5,4,4,false,true,2
+"SYN-2610-0175",true,"SYN-EP-0175","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,2998000,2998000,2,3,"2026-10-07",19,8,8,true,true,1
+"SYN-2610-0176",true,"SYN-EP-0176","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,16363000,16363000,10,7,"2026-10-05",21,6,6,true,true,1
+"SYN-2610-0177",true,"SYN-EP-0177","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,4884000,4884000,5,5,"2026-09-30",26,5,5,true,false,1
+"SYN-2610-0178",true,"SYN-EP-0178","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6788000,6788000,7,6,"2026-10-24",2,3,2,false,true,1
+"SYN-2610-0179",true,"SYN-EP-0179","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,9068000,6529000,7,6,"2026-10-05",21,4,4,false,true,2
+"SYN-2610-0180",true,"SYN-EP-0179","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Pneumonia","J18.9",6200000,5698000,5698000,6,6,"2026-10-05",21,7,7,false,true,2
+"SYN-2610-0181",true,"SYN-EP-0181","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Pneumonia","J18.9",6200000,6199000,6199000,6,6,"2026-10-09",17,5,5,false,true,1
+"SYN-2610-0182",true,"SYN-EP-0182","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,15100000,15100000,11,4,"2026-10-02",24,4,4,true,true,1
+"SYN-2610-0183",true,"SYN-EP-0183","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,4796000,4796000,6,5,"2026-09-30",26,4,4,true,false,1
+"SYN-2610-0184",true,"SYN-EP-0184","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Persalinan sesar","O82",7400000,6976000,6976000,3,4,"2026-10-19",7,5,4,false,true,1
+"SYN-2610-0185",true,"SYN-EP-0185","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,3228000,2324000,2,3,"2026-10-13",13,6,6,false,true,2
+"SYN-2610-0186",true,"SYN-EP-0185","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,4921000,4921000,5,5,"2026-10-13",13,6,6,false,true,2
+"SYN-2610-0187",true,"SYN-EP-0187","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4419000,4419000,5,5,"2026-10-21",5,8,8,false,true,1
+"SYN-2610-0188",true,"SYN-EP-0188","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,19877000,19877000,11,7,"2026-10-23",3,8,8,true,true,1
+"SYN-2610-0189",true,"SYN-EP-0189","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gastroenteritis","A09",2950000,3100000,3100000,3,3,"2026-10-01",25,6,6,true,false,1
+"SYN-2610-0190",true,"SYN-EP-0190","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Diabetes melitus tipe 2","E11.9",5100000,5335000,5335000,5,5,"2026-10-05",21,8,7,false,true,1
+"SYN-2610-0191",true,"SYN-EP-0191","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Persalinan sesar","O82",7400000,8501000,6121000,4,4,"2026-10-09",17,3,3,true,true,2
+"SYN-2610-0192",true,"SYN-EP-0191","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6867000,6867000,6,6,"2026-10-09",17,5,5,false,true,2
+"SYN-2610-0193",true,"SYN-EP-0193","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,10134000,10134000,7,7,"2026-10-23",3,2,2,false,true,1
+"SYN-2610-0194",true,"SYN-EP-0194","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,12658000,12658000,10,4,"2026-10-20",6,5,5,true,true,1
+"SYN-2610-0195",true,"SYN-EP-0195","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4460000,4460000,6,5,"2026-10-08",18,8,8,true,false,1
+"SYN-2610-0196",true,"SYN-EP-0196","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,9405000,9405000,6,6,"2026-10-26",0,6,5,true,true,1
+"SYN-2610-0197",true,"SYN-EP-0197","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,3965000,2855000,5,4,"2026-10-16",10,4,4,false,true,2
+"SYN-2610-0198",true,"SYN-EP-0197","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,8925000,8925000,7,7,"2026-10-16",10,6,6,false,true,2
+"SYN-2610-0199",true,"SYN-EP-0199","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,3954000,3954000,5,4,"2026-10-04",22,3,3,true,true,1
+"SYN-2610-0200",true,"SYN-EP-0200","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,17062000,17062000,12,7,"2026-09-27",29,4,4,true,true,1
+"SYN-2610-0201",true,"SYN-EP-0201","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4320000,4320000,4,5,"2026-10-24",2,7,7,true,false,1
+"SYN-2610-0202",true,"SYN-EP-0202","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4248000,4248000,5,5,"2026-10-16",10,6,5,false,true,1
+"SYN-2610-0203",true,"SYN-EP-0203","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Gastroenteritis","A09",2950000,2965000,2135000,3,3,"2026-10-08",18,5,5,true,true,2
+"SYN-2610-0204",true,"SYN-EP-0203","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Persalinan sesar","O82",7400000,8117000,8117000,3,4,"2026-10-08",18,7,7,false,true,2
+"SYN-2610-0205",true,"SYN-EP-0205","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,9130000,9130000,6,7,"2026-10-08",18,5,5,false,true,1
+"SYN-2610-0206",true,"SYN-EP-0206","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,7700000,7700000,7,4,"2026-10-02",24,7,7,false,true,1
+"SYN-2610-0207",true,"SYN-EP-0207","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Gastroenteritis","A09",2950000,2969000,2969000,4,3,"2026-10-09",17,2,2,true,false,1
+"SYN-2610-0208",true,"SYN-EP-0208","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Pneumonia","J18.9",6200000,5717000,5717000,5,6,"2026-10-17",9,2,1,true,true,1
+"SYN-2610-0209",true,"SYN-EP-0209","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gastroenteritis","A09",2950000,2850000,2052000,4,3,"2026-10-19",7,8,8,false,true,2
+"SYN-2610-0210",true,"SYN-EP-0209","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gastroenteritis","A09",2950000,2825000,2825000,2,3,"2026-10-19",7,8,8,false,true,2
+"SYN-2610-0211",true,"SYN-EP-0211","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7579000,7579000,4,4,"2026-10-13",13,5,5,true,true,1
+"SYN-2610-0212",true,"SYN-EP-0212","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Penyakit ginjal kronis","N18.9",9800000,14947000,14947000,11,7,"2026-10-14",12,7,7,false,true,1
+"SYN-2610-0213",true,"SYN-EP-0213","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Persalinan sesar","O82",7400000,6789000,6789000,3,4,"2026-10-21",5,2,2,true,false,1
+"SYN-2610-0214",true,"SYN-EP-0214","SYN-FK-3","Fasilitas Sintetis 03","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,5057000,5057000,5,5,"2026-10-17",9,5,4,false,true,1
+"SYN-2610-0215",true,"SYN-EP-0215","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Persalinan sesar","O82",7400000,7239000,5212000,5,4,"2026-10-19",7,2,2,false,true,2
+"SYN-2610-0216",true,"SYN-EP-0215","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,4875000,4875000,5,5,"2026-10-19",7,4,4,false,true,2
+"SYN-2610-0217",true,"SYN-EP-0217","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Dengue tanpa komplikasi","A90",4600000,4476000,4476000,4,5,"2026-10-17",9,8,8,false,true,1
+"SYN-2610-0218",true,"SYN-EP-0218","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,8943000,8943000,9,5,"2026-10-13",13,4,4,true,true,1
+"SYN-2610-0219",true,"SYN-EP-0219","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5768000,5768000,5,5,"2026-10-11",15,2,2,true,false,1
+"SYN-2610-0220",true,"SYN-EP-0220","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,7733000,7733000,6,6,"2026-10-08",18,6,5,false,true,1
+"SYN-2610-0221",true,"SYN-EP-0221","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,3059000,2202000,3,3,"2026-10-24",2,4,4,false,true,2
+"SYN-2610-0222",true,"SYN-EP-0221","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4868000,4868000,5,5,"2026-10-24",2,7,7,false,true,2
+"SYN-2610-0223",true,"SYN-EP-0223","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,4768000,4768000,5,5,"2026-10-14",12,7,7,false,true,1
+"SYN-2610-0224",true,"SYN-EP-0224","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,7759000,7759000,9,4,"2026-10-22",4,2,2,false,true,1
+"SYN-2610-0225",true,"SYN-EP-0225","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6104000,6104000,5,6,"2026-10-03",23,6,6,true,false,1
+"SYN-2610-0226",true,"SYN-EP-0226","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,3686000,3686000,3,4,"2026-10-11",15,4,3,false,true,1
+"SYN-2610-0227",true,"SYN-EP-0227","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Persalinan sesar","O82",7400000,7828000,5636000,3,4,"2026-09-30",26,2,2,false,true,2
+"SYN-2610-0228",true,"SYN-EP-0227","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,11006000,11006000,8,7,"2026-09-30",26,2,2,false,true,2
+"SYN-2610-0229",true,"SYN-EP-0229","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Demam tifoid","A01.0",3800000,4017000,4017000,5,4,"2026-10-22",4,4,4,false,true,1
+"SYN-2610-0230",true,"SYN-EP-0230","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Pneumonia","J18.9",6200000,12483000,12483000,10,6,"2026-10-12",14,3,3,false,true,1
+"SYN-2610-0231",true,"SYN-EP-0231","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Persalinan sesar","O82",7400000,7737000,7737000,5,4,"2026-10-06",20,3,3,true,false,1
+"SYN-2610-0232",true,"SYN-EP-0232","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Pneumonia","J18.9",6200000,6671000,6671000,5,6,"2026-10-24",2,4,3,false,true,1
+"SYN-2610-0233",true,"SYN-EP-0233","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Demam tifoid","A01.0",3800000,3688000,2655000,4,4,"2026-09-30",26,2,2,false,true,2
+"SYN-2610-0234",true,"SYN-EP-0233","SYN-FK-4","Fasilitas Sintetis 04","Wilayah sintetis","C","Penyakit ginjal kronis","N18.9",9800000,8888000,8888000,8,7,"2026-09-30",26,4,4,true,true,2
+"SYN-2610-0235",true,"SYN-EP-0235","SYN-FK-2","Fasilitas Sintetis 02","Wilayah sintetis","C","Gagal jantung kongestif","I50.0",8300000,8001000,8001000,5,6,"2026-10-03",23,3,3,false,true,1
+"SYN-2610-0236",true,"SYN-EP-0236","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gagal jantung kongestif","I50.0",8300000,14636000,14636000,14,6,"2026-10-14",12,7,7,false,true,1
+"SYN-2610-0237",true,"SYN-EP-0237","SYN-FK-6","Fasilitas Sintetis 06","Wilayah sintetis","C","Diabetes melitus tipe 2","E11.9",5100000,5860000,5860000,5,5,"2026-10-06",20,3,3,true,false,1
+"SYN-2610-0238",true,"SYN-EP-0238","SYN-FK-1","Fasilitas Sintetis 01","Wilayah sintetis","B","Dengue tanpa komplikasi","A90",4600000,4860000,4860000,6,5,"2026-10-05",21,6,5,false,true,1
+"SYN-2610-0239",true,"SYN-EP-0239","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Gastroenteritis","A09",2950000,2677000,1927000,2,3,"2026-09-29",27,4,4,false,true,2
+"SYN-2610-0240",true,"SYN-EP-0239","SYN-FK-5","Fasilitas Sintetis 05","Wilayah sintetis","B","Persalinan sesar","O82",7400000,6979000,6979000,4,4,"2026-09-29",27,7,7,false,true,2

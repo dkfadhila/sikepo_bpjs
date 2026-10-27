@@ -170,3 +170,7 @@ main#main{padding:28px;scrollbar-gutter:stable;line-height:1.55}
 }
 @media(max-width:359px){.metrics{grid-template-columns:1fr}.metric{min-height:126px}.metric-head{min-height:0}.risk-body{flex-direction:column;align-items:center}.risk-legend{width:100%}.queue-header{flex-direction:column}.heading-actions .button{font-size:10px;padding:0 6px}}
 @media(max-height:650px){.sidebar{padding-top:18px}.brand{margin-bottom:18px}.workspace{margin-bottom:18px}.help-card{display:none}.sidebar-bottom{padding-top:18px}.detail-dialog,.about-dialog{max-height:calc(100dvh - 24px)}}
+
+/* Counts vary with the selected dataset; do not retain the template 0/5/10 axis. */
+.bar-chart:before{content:none}
+.main-footer>a{color:#206b4a;text-decoration:underline;text-underline-offset:3px}

@@ -1,0 +1,962 @@
+[
+  {
+    "id": "SYN-2610-0001",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0002",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0003",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0004",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0005",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0006",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0007",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0008",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0009",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0010",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0011",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0012",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0013",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0014",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0015",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0016",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0017",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0018",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0019",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0020",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0021",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0022",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0023",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0024",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0025",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0026",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0027",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0028",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0029",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0030",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0031",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0032",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0033",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0034",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0035",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0036",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0037",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0038",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0039",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0040",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0041",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0042",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0043",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0044",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0045",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0046",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0047",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0048",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0049",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0050",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0051",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0052",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0053",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0054",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0055",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0056",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0057",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0058",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0059",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0060",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0061",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0062",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0063",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0064",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0065",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0066",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0067",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0068",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0069",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0070",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0071",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0072",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0073",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0074",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0075",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0076",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0077",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0078",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0079",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0080",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0081",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0082",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0083",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0084",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0085",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0086",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0087",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0088",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0089",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0090",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0091",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0092",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0093",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0094",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0095",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0096",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0097",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0098",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0099",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0100",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0101",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0102",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0103",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0104",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0105",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0106",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0107",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0108",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0109",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0110",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0111",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0112",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0113",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0114",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0115",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0116",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0117",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0118",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0119",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0120",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0121",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0122",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0123",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0124",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0125",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0126",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0127",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0128",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0129",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0130",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0131",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0132",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0133",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0134",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0135",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0136",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0137",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0138",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0139",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0140",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0141",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0142",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0143",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0144",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0145",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0146",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0147",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0148",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0149",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0150",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0151",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0152",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0153",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0154",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0155",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0156",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0157",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0158",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0159",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0160",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0161",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0162",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0163",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0164",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0165",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0166",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0167",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0168",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0169",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0170",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0171",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0172",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0173",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0174",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0175",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0176",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0177",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0178",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0179",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0180",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0181",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0182",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0183",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0184",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0185",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0186",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0187",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0188",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0189",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0190",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0191",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0192",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0193",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0194",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0195",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0196",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0197",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0198",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0199",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0200",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0201",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0202",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0203",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0204",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0205",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0206",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0207",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0208",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0209",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0210",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0211",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0212",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0213",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0214",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0215",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0216",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0217",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0218",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0219",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0220",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0221",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0222",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0223",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0224",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0225",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0226",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0227",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0228",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0229",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0230",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0231",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0232",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0233",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0234",
+    "injectedScenario": "duplicate"
+  },
+  {
+    "id": "SYN-2610-0235",
+    "injectedScenario": "baseline"
+  },
+  {
+    "id": "SYN-2610-0236",
+    "injectedScenario": "cost_and_stay"
+  },
+  {
+    "id": "SYN-2610-0237",
+    "injectedScenario": "drug_evidence"
+  },
+  {
+    "id": "SYN-2610-0238",
+    "injectedScenario": "service_mismatch"
+  },
+  {
+    "id": "SYN-2610-0239",
+    "injectedScenario": "billing_mismatch"
+  },
+  {
+    "id": "SYN-2610-0240",
+    "injectedScenario": "duplicate"
+  }
+]

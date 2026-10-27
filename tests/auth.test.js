@@ -24,6 +24,7 @@ test('login, origin protection, private dashboard, session rotation, roles and l
   for(const url of ['/dashboard/','/dashboard/index.html','/dashboard/dashboard.js']){const res=await req(url);assert.equal(res.status,302,url);assert.equal(res.headers.get('location'),'http://localhost:7731/login');}
   for(const url of ['/%64ashboard/index.html','/dash%62oard/dashboard.js','/%64ashboard%2findex.html']){const res=await req(url);assert.notEqual(res.status,200,url);}
   assert.equal((await req('/api/auth/me')).status,401);
+  assert.equal((await req('/api/claims')).status,401);
   assert.equal((await req('/login')).status,200);
   const login=(email,password,originHeader='http://localhost:7731',cookie)=>req('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json',Origin:originHeader,...(cookie?{Cookie:cookie}:{})},body:JSON.stringify({email,password})});
   assert.equal((await login(user.email,'SikepoDemo!2026','https://evil.example')).status,403);
@@ -34,6 +35,12 @@ test('login, origin protection, private dashboard, session rotation, roles and l
   const body=await success.json();assert.equal(body.user.role,'AU');assert.equal(body.user.passwordHash,undefined);
   assert.equal((await req('/dashboard/',{headers:{Cookie:cookie}})).status,200);
   const identity=await(await req('/api/auth/me',{headers:{Cookie:cookie}})).json();
+  assert.equal(identity.user.name,'Auditor');
+  assert.equal(identity.user.demo,undefined);
+  const dataset=await(await req('/api/claims',{headers:{Cookie:cookie}})).json();
+  assert.equal(dataset.claims.length,240);
+  assert.equal(dataset.metadata.seed,2702026);
+  assert(dataset.claims.every(c=>c.signals && c.assessmentVersion==='rules-1.0'));
   const postHeaders={Cookie:cookie,Origin:'http://localhost:7731','X-CSRF-Token':identity.csrf,'Content-Type':'application/json'};
   assert.equal((await req('/api/investigate',{method:'POST',headers:postHeaders,body:'{}'})).status,403);
   assert.equal((await req('/api/auth/logout',{method:'POST',headers:{...postHeaders,'X-CSRF-Token':'wrong'}})).status,403);
