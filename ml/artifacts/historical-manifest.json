@@ -1,0 +1,68 @@
+{
+  "datasetVersion": "sikepo-historical-3.0",
+  "seed": 2802025,
+  "rows": 5000000,
+  "dateMin": "2019-01-01",
+  "dateMax": "2025-12-31",
+  "yearCounts": {
+    "2020": 489165,
+    "2024": 912883,
+    "2021": 527788,
+    "2019": 586535,
+    "2025": 981620,
+    "2023": 821716,
+    "2022": 680293
+  },
+  "scenarioCounts": {
+    "baseline": 3506084,
+    "drug_evidence": 250298,
+    "billing_mismatch": 250123,
+    "service_mismatch": 251411,
+    "borderline": 149979,
+    "cost_and_stay": 300113,
+    "mixed": 100180,
+    "duplicate": 191812
+  },
+  "facilityCount": 1500,
+  "diagnosisCount": 24,
+  "provenance": "Fully synthetic, authored distributions; public aggregate trend inspiration only. No JKN participant data or medical records used.",
+  "privacy": "No real names, NIK, membership IDs, birthdates, addresses or patient records. No masking of original data because no original data was used.",
+  "limitations": "Costs, stay norms, trend weights and labels are synthetic assumptions, not official tariffs, fraud findings or clinical guidance.",
+  "files": [
+    {
+      "path": "claims-2019.jsonl.gz",
+      "sha256": "b2822110d21ac47162f47360f3230d53c1926b37c93d21fd7956802329a18e66",
+      "bytes": 27345814
+    },
+    {
+      "path": "claims-2020.jsonl.gz",
+      "sha256": "f54ef6994c9b744755b4b27b4282793a45e5e27aa902912d83d47843b5a43f32",
+      "bytes": 22857943
+    },
+    {
+      "path": "claims-2021.jsonl.gz",
+      "sha256": "d2fcc0b52b0c278c90a41481ed811cd637c41e8388fad619589cea3292b56d06",
+      "bytes": 24660030
+    },
+    {
+      "path": "claims-2022.jsonl.gz",
+      "sha256": "04dd99e76dbe81d891e6bf848ff663de37ebea397fb38d12f8ed245208c17ba9",
+      "bytes": 31745639
+    },
+    {
+      "path": "claims-2023.jsonl.gz",
+      "sha256": "d255ea2017966b51326d336fa5317ecd4c9ad1f8de45ef2a90b6063ae6885c4b",
+      "bytes": 38323220
+    },
+    {
+      "path": "claims-2024.jsonl.gz",
+      "sha256": "1e28e960a383ba1ebc89d6c7848755129c4abaf70b39a8fff658a0e58245cd69",
+      "bytes": 42559614
+    },
+    {
+      "path": "claims-2025.jsonl.gz",
+      "sha256": "eba974d59b7b4b04a89d74aa5b5565d662c85092b053311c4fd9b21aa749173d",
+      "bytes": 45764733
+    }
+  ]
+}

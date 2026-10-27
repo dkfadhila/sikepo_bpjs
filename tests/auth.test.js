@@ -17,7 +17,7 @@ test('login, origin protection, private dashboard, session rotation, roles and l
     insertOne:async s=>sessions.push(s),deleteOne:async q=>{const i=sessions.findIndex(s=>s.tokenHash===q.tokenHash);if(i>=0)sessions.splice(i,1);}
   };throw new Error('Unexpected database operation');}};
   const config={production:false,appOrigin:'http://localhost:7731',dashboardOrigin:'http://localhost:7731',dummyPasswordHash:await hashPassword('dummy'),aiDailyLimit:20,googleKey:'configured'};
-  const app=createApp({db,config,claimStore:{list:async()=>({metadata:{seed:2702026},claims:[{signals:[],assessmentVersion:'rules-ml-2.0'}],total:10000})},investigate:async()=>{throw new Error('Auditor must not call AI');}});
+  const app=createApp({db,config,claimStore:{list:async()=>({metadata:{seed:2702026},claims:[{signals:[],assessmentVersion:'rules-ml-3.0'}],total:10000})},investigate:async()=>{throw new Error('Auditor must not call AI');}});
   const server=app.listen(0,'127.0.0.1');await new Promise(r=>server.once('listening',r));t.after(()=>server.close());
   const origin=`http://127.0.0.1:${server.address().port}`;
   const req=(url,init={})=>fetch(origin+url,{redirect:'manual',...init});
@@ -40,7 +40,7 @@ test('login, origin protection, private dashboard, session rotation, roles and l
   const dataset=await(await req('/api/claims',{headers:{Cookie:cookie}})).json();
   assert.equal(dataset.total,10000);
   assert.equal(dataset.metadata.seed,2702026);
-  assert(dataset.claims.every(c=>c.signals && c.assessmentVersion==='rules-ml-2.0'));
+  assert(dataset.claims.every(c=>c.signals && c.assessmentVersion==='rules-ml-3.0'));
   const postHeaders={Cookie:cookie,Origin:'http://localhost:7731','X-CSRF-Token':identity.csrf,'Content-Type':'application/json'};
   assert.equal((await req('/api/investigate',{method:'POST',headers:postHeaders,body:'{}'})).status,403);
   assert.equal((await req('/api/auth/logout',{method:'POST',headers:{...postHeaders,'X-CSRF-Token':'wrong'}})).status,403);

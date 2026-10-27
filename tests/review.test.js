@@ -10,7 +10,7 @@ test('review requires authorized human role, CSRF, reason and optimistic version
   const claimStore={review:async(id,review,actor)=>{calls++;assert.equal(actor.role,'VK');if(review.version!==version)return null;version++;return {id,status:review.status,reviewVersion:version};}};
   const config={production:false,appOrigin:'http://localhost:7731',dashboardOrigin:'http://localhost:7731'};
   const server=createApp({db,config,claimStore}).listen(0,'127.0.0.1');await new Promise(r=>server.once('listening',r));t.after(()=>server.close());
-  const send=(body,csrfHeader=csrf)=>fetch(`http://127.0.0.1:${server.address().port}/api/claims/SYN-2610-00001/review`,{method:'POST',headers:{Origin:config.appOrigin,Cookie:`sikepo_session=${token}`,'Content-Type':'application/json','X-CSRF-Token':csrfHeader},body:JSON.stringify(body)});
+  const send=(body,csrfHeader=csrf)=>fetch(`http://127.0.0.1:${server.address().port}/api/claims/SYN-2512-00001/review`,{method:'POST',headers:{Origin:config.appOrigin,Cookie:`sikepo_session=${token}`,'Content-Type':'application/json','X-CSRF-Token':csrfHeader},body:JSON.stringify(body)});
   const body={status:'APPROVED',note:'Bukti sintetis telah ditelaah.',version:0};
   assert.equal((await send(body)).status,403);role='ST';assert.equal((await send(body)).status,403);role='VK';
   assert.equal((await send(body,'wrong')).status,403);

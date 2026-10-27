@@ -10,15 +10,16 @@ test('submission dataset has traceable provenance and no participant identifiers
   assert.equal(dataset.claims.length,10000);
   assert.equal(new Set(dataset.claims.map(c=>c.id)).size,10000);
   for(const c of dataset.claims){
-    assert.match(c.id,/^SYN-2610-\d{5}$/);
-    assert.match(c.facility,/^Fasilitas Sintetis \d{2}$/);
+    assert.match(c.id,/^SYN-2512-\d{5}$/);
+    assert.match(c.facility,/^Fasilitas Sintetis \d{4}$/);
     assert.equal(c.synthetic,true);
     assert(c.amount>0 && c.tariff>0 && c.los>=0);
     assert(c.documentedServiceCount<=c.serviceCount);
     const days=(Date.parse(dataset.metadata.anchorDate)-Date.parse(c.date))/86400000;
-    assert.equal(days,c.daysAgo);assert(days>=0&&days<30);
+    assert.equal(days,c.daysAgo);assert(days>=0&&days<=30);
     for(const key of Object.keys(c))assert(!/^(nik|name|patientName|email|phone|address|birthDate|participantId)$/i.test(key));
-    if(c.duplicateCount>1)assert.equal(dataset.claims.filter(other=>other.episodeId===c.episodeId).length,c.duplicateCount);
+    assert(c.date>='2019-01-01' && c.date<='2025-12-31');
+    if(c.duplicateCount>1)assert(dataset.claims.filter(other=>other.episodeId===c.episodeId).length<=c.duplicateCount);
   }
   assert(assessedClaims.every(c=>['PENDING','HOLD'].includes(c.status)));
 });

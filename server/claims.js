@@ -14,9 +14,9 @@ export function assessClaim(c) {
   const ruleScore = Math.min(99, signals.reduce((n, s) => n + s.weight, 0));
   const ml = predict(c);
   const score = Math.round(Math.max(ruleScore, .45*ruleScore+.55*ml.priority));
-  return { ...c, ruleScore, score, ml, signals, status: signals.length || ml.isAnomaly ? 'HOLD' : 'PENDING', recommendation: signals.length || ml.isAnomaly ? 'REQUEST_EVIDENCE' : 'READY_FOR_VERIFIER', assessmentVersion: 'rules-ml-2.0' };
+  return { ...c, ruleScore, score, ml, signals, status: signals.length || ml.isAnomaly ? 'HOLD' : 'PENDING', recommendation: signals.length || ml.isAnomaly ? 'REQUEST_EVIDENCE' : 'READY_FOR_VERIFIER', assessmentVersion: 'rules-ml-3.0' };
 }
 
 export const dataset = JSON.parse(readFileSync(new URL('../data/synthetic/claims.json', import.meta.url), 'utf8'));
 export const assessedClaims = dataset.claims.map(assessClaim);
-export const dataInfo = { ...dataset.metadata, assessmentVersion: 'rules-ml-2.0', method: 'Aturan dan Isolation Forest; dievaluasi pada data sintetis, belum validasi operasional BPJS.', model: model.report, documentation: '/data-methodology.html' };
+export const dataInfo = { ...dataset.metadata, assessmentVersion: 'rules-ml-3.0', method: 'Aturan dan Isolation Forest, dilatih pada korpus sintetis 2019–2025; belum validasi operasional BPJS.', model: model.report, documentation: '/data-methodology.html' };

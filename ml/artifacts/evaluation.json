@@ -1,6 +1,7 @@
 {
-  "modelVersion": "iforest-synthetic-2.0",
-  "algorithm": "IsolationForest",
+  "modelVersion": "iforest-historical-3.0",
+  "datasetVersion": "sikepo-historical-3.0",
+  "rows": 5000000,
   "features": [
     "cost_ratio",
     "los_ratio",
@@ -10,39 +11,38 @@
     "duplicate_count",
     "log_tariff"
   ],
-  "seed": 2702026,
-  "datasetVersion": "sikepo-synthetic-2.0",
-  "datasetSha256": "631e651e10f5961b345bb67e801f60e966e970584eb19b9f320d622a24dd588c",
-  "python": "3.12.10",
-  "sklearn": "1.9.0",
+  "seed": 2802025,
+  "splitMethod": "Temporal: train 2019-2023, calibration 2024, held-out development test 2025; duplicate pairs inherit dates",
   "splitCounts": {
-    "train": 6972,
-    "validation": 1524,
-    "test": 1504
+    "train": 3105497,
+    "validation": 912883,
+    "test": 981620
   },
-  "fitRows": 6972,
-  "fitMethod": "Unsupervised fit on all training rows; injected labels excluded from features and fit",
-  "splitMethod": "SHA256 of episodeId with fixed seed, 70/15/15; no episode crosses splits",
-  "thresholdMethod": "95th percentile of validation baseline anomaly scores only",
-  "threshold": 0.43930978039957813,
+  "threshold": 0.39587304792183614,
+  "thresholdMethod": "95th percentile of non-injected validation records; never test",
   "test": {
-    "rows": 1504,
-    "precision": 0.875,
-    "recall": 1.0,
-    "f1": 0.9333333333333333,
-    "rocAuc": 0.9999161943871191,
-    "averagePrecision": 0.9998102807244522,
+    "precision": 0.878550625599974,
+    "recall": 0.9229430747562594,
+    "f1": 0.9001998903020694,
+    "rocAuc": 0.9825856963675506,
+    "averagePrecision": 0.9688208371497395,
     "confusionMatrixTN_FP_FN_TP": [
-      984,
-      65,
-      0,
-      455
+      651774,
+      37322,
+      22541,
+      269983
     ]
   },
+  "sklearn": "1.7.2",
+  "numpy": "2.2.6",
+  "python": "3.12.16",
+  "hardware": "Hugging Face CPU Upgrade, 8 vCPU",
+  "elapsedSeconds": 368,
   "limitations": [
-    "Synthetic-only evaluation, not clinical or BPJS validation",
-    "Injected scenario labels are not confirmed fraud",
-    "No automatic approval, rejection, or payment",
-    "No patient age or identity used as features"
+    "Synthetic scenario classification, not confirmed fraud",
+    "No validation on BPJS operational data",
+    "Temporal test remains development evidence, not independent clinical validation",
+    "Labels describe injection rather than rule outcomes; distributions overlap",
+    "No automatic payment, approval or rejection"
   ]
 }

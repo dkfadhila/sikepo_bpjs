@@ -27,7 +27,7 @@ Semua memakai kata sandi publik `SikepoDemo!2026` untuk reviewer submission. Kat
 
 ## Status mesin AI
 
-Dashboard membaca 10.000 klaim sintetis dari MongoDB dengan pagination dan filter server. Dataset/model diarsipkan dalam GridFS privat. Isolation Forest dilatih offline; Gemma menjelaskan rekomendasi. Verifikator menyimpan keputusan dengan riwayat dan kontrol versi. Evaluasi model hanya pada data sintetis; lihat [metodologi](docs/DATA-SUBMISSION.md).
+Dashboard membaca 10.000 klaim sintetis dari MongoDB dengan pagination dan filter server. Dataset/model diarsipkan dalam GridFS privat. Isolation Forest dilatih di Hugging Face pada korpus historis 5 juta baris 2019-2025 (train 3.105.497, kalibrasi 912.883, test 981.620). Korpus penuh privat; 10.000 klaim Desember 2025 merupakan irisan aktif dashboard. Gemma menjelaskan rekomendasi. Verifikator menyimpan keputusan dengan riwayat dan kontrol versi. Evaluasi model hanya pada data sintetis; lihat [metodologi](docs/DATA-SUBMISSION.md).
 
 Sentry mencatat error server dan sebagian trace jika DSN terpasang. Request body, cookie, query, dan headers dihapus dari error yang dikirim. Jangan gunakan data pasien asli pada workspace ini.
 

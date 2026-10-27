@@ -1,6 +1,6 @@
 # SiKePO — kebutuhan data dan metodologi dataset submission
 
-Versi dataset: `sikepo-synthetic-2.0`. Sumber: **sepenuhnya sintetis**. Dataset ini bukan data BPJS yang dimasking atau dianonimkan, bukan data peserta JKN, dan bukan hasil pelatihan terhadap rekam medis. Aplikasi dapat diakses dan menjalankan autentikasi, pemuatan data API, penghitungan indikator, pencarian, filter, ekspor, serta penjelasan Gemma apabila layanan tersedia. Ketersediaan aplikasi berbeda dari validasi untuk penggunaan operasional BPJS.
+Versi dataset: `sikepo-operational-3.0`. Sumber: **sepenuhnya sintetis**. Dataset ini bukan data BPJS yang dimasking atau dianonimkan, bukan data peserta JKN, dan bukan hasil pelatihan terhadap rekam medis. Aplikasi dapat diakses dan menjalankan autentikasi, pemuatan data API, penghitungan indikator, pencarian, filter, ekspor, serta penjelasan Gemma apabila layanan tersedia. Ketersediaan aplikasi berbeda dari validasi untuk penggunaan operasional BPJS.
 
 ## 1. Data yang dibutuhkan
 
@@ -14,21 +14,21 @@ Versi dataset: `sikepo-synthetic-2.0`. Sumber: **sepenuhnya sintetis**. Dataset 
 | Obat | Penggunaan obat restriksi, keberadaan bukti pendukung | Prioritas review kelengkapan | `restrictedDrug`, `drugEvidence`; boolean |
 | Duplikasi | ID episode yang sama dan jumlah pengajuan terkait | Penanda pengajuan berulang | `episodeId`, `duplicateCount` |
 | Keluaran | Kode indikator, bobot, versi aturan, skor, status review | Hasil yang dapat ditelusuri | Dihitung server: `signals`, `score`, `status`, `assessmentVersion` |
-| Evaluasi | Label skenario yang sengaja disisipkan | Memeriksa generator dan cakupan kasus | `scenario-labels.json`; tidak menjadi masukan aturan |
+| Evaluasi | Label skenario yang sengaja disisipkan | Memeriksa generator dan cakupan kasus | `injectedScenario` di arsip historis privat; tidak dikirim ke dashboard atau menjadi fitur model |
 
 Untuk integrasi operasional selanjutnya diperlukan rincian item layanan (kode, kuantitas, harga satuan, waktu pelayanan), tindakan ICD-9-CM, kelompok INA-CBG dan severity, kelas perawatan, tarif resmi beserta versi/tanggal berlakunya, bukti pelayanan terstruktur, ketentuan restriksi obat yang berlaku, dan hasil review berotorisasi. Resume medis/free text, tanggal lahir, alamat, dan identitas peserta **tidak dikumpulkan** oleh submission ini. Untuk model ML yang tervalidasi diperlukan data pembanding yang diperoleh secara sah, definisi label yang disepakati, serta hasil adjudikasi manusia; label skenario sintetis bukan pengganti ground truth fraud.
 
 ## 2. Pembuatan dan penyimpanan dataset
 
-Generator `scripts/generate-synthetic.mjs` menghasilkan 10.000 pengajuan sepenuhnya sintetis. Seed LCG 32-bit tetap `2702026`; tidak ada data peserta, API BPJS, atau distribusi rekam medis yang dipelajari. Komposisi sengaja dibuat untuk eksperimen: 7.000 baseline dan masing-masing 600 skenario biaya/lama rawat, bukti obat, ketidaksesuaian layanan, selisih tagihan, dan duplikasi. Komposisi ini bukan estimasi prevalensi fraud.
+Generator `ml/hf_train_historical.py` menghasilkan 5.000.000 baris sepenuhnya sintetis di Hugging Face CPU, seed `2802025`, tanggal 1 Januari 2019 sampai 31 Desember 2025. Tidak ada tanggal layanan 2026. Variasi mencakup 1.500 fasilitas fiktif, 38 wilayah sintetis, 24 kode diagnosis, serta delapan skenario: baseline, biaya/durasi, bukti obat, selisih layanan, selisih tagihan, duplikasi, campuran dan borderline. Komposisi bukan estimasi prevalensi fraud. Tarif dan acuan klinis merupakan asumsi pengujian, bukan ketentuan BPJS.
 
-Seluruh ID memakai awalan `SYN-`. Enam fasilitas fiktif dan delapan diagnosis contoh dipakai sebagai konteks. Tarif Rp2,95–9,8 juta serta acuan rawat 3–7 hari adalah nilai buatan, bukan tarif resmi atau standar klinis BPJS. Periode tetap 27 September–26 Oktober 2026; filter 7/30 hari relatif pada tanggal acuan dataset.
+Korpus penuh disimpan sebagai tujuh arsip tahunan gzip di Hugging Face privat. Seluruh baris, checksum, schema tanpa identitas peserta, keunikan ID dan konsistensi episode telah diaudit. Dashboard memakai irisan 10.000 klaim Desember 2025 dengan tanggal acuan 31 Desember 2025. Jumlah duplikasi mengacu korpus penuh; pasangan bisa berada di luar irisan aktif.
 
-Data aktif benar-benar diimpor ke koleksi `claims` di MongoDB. Metadata berada di `datasets`, laporan model di `models`. Snapshot JSON/CSV, manifest, label skenario, model, laporan evaluasi dan pembagian episode disimpan sebagai tujuh arsip gzip di GridFS privat (`artifacts.files` dan `artifacts.chunks`), dengan checksum SHA-256. Artefak tidak diletakkan dalam direktori aset publik. Impor memakai upsert per versi dataset dan ID; mengulang impor tidak menggandakan klaim atau menghapus keputusan reviewer.
+MongoDB menyimpan irisan aktif di `claims`, metadata di `datasets`, laporan di `models`, serta sembilan artefak snapshot/model/audit/provenance dalam GridFS privat. Lima juta baris historis tidak dimuat seluruhnya ke MongoDB. Impor idempoten per versi dan ID mempertahankan keputusan reviewer sebelumnya.
 
 Dashboard membaca halaman klaim, pencarian, filter, urutan dan ringkasan melalui API MongoDB. Ekspor menggunakan cursor database. Data tidak diunduh 10.000 baris sekaligus ke browser. Tidak ada fallback diam-diam ke JSON apabila database gagal.
 
-Perintah reproduksi: `npm run data:generate`, `npm run ml:train`, `npm run data:import`. Konfigurasi koneksi berada pada environment privat; jangan menaruh credential di repositori.
+Reproduksi historis tercatat pada `docs/HF-TRAINING.md`. Unduh artefak privat ke `artifacts/hf-audit`, jalankan `node scripts/audit-hf-model.mjs`, `python scripts/audit-hf-dataset.py`, `python scripts/promote-hf-model.py`, lalu `npm run data:import`. Promosi mensyaratkan kedua audit lulus. Generator/trainer lama hanya menulis eksperimen di `artifacts`, tidak menimpa model aktif. Credential berada dalam environment privat.
 
 ## 3. Pipeline aturan, machine learning dan rekomendasi
 
@@ -38,13 +38,13 @@ Server memeriksa rasio biaya >1,3 kali acuan (bobot 30), durasi >acuan+2 hari (2
 
 ### A2 — model yang benar-benar dilatih
 
-Isolation Forest scikit-learn memakai 120 pohon, maksimum 256 sampel per pohon, random seed `2702026`. Fitur: rasio biaya, rasio lama rawat, indikator bukti obat hilang, rasio selisih jumlah layanan, rasio selisih tagihan, jumlah pengajuan episode, dan log tarif. Nama, kode diagnosis, ID, label skenario, skor aturan, dan status keputusan tidak menjadi fitur model.
+Isolation Forest scikit-learn memakai 200 pohon, maksimum 512 sampel per pohon, random seed `2802025`. Fitur: rasio biaya, rasio lama rawat, indikator bukti obat hilang, rasio selisih jumlah layanan, rasio selisih tagihan, jumlah pengajuan episode, dan log tarif. Nama, kode diagnosis, ID, label skenario, skor aturan, dan status keputusan tidak menjadi fitur model.
 
-Pembagian berdasarkan hash ID episode memastikan episode yang sama tidak masuk set berbeda: train 6.972, validasi 1.524, test 1.504. Model fit secara unsupervised pada seluruh baris train. Ambang anomali memakai persentil ke-95 skor baseline di validasi, bukan test. Label penyisipan hanya untuk kalibrasi/evaluasi. Percobaan pengembangan sebelumnya menunjukkan fit pada baseline saja tidak mempelajari variasi indikator yang selalu nol; konfigurasi akhir menggunakan seluruh train. Hasil berikut merupakan evaluasi pengembangan sintetis, bukan benchmark klinis independen.
+Pembagian waktu: train 2019-2023 sebanyak 3.105.497, kalibrasi 2024 sebanyak 912.883, test pengembangan 2025 sebanyak 981.620. Pasangan episode mewarisi tanggal sama tanpa kebocoran antarsplit. Ambang 0,39587304792183614 ditentukan dari persentil ke-95 baris tanpa injeksi di validasi, bukan test.
 
-Hasil test sintetis: precision 87,5%, recall 100%, F1 93,33%, ROC-AUC 0,9999; TN 984, FP 65, FN 0, TP 455. Skenario buatan cukup mudah dibedakan, sehingga hasil ini tidak dapat digeneralisasi ke fraud nyata. Kesalahan positif tetap ada. Laporan rinci beserta versi library dan checksum tersedia pada `ml/artifacts/evaluation.json`.
+Hasil test sintetis: precision 87,86%, recall 92,29%, F1 90,02%, ROC-AUC 0,9826; TN 651.774, FP 37.322, FN 22.541, TP 269.983. Perhitungan independen atas seluruh 981.620 baris test dari pohon ekspor menghasilkan confusion matrix sama. Ini bukan validasi fraud nyata atau benchmark klinis independen.
 
-Model diekspor sebagai pohon JSON. Inferensi Node di server diuji terhadap skor scikit-learn pada 104 contoh terpisah dari perhitungan Node dengan toleransi 1e-12. Tidak perlu memasang Python atau melatih ulang setiap Render restart. Untuk data baru, hitung ulang fitur lalu jalankan versi model yang tercatat; melatih ulang memerlukan versi dataset/model dan evaluasi baru.
+Inferensi Node cocok dengan 200 fixture scikit-learn pada toleransi 1e-12. Kasus normal, biaya/durasi, duplikasi, selisih layanan/tagihan dan bukti obat lulus. Artefak JSON dimuat server tanpa Python atau training ulang saat restart. Laporan dan checksum tersimpan di `ml/artifacts`.
 
 Skor ML tampilan = clamp(50 + 250 × (skor anomali mentah − ambang), 0, 99). Prioritas gabungan = maksimum antara skor aturan dan (45% skor aturan + 55% prioritas ML), dibulatkan. Ini indeks prioritas, bukan probabilitas fraud. Status awal `HOLD` bila aturan terpicu atau model mendeteksi anomali; lainnya `PENDING`.
 

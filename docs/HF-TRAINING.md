@@ -26,3 +26,9 @@ Data disimpan per tahun dalam JSONL gzip. Manifest mencatat jumlah aktual, renta
 Hardware HF Jobs yang dikutip saat launch: `cpu-upgrade` US$0,03/jam. Timeout keras satu jam, satu percobaan: plafon komputasi run **US$0,03**, di luar ketentuan kuota penyimpanan akun. Tidak ada GPU, endpoint persisten atau jadwal berulang. GPU tidak mempercepat implementasi scikit-learn ini.
 
 Script launch menolak berjalan bila sudah ada `ml/hf-job.json`, untuk mencegah job ganda tanpa sengaja. Jika run gagal, periksa status/log terlebih dahulu; jangan mengulang seluruh job secara otomatis. Model baru harus diperiksa sebelum dipromosikan ke aplikasi.
+
+## Hasil audit dan promosi v3
+
+Job selesai. Seluruh 5.000.000 baris dan checksum tujuh arsip diverifikasi. Perhitungan independen 981.620 test cocok: TN 651774, FP 37322, FN 22541, TP 269983. Paritas Node/Python dan uji kasus lulus. Model `iforest-historical-3.0` dipromosikan bersama irisan 10.000 klaim Desember 2025. Korpus penuh tetap privat di HF, Mongo menyimpan irisan aktif dan audit. Tidak ada training LLM baru atau keputusan pembayaran otomatis.
+
+Dataset revision `bcfb28d78aef80bb673c05b4dae0c66dcdf4eec9`; model revision `6d99f05e6230552f4f6c6d216c10f3a46e24bbbc`.

@@ -54,7 +54,7 @@ for estimator in model.estimators_:
                   'threshold':t.threshold.tolist(),'samples':t.n_node_samples.tolist()})
 artifact={'version':report['modelVersion'],'features':FEATURES,'maxSamples':int(model.max_samples_),
           'threshold':threshold,'trees':trees,'report':report}
-out=ROOT/'ml/artifacts';out.mkdir(parents=True,exist_ok=True)
+out=ROOT/'artifacts/local-experiment';out.mkdir(parents=True,exist_ok=True)
 (out/'isolation-forest.json').write_text(json.dumps(artifact,separators=(',',':'))+'\n',encoding='utf-8')
 (out/'evaluation.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 # Independent Python scores allow testing exact exported-tree inference in Node.

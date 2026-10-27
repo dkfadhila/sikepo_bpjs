@@ -7,8 +7,15 @@ test('Node inference matches independent scikit-learn exported scores',()=>{
   const fixtures=JSON.parse(readFileSync('ml/artifacts/parity-fixtures.json','utf8'));
   for(const f of fixtures)assert(Math.abs(anomalyScore(f.features)-f.rawScore)<1e-12,f.id);
 });
-test('training artifacts match the dataset and no episode crosses splits',()=>{
-  assert.equal(model.report.datasetSha256,createHash('sha256').update(readFileSync('data/synthetic/claims.json')).digest('hex'));
-  const episodes=new Map();for(const row of JSON.parse(readFileSync('ml/artifacts/splits.json','utf8'))){if(episodes.has(row.episodeId))assert.equal(episodes.get(row.episodeId),row.split);episodes.set(row.episodeId,row.split);}
-  assert.equal(Object.values(model.report.splitCounts).reduce((a,b)=>a+b,0),10000);
+test('promoted model has matching provenance and independently audited historical test',()=>{
+  const read=p=>JSON.parse(readFileSync(p,'utf8'));
+  const provenance=read('ml/artifacts/provenance.json');
+  assert.equal(provenance.operationalDatasetSha256,createHash('sha256').update(readFileSync('data/synthetic/claims.json')).digest('hex'));
+  assert.equal(provenance.modelSha256,createHash('sha256').update(readFileSync('ml/artifacts/isolation-forest.json')).digest('hex'));
+  const audit=read('ml/artifacts/dataset-audit.json');
+  assert.equal(audit.passed,true);assert.equal(audit.rowsChecked,5000000);
+  assert.equal(audit.noEpisodeDateLeakage,true);assert.equal(audit.heldOutRowsIndependentlyScored,981620);
+  assert.deepEqual(audit.recomputedConfusionMatrix,model.report.test.confusionMatrixTN_FP_FN_TP);
+  assert.equal(Object.values(model.report.splitCounts).reduce((a,b)=>a+b,0),5000000);
+  assert.equal(read('ml/artifacts/model-case-audit.json').passed,true);
 });

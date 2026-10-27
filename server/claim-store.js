@@ -22,12 +22,13 @@ export async function seedClaimDatabase(db){
   const col=db.collection('claims');
   await col.createIndex({datasetVersion:1,id:1},{unique:true});
   await col.createIndex({datasetVersion:1,status:1,score:-1,id:1});
+  await col.createIndex({datasetVersion:1,score:-1,id:1});
   await col.createIndex({datasetVersion:1,daysAgo:1});
   const existing=await db.collection('datasets').findOne({_id:version});
   if(existing?.state==='ready' && existing.count===dataInfo.count && await col.countDocuments({datasetVersion:version})===dataInfo.count)return;
   for(let i=0;i<assessedClaims.length;i+=500){await col.bulkWrite(assessedClaims.slice(i,i+500).map(c=>({updateOne:{filter:{datasetVersion:version,id:c.id},update:{$setOnInsert:{...c,datasetVersion:version,reviewVersion:0}},upsert:true}})),{ordered:false});}
   const bucket=new GridFSBucket(db,{bucketName:'artifacts'}), artifacts=[];
-  for(const name of ['data/synthetic/claims.json','data/synthetic/claims.csv','data/synthetic/manifest.json','data/synthetic/scenario-labels.json','ml/artifacts/isolation-forest.json','ml/artifacts/evaluation.json','ml/artifacts/splits.json']){
+  for(const name of ['data/synthetic/claims.json','data/synthetic/claims.csv','data/synthetic/manifest.json','ml/artifacts/isolation-forest.json','ml/artifacts/evaluation.json','ml/artifacts/dataset-audit.json','ml/artifacts/model-case-audit.json','ml/artifacts/historical-manifest.json','ml/artifacts/provenance.json']){
     const bytes=gzipSync(readFileSync(name),{mtime:0}),hash=createHash('sha256').update(bytes).digest('hex');
     let file=await db.collection('artifacts.files').findOne({'metadata.sha256':hash});
     if(!file){const upload=bucket.openUploadStream(`${version}/${name}.gz`,{metadata:{sha256:hash,datasetVersion:version,encoding:'gzip',synthetic:true,source:name}});upload.end(bytes);await finished(upload);file={_id:upload.id};}

@@ -27,12 +27,12 @@ for (let i = 0; i < 10000; i++) {
 const metadata = { version: 'sikepo-synthetic-2.0', seed: 2702026, generator: 'scripts/generate-synthetic.mjs', anchorDate: anchor, count: claims.length,
   provenance: 'Fully synthetic: generated from authored ranges and scenarios; no participant records, BPJS extracts, or learned patient distributions used.',
   tariffSource: 'Authored scenario values; not official INA-CBG tariffs.', scenarioCounts: Object.fromEntries(scenarios.map(s=>[s,labels.filter(l=>l.injectedScenario===s).length])) };
-mkdirSync('data/synthetic', {recursive:true});
+mkdirSync('artifacts/legacy-synthetic', {recursive:true});
 const json = JSON.stringify({metadata, claims}, null, 2) + '\n';
-writeFileSync('data/synthetic/claims.json', json);
-writeFileSync('data/synthetic/scenario-labels.json', JSON.stringify(labels,null,2)+'\n');
+writeFileSync('artifacts/legacy-synthetic/claims.json', json);
+writeFileSync('artifacts/legacy-synthetic/scenario-labels.json', JSON.stringify(labels,null,2)+'\n');
 const fields = Object.keys(claims[0]);
 const csv = [fields.join(','), ...claims.map(c=>fields.map(f=>JSON.stringify(c[f])).join(','))].join('\n')+'\n';
-writeFileSync('data/synthetic/claims.csv', csv);
-writeFileSync('data/synthetic/manifest.json', JSON.stringify({...metadata, sha256: createHash('sha256').update(json).digest('hex'), fields},null,2)+'\n');
+writeFileSync('artifacts/legacy-synthetic/claims.csv', csv);
+writeFileSync('artifacts/legacy-synthetic/manifest.json', JSON.stringify({...metadata, sha256: createHash('sha256').update(json).digest('hex'), fields},null,2)+'\n');
 console.log(`Generated ${claims.length} fully synthetic claims; seed ${metadata.seed}.`);
