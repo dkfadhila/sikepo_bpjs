@@ -5,6 +5,7 @@ import { createApp } from './app.js';
 import { createClaimInvestigator } from './agent.js';
 import { demoAccounts, hashPassword } from './security.js';
 import { seedClaimDatabase, createClaimStore } from './claim-store.js';
+import { createHistoryStore } from './history-store.js';
 
 const config = {
   production: process.env.NODE_ENV === 'production',
@@ -43,7 +44,7 @@ if (process.env.MONGODB_URI) {
     if (config.production) { await Sentry.flush(2000); process.exit(1); }
   }
 } else if (config.production) { console.error('MONGODB_URI is required in production.'); process.exit(1); }
-const app = createApp({ db, config, claimStore: db ? createClaimStore(db) : null, investigate: createClaimInvestigator(config.googleKey, config.model), captureException: Sentry.captureException });
+const app = createApp({ db, config, claimStore: db ? createClaimStore(db) : null, historyStore: db ? createHistoryStore(db) : null, investigate: createClaimInvestigator(config.googleKey, config.model), captureException: Sentry.captureException });
 const server = app.listen(Number(process.env.PORT) || 7731, '0.0.0.0', () => console.log('SIKEPO server listening.'));
 async function shutdown() { server.close(async () => { await client?.close(); await Sentry.flush(2000); process.exit(0); }); }
 process.on('SIGTERM',shutdown); process.on('SIGINT',shutdown);

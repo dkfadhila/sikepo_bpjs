@@ -7,10 +7,11 @@ import { z } from 'zod';
 import { newToken, sessionHash, verifyPassword, publicUser, allowedOrigin } from './security.js';
 import { claimSchema } from './agent.js';
 import { dataInfo } from './claims.js';
+import { historicalId } from './history-store.js';
 
 const publicRoot = path.resolve('spartanai-recreation/dist');
 const loginSchema = z.object({ email: z.string().email().max(120), password: z.string().min(1).max(128) }).strict();
-export function createApp({ db, investigate, claimStore, config, captureException = () => {} }) {
+export function createApp({ db, investigate, claimStore, historyStore, config, captureException = () => {} }) {
   const app = express(), production = config.production;
   const origins = [config.appOrigin, config.dashboardOrigin];
   const cookie = { httpOnly: true, secure: production, sameSite: 'lax', path: '/', ...(production ? { domain: '.sikepo.tech' } : {}) };
@@ -56,6 +57,7 @@ export function createApp({ db, investigate, claimStore, config, captureExceptio
   const storeRequired=(_req,res,next)=>claimStore?next():res.status(503).json({error:'Penyimpanan klaim belum tersedia.'});
   app.get('/api/claims',auth,storeRequired,async(req,res)=>res.json(await claimStore.list(req.query)));
   app.get('/api/claims/summary',auth,storeRequired,async(req,res)=>res.json(await claimStore.summary(req.query.period)));
+  app.get('/api/history',auth,async(req,res)=>historyStore?res.json(await historyStore.list(req.query)):res.status(503).json({error:'Arsip historis belum tersedia.'}));
   app.get('/api/claims/export',auth,storeRequired,async(req,res)=>{
     res.type('text/csv').attachment('sikepo-claims.csv');
     const cell=v=>'"'+String(v).replace(/"/g,'""')+'"';
@@ -66,13 +68,14 @@ export function createApp({ db, investigate, claimStore, config, captureExceptio
       if(res.destroyed)break;
     }res.end();
   });
-  app.get('/api/claims/:id',auth,storeRequired,async(req,res)=>{const claim=await claimStore.get(req.params.id);if(!claim)return res.status(404).json({error:'Klaim tidak ditemukan.'});res.json(claim);});
+  app.get('/api/claims/:id',auth,storeRequired,async(req,res)=>{const claim=historicalId(req.params.id)?await historyStore?.get(req.params.id):await claimStore.get(req.params.id);if(!claim)return res.status(404).json({error:'Klaim tidak ditemukan.'});res.json(claim);});
   app.post('/api/claims/:id/review',auth,storeRequired,async(req,res)=>{
     if(req.get('x-csrf-token')!==req.auth.csrf)return res.status(403).json({error:'Sesi tidak valid.'});
     if(!['SA','VK'].includes(req.auth.user.role))return res.status(403).json({error:'Keputusan memerlukan peran verifikator atau super admin.'});
     const parsed=z.object({status:z.enum(['APPROVED','HOLD','REJECTED']),note:z.string().trim().min(10).max(1000),version:z.number().int().nonnegative()}).strict().safeParse(req.body);
     if(!parsed.success)return res.status(400).json({error:'Isi status dan catatan pemeriksaan minimal 10 karakter.'});
-    const claim=await claimStore.review(req.params.id,parsed.data,{email:req.auth.user.email,role:req.auth.user.role});
+    const target=historicalId(req.params.id)?historyStore:claimStore;
+    const claim=await target?.review(req.params.id,parsed.data,{email:req.auth.user.email,role:req.auth.user.role});
     if(!claim)return res.status(409).json({error:'Klaim berubah atau tidak ditemukan. Buka ulang detail sebelum menyimpan.'});res.json(claim);
   });
   app.post('/api/auth/logout', auth, async (req,res) => {
@@ -85,7 +88,7 @@ export function createApp({ db, investigate, claimStore, config, captureExceptio
     if (!['SA','VK','ST'].includes(req.auth.user.role)) return res.status(403).json({ error: 'Akun auditor memiliki akses baca.' });
     const request = z.object({ id: z.string().max(32) }).strict().safeParse(req.body);
     if (!request.success) return res.status(400).json({ error: 'Pilih klaim dari dataset workspace.' });
-    const claim = await claimStore.get(request.data.id);
+    const claim = historicalId(request.data.id)?await historyStore?.get(request.data.id):await claimStore.get(request.data.id);
     if (!claim) return res.status(404).json({ error: 'Klaim tidak ditemukan.' });
     const { id, amount, tariff, los, normalLos, score } = claim;
     const parsed = claimSchema.safeParse({ id, amount, tariff, los, normalLos, score, signals: claim.signals.map(s => s.code), mlAnomaly:claim.ml.isAnomaly, recommendation:claim.recommendation });
