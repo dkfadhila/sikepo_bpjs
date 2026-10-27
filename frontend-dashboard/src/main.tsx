@@ -8,6 +8,7 @@ import {Table,TableHeader,TableBody,TableHead,TableRow,TableCell} from '@/compon
 import {Badge} from '@/components/ui/badge'
 import shell from './shell.json'
 import './style.css'
+import './audit.css'
 type ShellNode=string|{tag:string,props:Record<string,any>,children:ShellNode[]}
 // Static React shell owns the shadcn primitives. The established audit controller
 // owns the explicitly empty chart/table/detail slots after mounting. No React
@@ -15,7 +16,7 @@ type ShellNode=string|{tag:string,props:Record<string,any>,children:ShellNode[]}
 function renderNode(n:ShellNode,key:number):React.ReactNode{
  if(typeof n==='string')return n
  const {tag,props,children}=n;let Component:any=tag;const p={...props,key};const cls=String(p.className||'')
- if(tag==='button'){Component=Button;p.variant=cls.includes('black')?'default':cls.includes('icon-button')||p['data-view']||cls.includes('text-button')?'ghost':'outline';p.size=cls.includes('icon-button')?'icon':'default';p.type='button';p['data-ui']='button'}
+ if(tag==='button'){Component=Button;p.variant=cls.includes('black')?'default':cls.includes('icon-button')||p['data-view']||cls.includes('text-button')||cls.includes('sort-button')?'ghost':'outline';p.size=cls.includes('icon-button')?'icon':'default';p.type='button';p['data-ui']='button'}
  else if(tag==='input'){Component=Input;p['data-ui']='input';p.defaultValue=p.value;delete p.value}
  else if(tag==='label'){Component=Label}
  else if(tag==='table')Component=Table
@@ -28,5 +29,5 @@ function renderNode(n:ShellNode,key:number):React.ReactNode{
  else if(tag==='span'&&cls==='demo-badge')Component=Badge
  return React.createElement(Component,p,...children.map((c,i)=>renderNode(c,i)))
 }
-function App(){useEffect(()=>{let disposed=false;const controller=document.createElement('script');controller.src='/dashboard/dashboard.js?v=shadcn-1';controller.onload=()=>{if(disposed)return;const auth=document.createElement('script');auth.src='/dashboard/auth.js?v=shadcn-1';document.body.append(auth)};document.body.append(controller);return()=>{disposed=true}},[]);return <>{(shell as ShellNode[]).map((n,i)=>renderNode(n,i))}</>}
+function App(){useEffect(()=>{let disposed=false;const controller=document.createElement('script');controller.src='/dashboard/dashboard.js?v=ui-audit-2';controller.onload=()=>{if(disposed)return;const auth=document.createElement('script');auth.src='/dashboard/auth.js?v=ui-audit-2';document.body.append(auth)};document.body.append(controller);return()=>{disposed=true}},[]);return <>{(shell as ShellNode[]).map((n,i)=>renderNode(n,i))}</>}
 createRoot(document.getElementById('root')!).render(<App/>);

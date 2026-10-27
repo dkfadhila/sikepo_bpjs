@@ -39,5 +39,25 @@ document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if
 $('#notification-button').addEventListener('click',()=>notify(`${scoped().filter(c=>c.status==='HOLD').length} klaim sintetis menunggu review pada periode ini.`));
 $('#menu-button').addEventListener('click',()=>{$('#sidebar').classList.toggle('open');$('#menu-button').setAttribute('aria-expanded',$('#sidebar').classList.contains('open'));});
 document.addEventListener('click',e=>{if(!e.target.closest('#sidebar, #menu-button')){$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){$('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');}if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){e.preventDefault();if(!['overview','claims','investigations'].includes(state.view))setView('claims');$('#search').focus();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNavigation();if(e.key==='/'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)&&!document.querySelector('dialog[open]')){e.preventDefault();if(!['overview','claims','investigations'].includes(state.view))setView('claims');$('#search').focus();}});
 renderMetrics();setView(location.hash.slice(1)||'overview');
+
+/* Mobile drawer controls and keyboard containment. */
+function closeNavigation(){
+ const wasOpen=$('#sidebar').classList.contains('open');
+ $('#sidebar').classList.remove('open');$('#menu-button').setAttribute('aria-expanded','false');
+ if(wasOpen)$('#menu-button').focus();
+}
+$('#close-sidebar')?.addEventListener('click',closeNavigation);
+document.addEventListener('keydown',event=>{
+ if(!$('#sidebar').classList.contains('open'))return;
+ if(event.key==='Escape'){closeNavigation();return;}
+ if(event.key!=='Tab')return;
+ const items=[...$('#sidebar').querySelectorAll('a[href],button:not([disabled])')].filter(el=>el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden');
+ const first=items[0],last=items.at(-1);
+ if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}
+ else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
+});
+$('#menu-button').addEventListener('click',()=>{if($('#sidebar').classList.contains('open'))$('#close-sidebar')?.focus();});
+
+$('.sidebar-scrim')?.addEventListener('click',closeNavigation);
