@@ -1,0 +1,17 @@
+{
+  "jobId": "6ae105223fb22a235dd32845",
+  "namespace": "konigiri",
+  "url": "https://huggingface.co/jobs/konigiri/6ae105223fb22a235dd32845",
+  "datasetRepo": "konigiri/sikepo-synthetic-2019-2025",
+  "modelRepo": "konigiri/sikepo-iforest-2019-2025",
+  "sourceRevision": "e792731b29faceae113688eded7bccf43587d878",
+  "rowsRequested": 5000000,
+  "dateMin": "2019-01-01",
+  "dateMax": "2025-12-31",
+  "hardware": "cpu-upgrade",
+  "timeoutSeconds": 3600,
+  "hardwareRateUSDPerHour": 0.03,
+  "computeCapUSD": 0.03,
+  "attempts": 1,
+  "note": "Compute ceiling based on CLI hardware quote; storage governed separately by account quota. No GPU requested."
+}

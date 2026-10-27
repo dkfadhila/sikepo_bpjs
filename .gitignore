@@ -11,6 +11,8 @@ coverage/
 artifacts/
 !ml/artifacts/
 !ml/artifacts/*.json
+__pycache__/
+*.pyc
 spartanai-recreation/reference.html
 spartanai-recreation/*preview*.png
 spartanai-recreation/audit-cards.png
