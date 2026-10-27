@@ -8,21 +8,36 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "test": "node --test tests/*.test.js"
+    "test": "node --test tests/*.test.js",
+    "build:login": "vite build --config frontend-login/vite.config.ts"
   },
   "dependencies": {
     "@ai-sdk/google": "^4.0.96",
     "@mastra/core": "^1.79.0",
+    "@radix-ui/react-label": "^2.1.17",
+    "@radix-ui/react-slot": "^1.5.0",
+    "@radix-ui/react-tabs": "^1.2.1",
     "@sentry/node": "^11.8.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "cookie-parser": "^1.4.7",
     "dotenv": "^18.0.8",
     "express": "^5.1.0",
     "express-rate-limit": "^8.1.0",
     "helmet": "^8.1.0",
+    "lucide-react": "^1.61.0",
     "mongodb": "^7.7.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.7.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "acorn": "^8.19.0"
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.2",
+    "acorn": "^8.19.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
   }
 }
