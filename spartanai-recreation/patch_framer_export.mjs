@@ -10,7 +10,7 @@ import { parse } from 'acorn';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist'),assets=path.join(dist,'assets');
 const names=fs.readdirSync(assets),find=prefix=>names.find(name=>name.startsWith(prefix)&&name.endsWith('.mjs'));
 const main=find('script_main.'),page=find('iHx0Y'),faq=find('jOQBH'),button=find('AuyE7'),card=find('d3MrXgarR');
-const version='sikepo-source-sync-13';
+const version='sikepo-source-sync-14';
 const copy=JSON.parse(fs.readFileSync(path.join(root,'sikepo-copy.json'),'utf8'));
 Object.assign(copy,{
   'SIKEPO · Audit klaim lebih terarah':'SIKEPO',

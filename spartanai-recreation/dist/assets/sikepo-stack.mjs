@@ -1,6 +1,6 @@
 /* Authored React/Motion view; imports resolved by patch_framer_export.mjs. */
-import{o as jsx,_ as useState,b as useRef,y as useEffect}from"./react.ChbYa_hz-588697fcd799.mjs?v=sikepo-source-sync-13";
-import{t as initMotion,k as motion}from"./motion.BJNzOgT--7bad8bc7db93.mjs?v=sikepo-source-sync-13";
+import{o as jsx,_ as useState,b as useRef,y as useEffect}from"./react.ChbYa_hz-588697fcd799.mjs?v=sikepo-source-sync-14";
+import{t as initMotion,k as motion}from"./motion.BJNzOgT--7bad8bc7db93.mjs?v=sikepo-source-sync-14";
 initMotion();
 export const stackItems=[
   {"id":"render","name":"Render","group":"Infrastruktur & operasional","role":"Tempat aplikasi berjalan.","description":"Render menjalankan server Node.js SiKePO, menyajikan landing page, serta melayani API dan dashboard. Versi terbaru diterbitkan dari kode yang sudah masuk ke GitHub.","detail":"Perubahan aplikasi diuji sebelum dipublikasikan. Render menangani proses build dan menjalankan layanan backend.","url":"https://render.com/"},
@@ -16,7 +16,7 @@ export const stackItems=[
   {"id":"bpjs","name":"BPJS Kesehatan","group":"Data & antarmuka","role":"Konteks layanan dan pemeriksaan klaim JKN.","description":"SiKePO dirancang untuk konteks penelaahan kelayakan klaim BPJS/JKN, termasuk diagnosis, biaya pengajuan, durasi rawat, obat, dan acuan tarif INA CBG.","detail":"BPJS Kesehatan ditampilkan sebagai konteks domain layanan. SiKePO adalah prototipe; pencantuman logo tidak menyatakan kemitraan, dukungan, atau koneksi resmi ke sistem BPJS Kesehatan.","url":"https://www.bpjs-kesehatan.go.id/"}
 ]
 ;
-const icon=(item,full=false)=>jsx('img',{src:`/assets/stack/${item.id==='bpjs'&&!full?'bpjs-symbol':item.id}-white.png?v=sikepo-source-sync-13`,alt:item.name,width:full&&item.id==='bpjs'?188:48,height:48,loading:'lazy',decoding:'async'});
+const icon=(item,full=false)=>jsx('img',{src:`/assets/stack/${item.id==='bpjs'&&!full?'bpjs-symbol':item.id}-white.png?v=sikepo-source-sync-14`,alt:item.name,width:full&&item.id==='bpjs'?188:48,height:48,loading:'lazy',decoding:'async'});
 export function stackTickerItems(){return stackItems.map(item=>jsx('a',{href:'#teknologi',className:'sikepo-stack-ticker-logo',style:{width:item.id==='bpjs'?240:Math.max(170,item.name.length*15+86),height:54,flexShrink:0},'aria-label':item.name,title:item.name,children:[icon(item,true),item.id!=='bpjs'?jsx('span',{children:item.name}):null]},item.id));}
 export function SikepoStack(){
  const [active,setActive]=useState(null),dialog=useRef(null),opener=useRef(null);

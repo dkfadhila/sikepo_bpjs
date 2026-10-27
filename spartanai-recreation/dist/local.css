@@ -366,3 +366,9 @@ body{min-width:0!important}
 }
 /* Framer ticker items must have measurable layout dimensions on first render. */
 .framer-15vldg4 .sikepo-stack-ticker-logo{min-width:0;box-sizing:border-box}
+
+.sikepo-back-top{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:50;display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid #ffffff70;border-radius:50%;background:#206b4a;color:#fff;box-shadow:0 4px 18px #071b1433;cursor:pointer;transition:background .2s,transform .2s}
+.sikepo-back-top:hover{background:#19583d;transform:translateY(-2px)}
+.sikepo-back-top:focus-visible{outline:2px solid #fff;outline-offset:3px}
+@media(max-width:600px){.sikepo-back-top{right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.sikepo-back-top{transition:none}}
