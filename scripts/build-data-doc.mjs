@@ -6,7 +6,8 @@ const inline = text => text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/
 let table=false, list='', html='';
 function closeTable(){if(table){html+='</tbody></table></div>';table=false;}}
 function closeList(){if(list){html+=`</${list}>`;list='';}}
-for(const line of readFileSync('docs/DATA-SUBMISSION.md','utf8').split('\n')){
+for(const rawLine of readFileSync('docs/DATA-SUBMISSION.md','utf8').split('\n')){
+  const line = rawLine.trimEnd();
   if(line.startsWith('|')){
     closeList();
     const cells=line.replace(/^\||\|$/g,'').split('|');
