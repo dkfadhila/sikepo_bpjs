@@ -6,11 +6,11 @@ import path from 'node:path';
 import { z } from 'zod';
 import { newToken, sessionHash, verifyPassword, publicUser, allowedOrigin } from './security.js';
 import { claimSchema } from './agent.js';
-import { assessedClaims, dataInfo } from './claims.js';
+import { dataInfo } from './claims.js';
 
 const publicRoot = path.resolve('spartanai-recreation/dist');
 const loginSchema = z.object({ email: z.string().email().max(120), password: z.string().min(1).max(128) }).strict();
-export function createApp({ db, investigate, config, captureException = () => {} }) {
+export function createApp({ db, investigate, claimStore, config, captureException = () => {} }) {
   const app = express(), production = config.production;
   const origins = [config.appOrigin, config.dashboardOrigin];
   const cookie = { httpOnly: true, secure: production, sameSite: 'lax', path: '/', ...(production ? { domain: '.sikepo.tech' } : {}) };
@@ -53,21 +53,42 @@ export function createApp({ db, investigate, config, captureException = () => {}
     res.json({ user: publicUser(user), redirect: production ? config.dashboardOrigin + '/dashboard/' : '/dashboard/' });
   });
   app.get('/api/auth/me', auth, (req,res) => res.json({ user: publicUser(req.auth.user), csrf: req.auth.csrf }));
-  app.get('/api/claims', auth, (_req,res) => res.json({ metadata: dataInfo, claims: assessedClaims }));
+  const storeRequired=(_req,res,next)=>claimStore?next():res.status(503).json({error:'Penyimpanan klaim belum tersedia.'});
+  app.get('/api/claims',auth,storeRequired,async(req,res)=>res.json(await claimStore.list(req.query)));
+  app.get('/api/claims/summary',auth,storeRequired,async(req,res)=>res.json(await claimStore.summary(req.query.period)));
+  app.get('/api/claims/export',auth,storeRequired,async(req,res)=>{
+    res.type('text/csv').attachment('sikepo-claims.csv');
+    const cell=v=>'"'+String(v).replace(/"/g,'""')+'"';
+    res.write('\uFEFFID,Tanggal,Fasilitas,Diagnosis,Pengajuan,Tarif,Skor aturan,Skor gabungan,Anomali ML,Status,Jenis data\r\n');
+    for await(const c of claimStore.export(req.query)){
+      const row=[c.id,c.date,c.facility,c.icd,c.amount,c.tariff,c.ruleScore,c.score,c.ml.isAnomaly,c.status,'SINTETIS'];
+      if(!res.write(row.map(cell).join(',')+'\r\n'))await new Promise(resolve=>res.once('drain',resolve));
+      if(res.destroyed)break;
+    }res.end();
+  });
+  app.get('/api/claims/:id',auth,storeRequired,async(req,res)=>{const claim=await claimStore.get(req.params.id);if(!claim)return res.status(404).json({error:'Klaim tidak ditemukan.'});res.json(claim);});
+  app.post('/api/claims/:id/review',auth,storeRequired,async(req,res)=>{
+    if(req.get('x-csrf-token')!==req.auth.csrf)return res.status(403).json({error:'Sesi tidak valid.'});
+    if(!['SA','VK'].includes(req.auth.user.role))return res.status(403).json({error:'Keputusan memerlukan peran verifikator atau super admin.'});
+    const parsed=z.object({status:z.enum(['APPROVED','HOLD','REJECTED']),note:z.string().trim().min(10).max(1000),version:z.number().int().nonnegative()}).strict().safeParse(req.body);
+    if(!parsed.success)return res.status(400).json({error:'Isi status dan catatan pemeriksaan minimal 10 karakter.'});
+    const claim=await claimStore.review(req.params.id,parsed.data,{email:req.auth.user.email,role:req.auth.user.role});
+    if(!claim)return res.status(409).json({error:'Klaim berubah atau tidak ditemukan. Buka ulang detail sebelum menyimpan.'});res.json(claim);
+  });
   app.post('/api/auth/logout', auth, async (req,res) => {
     if (req.get('x-csrf-token') !== req.auth.csrf) return res.status(403).json({ error: 'Sesi tidak valid.' });
     await db.collection('sessions').deleteOne({ tokenHash: req.auth.tokenHash });
     res.clearCookie('sikepo_session', cookie); res.json({ redirect: config.appOrigin + '/login' });
   });
-  app.post('/api/investigate', auth, async (req,res) => {
+  app.post('/api/investigate', auth, storeRequired, async (req,res) => {
     if (req.get('x-csrf-token') !== req.auth.csrf) return res.status(403).json({ error: 'Sesi tidak valid.' });
     if (!['SA','VK','ST'].includes(req.auth.user.role)) return res.status(403).json({ error: 'Akun auditor memiliki akses baca.' });
     const request = z.object({ id: z.string().max(32) }).strict().safeParse(req.body);
     if (!request.success) return res.status(400).json({ error: 'Pilih klaim dari dataset workspace.' });
-    const claim = assessedClaims.find(c => c.id === request.data.id);
+    const claim = await claimStore.get(request.data.id);
     if (!claim) return res.status(404).json({ error: 'Klaim tidak ditemukan.' });
     const { id, amount, tariff, los, normalLos, score } = claim;
-    const parsed = claimSchema.safeParse({ id, amount, tariff, los, normalLos, score, signals: claim.signals.map(s => s.code) });
+    const parsed = claimSchema.safeParse({ id, amount, tariff, los, normalLos, score, signals: claim.signals.map(s => s.code), mlAnomaly:claim.ml.isAnomaly, recommendation:claim.recommendation });
     if (!parsed.success) return res.status(500).json({ error: 'Dataset belum dapat diproses.' });
     if (!config.googleKey) return res.status(503).json({ error: 'Integrasi Gemma belum dikonfigurasi.' });
     // Global demo budget persists across restarts and is updated atomically.
@@ -75,7 +96,7 @@ export function createApp({ db, investigate, config, captureException = () => {}
     await budget.updateOne({ _id: day }, { $setOnInsert: { count: 0, expiresAt: new Date(Date.now()+3*86400000) } }, { upsert: true });
     const usage = await budget.findOneAndUpdate({ _id: day, count: { $lt: config.aiDailyLimit } }, { $inc: { count: 1 } }, { returnDocument: 'after' });
     if (!usage) return res.status(429).json({ error: 'Kuota Gemma hari ini sudah terpakai.' });
-    res.json(await investigate(parsed.data));
+    res.json({ ...await investigate(parsed.data), recommendation:claim.recommendation, requiresHumanDecision:true });
   });
   app.get(['/login','/login/'], (_req,res) => res.sendFile(path.join(publicRoot,'login/index.html')));
   app.use('/login', express.static(path.join(publicRoot, 'login'), { index: false, dotfiles: 'deny' }));

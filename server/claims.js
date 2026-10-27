@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { predict, model } from './ml.js';
 
 // These thresholds are application heuristics, not BPJS adjudication rules.
 export function assessClaim(c) {
@@ -10,10 +11,12 @@ export function assessClaim(c) {
   if (c.serviceCount !== c.documentedServiceCount) signals.push({ code: 'SERVICE_MISMATCH', weight: 35, text: 'Jumlah layanan ditagihkan berbeda dari catatan pendukung.' });
   if (c.invoiceTotal !== c.amount) signals.push({ code: 'BILLING_MISMATCH', weight: 25, text: 'Total rincian tagihan berbeda dari nilai pengajuan.' });
   if (c.duplicateCount > 1) signals.push({ code: 'DUPLICATE', weight: 45, text: 'Ada lebih dari satu pengajuan untuk episode yang sama.' });
-  const score = Math.min(99, signals.reduce((n, s) => n + s.weight, 0));
-  return { ...c, score, signals, status: signals.length ? 'HOLD' : 'PENDING', assessmentVersion: 'rules-1.0' };
+  const ruleScore = Math.min(99, signals.reduce((n, s) => n + s.weight, 0));
+  const ml = predict(c);
+  const score = Math.round(Math.max(ruleScore, .45*ruleScore+.55*ml.priority));
+  return { ...c, ruleScore, score, ml, signals, status: signals.length || ml.isAnomaly ? 'HOLD' : 'PENDING', recommendation: signals.length || ml.isAnomaly ? 'REQUEST_EVIDENCE' : 'READY_FOR_VERIFIER', assessmentVersion: 'rules-ml-2.0' };
 }
 
 export const dataset = JSON.parse(readFileSync(new URL('../data/synthetic/claims.json', import.meta.url), 'utf8'));
 export const assessedClaims = dataset.claims.map(assessClaim);
-export const dataInfo = { ...dataset.metadata, assessmentVersion: 'rules-1.0', method: 'Indikator berbasis aturan; belum merupakan model ML tervalidasi.', documentation: '/data-methodology.html' };
+export const dataInfo = { ...dataset.metadata, assessmentVersion: 'rules-ml-2.0', method: 'Aturan dan Isolation Forest; dievaluasi pada data sintetis, belum validasi operasional BPJS.', model: model.report, documentation: '/data-methodology.html' };

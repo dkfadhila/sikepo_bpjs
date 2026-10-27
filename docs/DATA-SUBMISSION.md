@@ -1,6 +1,6 @@
 # SiKePO — kebutuhan data dan metodologi dataset submission
 
-Versi dataset: `sikepo-synthetic-1.0`. Sumber: **sepenuhnya sintetis**. Dataset ini bukan data BPJS yang dimasking atau dianonimkan, bukan data peserta JKN, dan bukan hasil pelatihan terhadap rekam medis. Aplikasi dapat diakses dan menjalankan autentikasi, pemuatan data API, penghitungan indikator, pencarian, filter, ekspor, serta penjelasan Gemma apabila layanan tersedia. Ketersediaan aplikasi berbeda dari validasi untuk penggunaan operasional BPJS.
+Versi dataset: `sikepo-synthetic-2.0`. Sumber: **sepenuhnya sintetis**. Dataset ini bukan data BPJS yang dimasking atau dianonimkan, bukan data peserta JKN, dan bukan hasil pelatihan terhadap rekam medis. Aplikasi dapat diakses dan menjalankan autentikasi, pemuatan data API, penghitungan indikator, pencarian, filter, ekspor, serta penjelasan Gemma apabila layanan tersedia. Ketersediaan aplikasi berbeda dari validasi untuk penggunaan operasional BPJS.
 
 ## 1. Data yang dibutuhkan
 
@@ -18,36 +18,41 @@ Versi dataset: `sikepo-synthetic-1.0`. Sumber: **sepenuhnya sintetis**. Dataset 
 
 Untuk integrasi operasional selanjutnya diperlukan rincian item layanan (kode, kuantitas, harga satuan, waktu pelayanan), tindakan ICD-9-CM, kelompok INA-CBG dan severity, kelas perawatan, tarif resmi beserta versi/tanggal berlakunya, bukti pelayanan terstruktur, ketentuan restriksi obat yang berlaku, dan hasil review berotorisasi. Resume medis/free text, tanggal lahir, alamat, dan identitas peserta **tidak dikumpulkan** oleh submission ini. Untuk model ML yang tervalidasi diperlukan data pembanding yang diperoleh secara sah, definisi label yang disepakati, serta hasil adjudikasi manusia; label skenario sintetis bukan pengganti ground truth fraud.
 
-## 2. Cara memperoleh data tanpa meminta data peserta
+## 2. Pembuatan dan penyimpanan dataset
 
-1. Tim menulis rentang nilai dan enam skenario berdasarkan kebutuhan pengujian alur aplikasi, bukan dari observasi pasien atau salinan dokumen BPJS.
-2. Generator Node.js `scripts/generate-synthetic.mjs` memakai LCG 32-bit dengan seed tetap `2702026`: `state = (1664525 × state + 1013904223) mod 2^32`. Tidak ada unduhan dataset, API BPJS, atau input peserta.
-3. Dibuat 240 pengajuan: masing-masing 40 skenario baseline, rasio biaya dan lama rawat, bukti obat, ketidaksesuaian layanan, selisih tagihan, dan duplikasi. Distribusi ini sengaja seimbang untuk cakupan pengujian, **bukan estimasi prevalensi fraud**.
-4. Delapan diagnosis contoh dipilih dari daftar kode yang ditulis di generator. Tarif Rp2,95–9,8 juta dan acuan rawat 3–7 hari adalah parameter buatan, **bukan tarif resmi INA-CBG atau standar klinis**.
-5. Seluruh ID memakai awalan `SYN-`; enam fasilitas bernama `Fasilitas Sintetis 01–06`. Tidak ada pengenal peserta. Episode duplikat dibuat dengan menghubungkan dua pengajuan sintetis pada fasilitas yang sama.
-6. Tanggal diambil dari periode tetap 27 September–26 Oktober 2026. Filter 7/30 hari relatif terhadap tanggal acuan dataset, bukan tanggal akses aplikasi. Dengan demikian data tidak menghilang ketika tanggal submission bergeser.
-7. Hasil disimpan sebagai JSON dan CSV; manifest berisi seed, versi, jumlah, daftar field dan SHA-256 JSON. Label penyisipan terpisah. Regenerasi: `npm run data:generate`. Pemeriksaan: `npm test`.
+Generator `scripts/generate-synthetic.mjs` menghasilkan 10.000 pengajuan sepenuhnya sintetis. Seed LCG 32-bit tetap `2702026`; tidak ada data peserta, API BPJS, atau distribusi rekam medis yang dipelajari. Komposisi sengaja dibuat untuk eksperimen: 7.000 baseline dan masing-masing 600 skenario biaya/lama rawat, bukti obat, ketidaksesuaian layanan, selisih tagihan, dan duplikasi. Komposisi ini bukan estimasi prevalensi fraud.
 
-Artefak: `data/synthetic/claims.json`, `claims.csv`, `manifest.json`, `scenario-labels.json`. File mentah tersebut disimpan di repositori, tidak dalam direktori aset publik. Dashboard mengakses data melalui `/api/claims` setelah autentikasi.
+Seluruh ID memakai awalan `SYN-`. Enam fasilitas fiktif dan delapan diagnosis contoh dipakai sebagai konteks. Tarif Rp2,95–9,8 juta serta acuan rawat 3–7 hari adalah nilai buatan, bukan tarif resmi atau standar klinis BPJS. Periode tetap 27 September–26 Oktober 2026; filter 7/30 hari relatif pada tanggal acuan dataset.
 
-## 3. Penghitungan yang benar-benar dijalankan
+Data aktif benar-benar diimpor ke koleksi `claims` di MongoDB. Metadata berada di `datasets`, laporan model di `models`. Snapshot JSON/CSV, manifest, label skenario, model, laporan evaluasi dan pembagian episode disimpan sebagai tujuh arsip gzip di GridFS privat (`artifacts.files` dan `artifacts.chunks`), dengan checksum SHA-256. Artefak tidak diletakkan dalam direktori aset publik. Impor memakai upsert per versi dataset dan ID; mengulang impor tidak menggandakan klaim atau menghapus keputusan reviewer.
 
-Server menghitung enam indikator pada setiap pengajuan:
+Dashboard membaca halaman klaim, pencarian, filter, urutan dan ringkasan melalui API MongoDB. Ekspor menggunakan cursor database. Data tidak diunduh 10.000 baris sekaligus ke browser. Tidak ada fallback diam-diam ke JSON apabila database gagal.
 
-| Kondisi | Bobot |
-| --- | ---: |
-| Pengajuan > 1,3 × tarif acuan skenario | 30 |
-| Lama rawat > acuan + 2 hari | 20 |
-| Obat restriksi tanpa bukti | 25 |
-| Jumlah layanan ditagih ≠ didokumentasikan | 35 |
-| Total rincian tagihan ≠ pengajuan | 25 |
-| Lebih dari satu pengajuan pada episode | 45 |
+Perintah reproduksi: `npm run data:generate`, `npm run ml:train`, `npm run data:import`. Konfigurasi koneksi berada pada environment privat; jangan menaruh credential di repositori.
 
-Skor = jumlah bobot, dibatasi 99. Skor ini indeks prioritas **bukan probabilitas fraud**. Risiko rendah <35, sedang 35–69, tinggi ≥70; batas ini heuristik aplikasi, bukan ketentuan BPJS. Sinyal menghasilkan status `HOLD` (perlu review); lainnya `PENDING` (menunggu review). Tidak ada penolakan atau persetujuan otomatis. Panel tidak menyimpan keputusan adjudikasi pengguna.
+## 3. Pipeline aturan, machine learning dan rekomendasi
 
-Penjelasan AI menggunakan workflow Mastra → Google Gemma → validasi JSON. Browser hanya mengirim ID klaim. Server memilih data sintetis yang sudah diketahui dan mengirim hanya ID sintetis, nilai pengajuan, tarif skenario, durasi, acuan durasi, skor, dan kode indikator. Input bebas, dokumen medis, nama, email akun, dan identitas peserta tidak dikirim ke Gemma melalui endpoint ini. AI tidak menjadi bukti fraud. Kegagalan model ditampilkan sebagai kegagalan, tanpa jawaban palsu pengganti.
+### A1 — aturan aplikasi
 
-Model ML/IsolationForest khusus **belum dilatih atau tervalidasi**; tidak ada klaim akurasi, sensitivitas, spesifisitas, atau keberhasilan mendeteksi fraud operasional. Pengujian aturan pada skenario yang dibuat dengan kondisi serupa hanya memeriksa implementasi, bukan membuktikan generalisasi klinis.
+Server memeriksa rasio biaya >1,3 kali acuan (bobot 30), durasi >acuan+2 hari (20), obat restriksi tanpa bukti (25), jumlah layanan tidak cocok (35), total tagihan tidak cocok (25), dan pengajuan berulang pada episode yang sama (45). Jumlah bobot dibatasi 99. Ini heuristik aplikasi, bukan peraturan adjudikasi BPJS.
+
+### A2 — model yang benar-benar dilatih
+
+Isolation Forest scikit-learn memakai 120 pohon, maksimum 256 sampel per pohon, random seed `2702026`. Fitur: rasio biaya, rasio lama rawat, indikator bukti obat hilang, rasio selisih jumlah layanan, rasio selisih tagihan, jumlah pengajuan episode, dan log tarif. Nama, kode diagnosis, ID, label skenario, skor aturan, dan status keputusan tidak menjadi fitur model.
+
+Pembagian berdasarkan hash ID episode memastikan episode yang sama tidak masuk set berbeda: train 6.972, validasi 1.524, test 1.504. Model fit secara unsupervised pada seluruh baris train. Ambang anomali memakai persentil ke-95 skor baseline di validasi, bukan test. Label penyisipan hanya untuk kalibrasi/evaluasi. Percobaan pengembangan sebelumnya menunjukkan fit pada baseline saja tidak mempelajari variasi indikator yang selalu nol; konfigurasi akhir menggunakan seluruh train. Hasil berikut merupakan evaluasi pengembangan sintetis, bukan benchmark klinis independen.
+
+Hasil test sintetis: precision 87,5%, recall 100%, F1 93,33%, ROC-AUC 0,9999; TN 984, FP 65, FN 0, TP 455. Skenario buatan cukup mudah dibedakan, sehingga hasil ini tidak dapat digeneralisasi ke fraud nyata. Kesalahan positif tetap ada. Laporan rinci beserta versi library dan checksum tersedia pada `ml/artifacts/evaluation.json`.
+
+Model diekspor sebagai pohon JSON. Inferensi Node di server diuji terhadap skor scikit-learn pada 104 contoh terpisah dari perhitungan Node dengan toleransi 1e-12. Tidak perlu memasang Python atau melatih ulang setiap Render restart. Untuk data baru, hitung ulang fitur lalu jalankan versi model yang tercatat; melatih ulang memerlukan versi dataset/model dan evaluasi baru.
+
+Skor ML tampilan = clamp(50 + 250 × (skor anomali mentah − ambang), 0, 99). Prioritas gabungan = maksimum antara skor aturan dan (45% skor aturan + 55% prioritas ML), dibulatkan. Ini indeks prioritas, bukan probabilitas fraud. Status awal `HOLD` bila aturan terpicu atau model mendeteksi anomali; lainnya `PENDING`.
+
+### A3 — Gemma melalui Mastra, lalu keputusan manusia
+
+Gemma yang sudah tersedia dikonfigurasi sebagai asisten pra-approval, bukan LLM baru yang dilatih dari nol. Browser mengirim ID; server mengambil klaim dari MongoDB dan mengirim angka sintetis terpilih, kode indikator, flag anomali dan rekomendasi. Workflow Mastra menghasilkan penjelasan dan daftar bukti dalam JSON tervalidasi. Server menetapkan rekomendasi `REQUEST_EVIDENCE` atau `READY_FOR_VERIFIER`; keluaran LLM tidak dapat menggantinya atau mengubah status klaim.
+
+Verifikator/super admin dapat menyimpan `APPROVED`, `HOLD` atau `REJECTED` dengan catatan minimal 10 karakter. Hak akses dan CSRF diperiksa server. Review menggunakan versi optimistis agar perubahan bersamaan tidak saling menimpa. Status, aktor, waktu, alasan, dan status sebelumnya disimpan dalam satu update atomik dengan riwayat review pada dokumen klaim. Auditor dan satgas tidak dapat memutuskan status. Tidak ada pembayaran otomatis.
 
 ## 4. Pelindungan data dan batas penggunaan
 
@@ -57,9 +62,9 @@ Tidak ada proses masking dalam pembuatan dataset ini karena tidak ada data asli 
 
 Sentry dikonfigurasi tanpa PII default; body, cookie, query, header, dan user dihapus dari event error. Dataset kesehatan asli tidak ditambahkan ke log. Akun evaluasi bersama digunakan untuk reviewer submission; akun tersebut bukan kontrol akses yang memadai untuk data kesehatan operasional.
 
-## 5. Narasi singkat untuk submission
+## 5. Narasi submission
 
-“SiKePO merupakan aplikasi web yang dapat diakses dengan autentikasi berbasis peran. Untuk evaluasi submission, SiKePO menggunakan 240 pengajuan sepenuhnya sintetis, dibuat secara deterministik dengan seed tetap dan enam skenario pemeriksaan. Tidak ada data peserta JKN, ekstraksi BPJS, atau rekam medis asli yang digunakan. Parameter biaya dan lama rawat merupakan nilai skenario, bukan tarif atau pedoman klinis resmi. Server menghitung indikator berbasis aturan dan menyajikan prioritas review; Mastra dan Gemma membantu menjelaskan indikator. Temuan tetap memerlukan verifikasi manusia dan tidak menghasilkan keputusan fraud atau pembayaran otomatis.”
+“SiKePO adalah aplikasi investigasi klaim yang dapat diakses dengan autentikasi berbasis peran. Submission menggunakan 10.000 klaim sepenuhnya sintetis di MongoDB, dengan arsip dan artefak model pada GridFS privat. Aturan aplikasi dan Isolation Forest terlatih menyusun prioritas pemeriksaan. Mastra dan Gemma menjelaskan rekomendasi serta kebutuhan bukti; verifikator tetap menyimpan keputusan akhir beserta riwayatnya. Tidak ada data peserta JKN atau rekam medis asli yang digunakan. Nilai biaya dan durasi merupakan skenario; performa model yang dilaporkan hanya hasil evaluasi sintetis, bukan validasi klinis atau BPJS.”
 
 ## Rujukan
 

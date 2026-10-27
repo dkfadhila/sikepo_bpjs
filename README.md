@@ -27,8 +27,12 @@ Semua memakai kata sandi publik `SikepoDemo!2026` untuk reviewer submission. Kat
 
 ## Status mesin AI
 
-Dashboard memuat 240 klaim sepenuhnya sintetis melalui API terautentikasi. Indikator dan prioritas dihitung di server; status memerlukan review manusia. Model ML belum tervalidasi. Lihat [kebutuhan data dan metodologi submission](docs/DATA-SUBMISSION.md). Regenerasi dataset dengan `npm run data:generate`.
+Dashboard membaca 10.000 klaim sintetis dari MongoDB dengan pagination dan filter server. Dataset/model diarsipkan dalam GridFS privat. Isolation Forest dilatih offline; Gemma menjelaskan rekomendasi. Verifikator menyimpan keputusan dengan riwayat dan kontrol versi. Evaluasi model hanya pada data sintetis; lihat [metodologi](docs/DATA-SUBMISSION.md).
 
 Sentry mencatat error server dan sebagian trace jika DSN terpasang. Request body, cookie, query, dan headers dihapus dari error yang dikirim. Jangan gunakan data pasien asli pada workspace ini.
 
 `npm test` memeriksa autentikasi, origin, isolasi dashboard, peran auditor, rotasi sesi, CSRF, dan logout.
+
+## Dataset dan pelatihan
+
+`npm run data:generate` → `npm run ml:train` → `npm run data:import`. Training memerlukan Python dan `pip install -r ml/requirements.txt`; runtime Render tetap Node. Jangan melatih di startup. Dataset dan model memiliki versi/checksum; ulang impor tidak menghapus review.
