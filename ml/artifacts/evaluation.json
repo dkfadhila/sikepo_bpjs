@@ -1,0 +1,48 @@
+{
+  "modelVersion": "iforest-synthetic-2.0",
+  "algorithm": "IsolationForest",
+  "features": [
+    "cost_ratio",
+    "los_ratio",
+    "missing_drug_evidence",
+    "service_gap_ratio",
+    "invoice_gap_ratio",
+    "duplicate_count",
+    "log_tariff"
+  ],
+  "seed": 2702026,
+  "datasetVersion": "sikepo-synthetic-2.0",
+  "datasetSha256": "631e651e10f5961b345bb67e801f60e966e970584eb19b9f320d622a24dd588c",
+  "python": "3.12.10",
+  "sklearn": "1.9.0",
+  "splitCounts": {
+    "train": 6972,
+    "validation": 1524,
+    "test": 1504
+  },
+  "fitRows": 6972,
+  "fitMethod": "Unsupervised fit on all training rows; injected labels excluded from features and fit",
+  "splitMethod": "SHA256 of episodeId with fixed seed, 70/15/15; no episode crosses splits",
+  "thresholdMethod": "95th percentile of validation baseline anomaly scores only",
+  "threshold": 0.43930978039957813,
+  "test": {
+    "rows": 1504,
+    "precision": 0.875,
+    "recall": 1.0,
+    "f1": 0.9333333333333333,
+    "rocAuc": 0.9999161943871191,
+    "averagePrecision": 0.9998102807244522,
+    "confusionMatrixTN_FP_FN_TP": [
+      984,
+      65,
+      0,
+      455
+    ]
+  },
+  "limitations": [
+    "Synthetic-only evaluation, not clinical or BPJS validation",
+    "Injected scenario labels are not confirmed fraud",
+    "No automatic approval, rejection, or payment",
+    "No patient age or identity used as features"
+  ]
+}

@@ -9,6 +9,8 @@ node_modules/
 *.log
 coverage/
 artifacts/
+!ml/artifacts/
+!ml/artifacts/*.json
 spartanai-recreation/reference.html
 spartanai-recreation/*preview*.png
 spartanai-recreation/audit-cards.png
