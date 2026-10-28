@@ -1,6 +1,6 @@
 /* Authored React/Motion view; imports resolved by patch_framer_export.mjs. */
-import{o as jsx,_ as useState,b as useRef,y as useEffect}from"./react.ChbYa_hz-588697fcd799.mjs?v=sikepo-source-sync-20";
-import{t as initMotion,k as motion}from"./motion.BJNzOgT--7bad8bc7db93.mjs?v=sikepo-source-sync-20";
+import{o as jsx,_ as useState,b as useRef,y as useEffect}from"./react.ChbYa_hz-588697fcd799.mjs?v=sikepo-source-sync-21";
+import{t as initMotion,k as motion}from"./motion.BJNzOgT--7bad8bc7db93.mjs?v=sikepo-source-sync-21";
 initMotion();
 export const stackItems=[
   {
@@ -55,7 +55,7 @@ export const stackItems=[
     "role": "Tempat pelatihan dan penyimpanan artefak model.",
     "description": "Hugging Face menyimpan dataset sintetis SiKePO dan artefak model untuk pelatihan dan evaluasi.",
     "detail": "Dataset 5 juta klaim sintetis 2019–2025 tersedia terbuka, beserta dokumentasi metode dan keterbatasannya.",
-    "url": "https://huggingface.co/datasets/konigiri/sikepo-synthetic-2019-2025"
+    "url": "https://huggingface.co/datasets/dktirta/sikepo-synthetic-2019-2025"
   },
   {
     "id": "nalar",
@@ -64,7 +64,7 @@ export const stackItems=[
     "role": "Model penjelasan klaim khusus SiKePO.",
     "description": "NALAR merupakan model bahasa khusus SiKePO yang disesuaikan untuk penelaahan klaim, penjelasan indikator risiko, dan penyusunan kebutuhan bukti pendukung.",
     "detail": "Model bahasa 4 miliar parameter ini dikembangkan melalui fine-tuning LoRA menggunakan 8.000 pasangan instruksi dan respons sintetis. NALAR dirancang untuk mengolah konteks klaim serta temuan pemeriksaan menjadi penjelasan terstruktur bagi penelaah. Keputusan akhir tetap berada pada pengguna yang berwenang.",
-    "url": "https://huggingface.co/konigiri/sikepo-explainer-lora-experiment-v4"
+    "url": "https://huggingface.co/dktirta/sikepo-explainer-lora-experiment-v4"
   },
   {
     "id": "nodejs",
@@ -113,7 +113,7 @@ export const stackItems=[
   }
 ]
 ;
-const icon=(item,full=false)=>jsx('img',{src:`/assets/stack/${item.id==='bpjs'&&!full?'bpjs-symbol':item.id}-white.png?v=sikepo-source-sync-20`,alt:item.name,width:full&&item.id==='bpjs'?188:48,height:48,loading:'lazy',decoding:'async'});
+const icon=(item,full=false)=>jsx('img',{src:`/assets/stack/${item.id==='bpjs'&&!full?'bpjs-symbol':item.id}-white.png?v=sikepo-source-sync-21`,alt:item.name,width:full&&item.id==='bpjs'?188:48,height:48,loading:'lazy',decoding:'async'});
 export function stackTickerItems(){return stackItems.map(item=>jsx('a',{href:'#teknologi',className:'sikepo-stack-ticker-logo',style:{width:item.id==='bpjs'?240:Math.max(170,item.name.length*15+86),height:54,flexShrink:0},'aria-label':item.name,title:item.name,children:[icon(item,true),item.id!=='bpjs'?jsx('span',{children:item.name}):null]},item.id));}
 export function SikepoStack(){
  const [active,setActive]=useState(null),dialog=useRef(null),opener=useRef(null);

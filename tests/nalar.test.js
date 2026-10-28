@@ -10,7 +10,7 @@ test('NALAR validates evidence and pinned model provenance',()=>{
 test('NALAR sends only trained indicators and closes its authenticated client',async()=>{
   let closed=false;
   const investigate=createNalarInvestigator('test-token',{connect:async(space,options)=>{
-    assert.equal(space,'konigiri/sikepo-nalar');assert.equal(options.token,'test-token');
+    assert.equal(space,'dktirta/sikepo-nalar');assert.equal(options.token,'test-token');
     return {predict:async(endpoint,{payload})=>{assert.equal(endpoint,'/explain');assert.deepEqual(JSON.parse(payload),{signals:claim.signals,mlAnomaly:true,score:72});return {data:[answer]};},close(){closed=true;}};
   }});
   const result=await investigate(claim);assert.equal(result.model,'NALAR-4B');assert.ok(result.runId);assert.equal(closed,true);

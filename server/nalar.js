@@ -22,7 +22,7 @@ export function createNalarInvestigator(token, {connect=(...args)=>Client.connec
     if (!token) throw Object.assign(new Error('NALAR belum dikonfigurasi.'),{status:503});
     let client, timer, expired=false;
     const task = (async()=>{
-      client = await connect('konigiri/sikepo-nalar',{token:token});
+      client = await connect('dktirta/sikepo-nalar',{token:token});
       if(expired) {client.close(); throw new Error('NALAR timed out');}
       // Only trained indicators leave the server; no IDs or claim documents.
       const payload = JSON.stringify({signals:claim.signals,mlAnomaly:claim.mlAnomaly,score:claim.score});

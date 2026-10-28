@@ -7,7 +7,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 
-REPO = 'konigiri/sikepo-explainer-lora-experiment-v4'
+REPO = 'dktirta/sikepo-explainer-lora-experiment-v4'
 REVISION = 'f93d42c68503f6b9f8d18dd2d018cb5bff91edd8'
 BASE = 'Qwen/Qwen3-4B-Instruct-2507'
 SYSTEM = 'Jelaskan sinyal klaim sintetis untuk verifikator. Jangan menyatakan fraud atau memutus pembayaran. Jawab JSON berisi summary dan checks.'
