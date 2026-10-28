@@ -394,3 +394,8 @@ body{min-width:0!important}
 .sk-training-nalar-note small{font-size:12px;line-height:1.5;color:#526b5c}
 @media(max-width:1199px){.sk-summary-training{grid-column:auto;min-height:320px}}
 @media(max-width:600px){.sk-summary-training{padding:24px;min-height:300px}.sk-training-splits{gap:8px}.sk-training-splits b{font-size:15px}.sk-summary-training h3{font-size:22px}}
+.sk-training-link{display:inline-flex;align-items:center;align-self:flex-start;gap:8px;margin-top:10px;padding:9px 13px;border:1px solid currentColor;border-radius:999px;font-size:12px;line-height:1.4;text-decoration:none;transition:background-color .2s ease,transform .2s ease}
+.sk-training-ml .sk-training-link{color:#fff}.sk-training-nalar .sk-training-link{color:#206b4a}
+.sk-training-link:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media(hover:hover){.sk-training-link:hover{background:#ffffff1a;transform:translateY(-1px)}.sk-training-nalar .sk-training-link:hover{background:#206b4a12}}
+@media(prefers-reduced-motion:reduce){.sk-training-link{transition:none}}

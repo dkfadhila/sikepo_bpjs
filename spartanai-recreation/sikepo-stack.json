@@ -49,9 +49,9 @@
     "name": "Hugging Face",
     "group": "AI & aplikasi",
     "role": "Tempat pelatihan dan penyimpanan artefak model.",
-    "description": "Hugging Face Jobs menjalankan pelatihan Isolation Forest menggunakan korpus klaim sintetis SiKePO periode 2019–2025. Dataset dan artefak model disimpan di repositori privat.",
-    "detail": "Pelatihan dilakukan pada CPU; data uji sintetis digunakan untuk evaluasi. Hasilnya menjadi prioritas pemeriksaan, bukan bukti fraud atau pengganti keputusan verifikator.",
-    "url": "https://huggingface.co/"
+    "description": "Hugging Face menyimpan dataset sintetis SiKePO dan artefak model untuk pelatihan dan evaluasi.",
+    "detail": "Dataset 5 juta klaim sintetis 2019–2025 tersedia terbuka, beserta dokumentasi metode dan keterbatasannya.",
+    "url": "https://huggingface.co/datasets/konigiri/sikepo-synthetic-2019-2025"
   },
   {
     "id": "nalar",
@@ -60,7 +60,7 @@
     "role": "Model penjelasan klaim khusus SiKePO.",
     "description": "NALAR merupakan model bahasa khusus SiKePO yang disesuaikan untuk penelaahan klaim, penjelasan indikator risiko, dan penyusunan kebutuhan bukti pendukung.",
     "detail": "Model bahasa 4 miliar parameter ini dikembangkan melalui fine-tuning LoRA menggunakan 8.000 pasangan instruksi dan respons sintetis. NALAR dirancang untuk mengolah konteks klaim serta temuan pemeriksaan menjadi penjelasan terstruktur bagi penelaah. Keputusan akhir tetap berada pada pengguna yang berwenang.",
-    "url": "https://sikepo.tech/data-methodology.html"
+    "url": "https://huggingface.co/konigiri/sikepo-explainer-lora-experiment-v4"
   },
   {
     "id": "nodejs",
