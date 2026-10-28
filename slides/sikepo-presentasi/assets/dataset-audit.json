@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "datasetRevision": "bcfb28d78aef80bb673c05b4dae0c66dcdf4eec9",
+  "rowsChecked": 5000000,
+  "allFileChecksumsVerified": true,
+  "dateMin": "2019-01-01",
+  "dateMax": "2025-12-31",
+  "yearCounts": {
+    "2019": 586535,
+    "2020": 489165,
+    "2021": 527788,
+    "2022": 680293,
+    "2023": 821716,
+    "2024": 912883,
+    "2025": 981620
+  },
+  "facilityCount": 1500,
+  "diagnosisCount": 24,
+  "duplicateEpisodes": 191812,
+  "noEpisodeDateLeakage": true,
+  "exactSchemaWithoutParticipantIdentifiers": true,
+  "heldOutRowsIndependentlyScored": 981620,
+  "recomputedConfusionMatrix": [
+    651774,
+    37322,
+    22541,
+    269983
+  ],
+  "confusionMatchesHFReport": true
+}

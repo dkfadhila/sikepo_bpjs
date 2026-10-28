@@ -1,0 +1,113 @@
+{
+  "modelVersion": "iforest-historical-3.0",
+  "parityFixtures": 200,
+  "maxAbsoluteError": 1.1102230246251565e-16,
+  "parityPassed": true,
+  "cases": [
+    {
+      "name": "Klaim normal dengan tagihan sesuai acuan",
+      "features": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        15.64006001130563
+      ],
+      "expectedAnomaly": false,
+      "rawScore": 0.33093946247146194,
+      "threshold": 0.39587304792183614,
+      "isAnomaly": false,
+      "pass": true
+    },
+    {
+      "name": "Biaya 2,5 kali acuan dan rawat 2 kali acuan",
+      "features": [
+        2.5,
+        2,
+        0,
+        0,
+        0,
+        1,
+        15.64006001130563
+      ],
+      "expectedAnomaly": true,
+      "rawScore": 0.5144144732934293,
+      "threshold": 0.39587304792183614,
+      "isAnomaly": true,
+      "pass": true
+    },
+    {
+      "name": "Dua pengajuan untuk episode yang sama",
+      "features": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        2,
+        15.64006001130563
+      ],
+      "expectedAnomaly": true,
+      "rawScore": 0.44959506207871164,
+      "threshold": 0.39587304792183614,
+      "isAnomaly": true,
+      "pass": true
+    },
+    {
+      "name": "Jumlah layanan tidak cocok dan rincian tagihan berbeda",
+      "features": [
+        1.1,
+        1,
+        0,
+        0.4,
+        0.3,
+        1,
+        15.64006001130563
+      ],
+      "expectedAnomaly": true,
+      "rawScore": 0.5696462633026782,
+      "threshold": 0.39587304792183614,
+      "isAnomaly": true,
+      "pass": true
+    },
+    {
+      "name": "Obat restriksi tanpa bukti",
+      "features": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        15.64006001130563
+      ],
+      "expectedAnomaly": true,
+      "rawScore": 0.4582496079301749,
+      "threshold": 0.39587304792183614,
+      "isAnomaly": true,
+      "pass": true
+    },
+    {
+      "name": "Kasus batas rasio biaya 1,3 dan durasi +2 hari",
+      "features": [
+        1.3,
+        1.3333333333333333,
+        0,
+        0,
+        0,
+        1,
+        15.64006001130563
+      ],
+      "expectedAnomaly": null,
+      "rawScore": 0.34849887437183596,
+      "threshold": 0.39587304792183614,
+      "isAnomaly": false,
+      "pass": true
+    }
+  ],
+  "metricsGate": true,
+  "limitations": "Case checks and thresholds are synthetic development acceptance gates, not proof of clinical or BPJS accuracy.",
+  "passed": true
+}
