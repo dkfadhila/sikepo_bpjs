@@ -10,3 +10,9 @@ Eksperimen memakai contoh instruksi sintetis dan akun Hugging Face milik pemilik
 Script, job ID, batas waktu, dan revisi sumber disimpan di `ml/` dan `scripts/`; model dan keluaran tetap pada repositori HF privat. Evaluasi harus memeriksa keluaran terstruktur, kesesuaian sinyal dan bukti, tidak mengarang keputusan, dan validasi pada kasus yang tidak digunakan untuk training. Lulus pemeriksaan sintetis tidak membuktikan kesesuaian pada klaim sebenarnya. Jangan mengaktifkan model yang gagal tes. Gemma tetap aktif sebagai layanan penjelasan saat ini.
 
 Watcher satu kali memantau job A100, lalu menjalankan uji independen T4 maksimal 30 menit apabila pemeriksaan format training berhasil. Watcher tidak memasang model. Jika training atau evaluasi gagal, hasil tetap privat untuk diperiksa. Akun Hugging Face tercatat bukan PRO; endpoint inferensi persisten belum dibuat.
+
+## NALAR 4B — layanan inferensi
+
+Training 8.000 pasangan instruksi-respons selesai. Revisi adapter yang diuji: `f93d42c68503f6b9f8d18dd2d018cb5bff91edd8`. Pemeriksaan terpisah pada 14 kombinasi sinyal sintetis lulus. Hasil ini terbatas pada format, cakupan bukti, dan larangan keputusan pembayaran; bukan validasi klinis.
+
+Layanan privat `konigiri/sikepo-nalar` memakai ZeroGPU tanpa komputasi berbayar persisten. Deployment sedang diuji. Server mengirim hanya signals, mlAnomaly, dan score; tidak mengirim ID klaim atau dokumen. Keluaran harus sesuai revisi, skema, dan daftar bukti. `NALAR_ENABLED=true` serta `HF_TOKEN` mengaktifkan jalur NALAR setelah uji layanan berhasil. Ketika kuota habis, layanan gagal, atau validasi gagal, Gemma menjadi pendamping; respons menyebut model yang benar-benar menjawab. Batas harian AI tetap berlaku. Jangan mengaktifkan flag sebelum uji inferensi layanan lolos.
