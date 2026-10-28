@@ -1,0 +1,9 @@
+{
+  "id": "nalar",
+  "name": "NALAR",
+  "group": "AI & aplikasi",
+  "role": "Model penjelasan klaim khusus SiKePO.",
+  "description": "NALAR adalah model bahasa yang disesuaikan melalui fine-tuning untuk menjelaskan sinyal pemeriksaan klaim sintetis SiKePO dan membantu menyusun daftar bukti yang perlu ditelaah.",
+  "detail": "Dikembangkan dari model dasar terbuka dengan data instruksi sintetis. Penjelasan tetap diperiksa terhadap temuan aturan dan ML; keputusan klaim berada pada verifikator.",
+  "url": "https://sikepo.tech/data-methodology.html"
+}

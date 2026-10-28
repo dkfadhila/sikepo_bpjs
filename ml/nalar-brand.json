@@ -1,0 +1,8 @@
+{
+  "name": "NALAR",
+  "displayName": "NALAR by SIKEPO",
+  "role": "Model penjelasan klaim SiKePO",
+  "mark": "Original N monogram with two internal stems representing linked evidence",
+  "status": "awaiting-independent-evaluation",
+  "deploymentGate": "Publish landing stack entry only after selected model completes independent evaluation; never claim the custom model is active before inference integration is verified."
+}
