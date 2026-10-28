@@ -3,7 +3,7 @@ import{o as jsx,_ as useState,b as useRef,y as useEffect}from"__REACT__";
 import{t as initMotion,k as motion}from"__MOTION__";
 initMotion();
 export const stackItems=__STACK_DATA__;
-const icon=(item,full=false)=>jsx('img',{src:`/assets/stack/${item.id==='bpjs'&&!full?'bpjs-symbol':item.id}-white.png?v=sikepo-source-sync-16`,alt:item.name,width:full&&item.id==='bpjs'?188:48,height:48,loading:'lazy',decoding:'async'});
+const icon=(item,full=false)=>jsx('img',{src:`/assets/stack/${item.id==='bpjs'&&!full?'bpjs-symbol':item.id}-white.png?v=sikepo-source-sync-17`,alt:item.name,width:full&&item.id==='bpjs'?188:48,height:48,loading:'lazy',decoding:'async'});
 export function stackTickerItems(){return stackItems.map(item=>jsx('a',{href:'#teknologi',className:'sikepo-stack-ticker-logo',style:{width:item.id==='bpjs'?240:Math.max(170,item.name.length*15+86),height:54,flexShrink:0},'aria-label':item.name,title:item.name,children:[icon(item,true),item.id!=='bpjs'?jsx('span',{children:item.name}):null]},item.id));}
 export function SikepoStack(){
  const [active,setActive]=useState(null),dialog=useRef(null),opener=useRef(null);

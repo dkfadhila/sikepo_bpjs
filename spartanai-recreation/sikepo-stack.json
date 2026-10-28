@@ -66,9 +66,9 @@
     "id": "nalar",
     "name": "NALAR",
     "group": "AI & aplikasi",
-    "role": "Model penjelasan klaim SiKePO dalam pengembangan.",
+    "role": "Model penjelasan klaim khusus SiKePO.",
     "description": "NALAR adalah model bahasa yang disesuaikan melalui fine-tuning untuk menjelaskan sinyal pemeriksaan klaim sintetis SiKePO dan membantu menyusun daftar bukti yang perlu ditelaah.",
-    "detail": "Status: training dan pengujian. Model tambahan ini belum aktif di dashboard; layanan penjelasan saat ini tetap menggunakan Gemma. NALAR dikembangkan melalui fine-tuning model dasar terbuka memakai instruksi sintetis.",
+    "detail": "Training model bahasa 4B telah selesai menggunakan 8.000 contoh instruksi sintetis. Sebanyak 14 dari 14 kasus uji terpisah lulus. Model tambahan belum aktif di dashboard; penjelasan saat ini tetap menggunakan Gemma.",
     "url": "https://sikepo.tech/data-methodology.html"
   },
   {
