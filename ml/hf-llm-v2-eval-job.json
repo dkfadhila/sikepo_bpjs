@@ -1,0 +1,10 @@
+{
+  "jobId": "6ae184613fb22a235dd3a7d1",
+  "namespace": "konigiri",
+  "url": "https://huggingface.co/jobs/konigiri/6ae184613fb22a235dd3a7d1",
+  "modelRevision": "adefb9edeb4e015d6c5deb6ca5945fbdf8ff7f06",
+  "hardware": "t4-small",
+  "timeoutMinutes": 20,
+  "maxComputeUSD": 0.134,
+  "attempts": 1
+}

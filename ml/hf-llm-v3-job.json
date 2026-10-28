@@ -10,6 +10,6 @@
   "maxComputeUSD": 1.6,
   "attempts": 1,
   "baseModel": "Qwen/Qwen3-4B-Instruct-2507",
-  "status": "submitted",
+  "status": "cancellation requested while awaiting L4; superseded by A100",
   "note": "Experimental synthetic LoRA, model is not deployed automatically."
 }
