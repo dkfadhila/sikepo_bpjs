@@ -5,7 +5,7 @@ import torch
 from huggingface_hub import HfApi
 from transformers import AutoTokenizer,AutoModelForCausalLM
 from peft import PeftModel
-repo=os.environ['SIKEPO_LLM_REPO'];revision=os.environ['SIKEPO_LLM_REVISION'];base='Qwen/Qwen2.5-0.5B-Instruct'
+repo=os.environ['SIKEPO_LLM_REPO'];revision=os.environ['SIKEPO_LLM_REVISION'];base=os.environ.get('SIKEPO_BASE_MODEL','Qwen/Qwen2.5-0.5B-Instruct')
 tok=AutoTokenizer.from_pretrained(repo,revision=revision);model=AutoModelForCausalLM.from_pretrained(base,torch_dtype=torch.float16,device_map='auto');model=PeftModel.from_pretrained(model,repo,revision=revision);model.eval()
 evidence={'COST_RATIO':'rincian biaya','LONG_STAY':'catatan durasi rawat','DRUG_EVIDENCE':'bukti penggunaan obat','SERVICE_MISMATCH':'catatan layanan','BILLING_MISMATCH':'rincian tagihan','DUPLICATE':'identitas episode klaim'}
 sets=[[],['COST_RATIO'],['LONG_STAY'],['DRUG_EVIDENCE'],['SERVICE_MISMATCH'],['BILLING_MISMATCH'],['DUPLICATE'],['COST_RATIO','DUPLICATE'],['LONG_STAY','DRUG_EVIDENCE'],['SERVICE_MISMATCH','BILLING_MISMATCH'],list(evidence),['DRUG_EVIDENCE','DUPLICATE','COST_RATIO'],['LONG_STAY','SERVICE_MISMATCH','BILLING_MISMATCH'],['COST_RATIO','LONG_STAY','DUPLICATE','DRUG_EVIDENCE']]
