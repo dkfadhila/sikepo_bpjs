@@ -17,3 +17,5 @@ White PNGs rendered locally from these vector assets. Logos identify their respe
 BPJS source and attribution: https://commons.wikimedia.org/wiki/File:BPJS_Kesehatan_logo.svg (BPJS Kesehatan). Mastra and Gemma: LobeHub Icons, MIT. Other marks: Simple Icons, CC0; brand trademarks belong to their respective owners.
 
 Mastra updated mark: https://mastra.ai/favicon/new-brand/icon.svg (background removed from vector). BPJS icon is the symbol from the above original vector. Ticker combines the white symbol with its brand name; BPJS uses the complete original wordmark.
+
+- huggingface: official monochrome mark, white variant rendered from https://huggingface.co/datasets/huggingface/brand-assets/blob/main/hf-logo-monochrome.svg
