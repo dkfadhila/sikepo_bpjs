@@ -6,10 +6,11 @@ import { parse } from 'acorn';
 
 const assets=path.resolve('spartanai-recreation/dist/assets');
 
-test('technology section owns thirteen local logos in three groups before FAQ',async()=>{
+test('technology section owns twelve local logos in three groups before FAQ',async()=>{
   const items=JSON.parse(await fs.readFile('spartanai-recreation/sikepo-stack.json','utf8'));
-  assert.equal(new Set(items.map(item=>item.id)).size,13);
+  assert.equal(new Set(items.map(item=>item.id)).size,12);
   assert.equal(new Set(items.map(item=>item.group)).size,3);
+  assert.ok(!items.some(item=>item.id==='gemma'));
   assert.ok(items.some(item=>item.id==='huggingface'&&item.group==='AI & aplikasi'));
   for(const item of items){
     const png=await fs.readFile(path.join(assets,'stack',item.id+'-white.png'));

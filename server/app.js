@@ -26,7 +26,7 @@ export function createApp({ db, investigate, claimStore, historyStore, config, c
     if (!['GET','HEAD','OPTIONS'].includes(req.method) && !allowedOrigin(req.get('origin'), origins)) return res.status(403).json({ error: 'Origin tidak diizinkan.' });
     next();
   });
-  app.get('/api/health', (_req,res) => res.json({ status: db ? 'ok' : 'not-ready', service: 'sikepo', database: Boolean(db), gemma: Boolean(config.googleKey), nalar: Boolean(config.nalarEnabled), monitoring: Boolean(config.sentryDsn), dataset: dataInfo.version }));
+  app.get('/api/health', (_req,res) => res.json({ status: db ? 'ok' : 'not-ready', service: 'sikepo', database: Boolean(db), nalar: Boolean(config.nalarEnabled), monitoring: Boolean(config.sentryDsn), dataset: dataInfo.version }));
   const dbRequired = (_req,res,next) => db ? next() : res.status(503).json({ error: 'Database belum tersambung. Login belum tersedia.' });
   async function session(req) {
     const token = req.cookies.sikepo_session;
@@ -94,13 +94,18 @@ export function createApp({ db, investigate, claimStore, historyStore, config, c
     const { id, amount, tariff, los, normalLos, score } = claim;
     const parsed = claimSchema.safeParse({ id, amount, tariff, los, normalLos, score, signals: claim.signals.map(s => s.code), mlAnomaly:claim.ml.isAnomaly, recommendation:claim.recommendation });
     if (!parsed.success) return res.status(500).json({ error: 'Dataset belum dapat diproses.' });
-    if (!config.googleKey && !config.nalarEnabled) return res.status(503).json({ error: 'Layanan penjelasan AI belum dikonfigurasi.' });
+    if (!config.nalarEnabled) return res.status(503).json({ error: 'Layanan penjelasan AI belum dikonfigurasi.' });
     // Global demo budget persists across restarts and is updated atomically.
     const day = new Date().toISOString().slice(0,10), budget = db.collection('ai_budget');
     await budget.updateOne({ _id: day }, { $setOnInsert: { count: 0, expiresAt: new Date(Date.now()+3*86400000) } }, { upsert: true });
     const usage = await budget.findOneAndUpdate({ _id: day, count: { $lt: config.aiDailyLimit } }, { $inc: { count: 1 } }, { returnDocument: 'after' });
     if (!usage) return res.status(429).json({ error: 'Kuota penjelasan AI hari ini sudah terpakai.' });
-    res.json({ ...await investigate(parsed.data), recommendation:claim.recommendation, requiresHumanDecision:true });
+    try {
+      res.json({ ...await investigate(parsed.data), recommendation:claim.recommendation, requiresHumanDecision:true });
+    } catch (error) {
+      captureException(error);
+      res.status(503).json({ error: 'NALAR sementara tidak tersedia. Silakan coba lagi nanti.' });
+    }
   });
   app.get(['/login','/login/'], (_req,res) => res.sendFile(path.join(publicRoot,'login/index.html')));
   app.use('/login', express.static(path.join(publicRoot, 'login'), { index: false, dotfiles: 'deny' }));

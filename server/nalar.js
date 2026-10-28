@@ -34,10 +34,3 @@ export function createNalarInvestigator(token, {connect=(...args)=>Client.connec
     } finally {clearTimeout(timer);client?.close();}
   };
 }
-
-export function withNalarFallback(nalar, gemma, onFallback=()=>{}) {
-  return async claim => {
-    try {return await nalar(claim);}
-    catch {onFallback();return gemma(claim);}
-  };
-}

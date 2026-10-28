@@ -11,7 +11,7 @@ test('AI accepts only a dataset ID and resolves the known synthetic record on th
     if(name==='ai_budget')return {updateOne:async()=>{},findOneAndUpdate:async()=>({count:1})};
     throw new Error('Unexpected collection');
   }};
-  const config={production:false,appOrigin:'http://localhost:7731',dashboardOrigin:'http://localhost:7731',googleKey:'configured',aiDailyLimit:20};
+  const config={production:false,appOrigin:'http://localhost:7731',dashboardOrigin:'http://localhost:7731',nalarEnabled:true,aiDailyLimit:20};
   const app=createApp({db,config,claimStore:{get:async id=>assessedClaims.find(c=>c.id===id)},investigate:async c=>{received.push(c);return {summary:'Indikator perlu diverifikasi.',checks:['Cocokkan rincian layanan.']};}});
   const server=app.listen(0,'127.0.0.1');await new Promise(r=>server.once('listening',r));t.after(()=>server.close());
   const send=body=>fetch(`http://127.0.0.1:${server.address().port}/api/investigate`,{method:'POST',headers:{Cookie:`sikepo_session=${token}`,Origin:config.appOrigin,'X-CSRF-Token':csrf,'Content-Type':'application/json'},body:JSON.stringify(body)});

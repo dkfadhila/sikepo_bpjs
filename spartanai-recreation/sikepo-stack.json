@@ -45,15 +45,6 @@
     "url": "https://mastra.ai/"
   },
   {
-    "id": "gemma",
-    "name": "Google Gemma",
-    "group": "AI & aplikasi",
-    "role": "Membantu merangkum konteks klaim.",
-    "description": "Gemma adalah keluarga model bahasa Google yang digunakan untuk membantu menyusun penjelasan dari konteks klaim dan temuan pemeriksaan pada SiKePO.",
-    "detail": "Keluaran AI adalah bahan penelaahan, bukan keputusan final atau bukti fraud. Model Isolation Forest terpisah digunakan untuk menilai anomali pada data sintetis.",
-    "url": "https://deepmind.google/models/gemma/"
-  },
-  {
     "id": "huggingface",
     "name": "Hugging Face",
     "group": "AI & aplikasi",
