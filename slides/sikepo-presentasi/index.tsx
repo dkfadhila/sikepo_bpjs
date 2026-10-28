@@ -1,0 +1,115 @@
+import React from 'react';
+import { useSlidePageNumber } from '@open-slide/core';
+import type { Page, SlideMeta, DesignSystem, SlideTransition } from '@open-slide/core';
+import hero from './assets/hero.png';
+import forest from './assets/forest.png';
+import claims from './assets/claims-intelligence.png';
+import reasoning from './assets/nalar-reasoning.png';
+import logoBlack from './assets/logo-black.png';
+import logoWhite from './assets/logo-white.png';
+import nalar from './assets/nalar.png';
+
+export const meta: SlideMeta = { title: 'SIKEPO — Klaim terjaga. Keputusan lebih tepat.', createdAt: '2026-10-28T18:28:29.394Z' };
+export const design: DesignSystem = {
+  palette: { bg: '#f0f0ee', text: '#191b19', accent: '#206b4a' },
+  fonts: { display: 'Arial, sans-serif', body: 'Arial, sans-serif' },
+  typeScale: { hero: 112, body: 34 }, radius: 28,
+};
+export const transition: SlideTransition = { duration: 260, enter: { duration: 260, easing: 'cubic-bezier(0,0,.2,1)', keyframes: [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'translateY(0)' }] } };
+const green = 'var(--osd-accent)', ink = 'var(--osd-text)', muted = '#65716a', pale = '#dfe8e1', dark = '#181c19';
+const root: React.CSSProperties = { width: '100%', height: '100%', boxSizing: 'border-box', position: 'relative', background: 'var(--osd-bg)', color: ink, fontFamily: 'var(--osd-font-body)', padding: '72px 110px' };
+const eyebrow: React.CSSProperties = { fontSize: 22, fontFamily: 'monospace', letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 };
+const heading: React.CSSProperties = { fontSize: 82, fontWeight: 500, lineHeight: 1.08, letterSpacing: '-0.055em', margin: 0 };
+const copy: React.CSSProperties = { fontSize: 32, lineHeight: 1.45, margin: 0, color: muted };
+
+function Mark({ light = false }: { light?: boolean }) { return <div style={{ display: 'flex', gap: 16, alignItems: 'center', fontSize: 29, fontWeight: 700, letterSpacing: '-.04em', color: light ? '#fff' : ink }}><img alt="" src={light ? logoWhite : logoBlack} style={{ width: 44, height: 44, objectFit: 'contain' }} />SIKEPO</div>; }
+function Header({ section, light = false }: { section: string, light?: boolean }) { return <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 50, position: 'relative', zIndex: 2 }}><Mark light={light} /><span style={{ ...eyebrow, color: light ? '#b6c6ba' : muted }}>{section}</span></header>; }
+function Footer({ light = false }: { light?: boolean }) { const { current, total } = useSlidePageNumber(); return <footer style={{ position: 'absolute', left: 110, right: 110, bottom: 46, display: 'flex', justifyContent: 'space-between', fontSize: 20, fontFamily: 'monospace', color: light ? '#b6c6ba' : muted, zIndex: 2 }}><span>SIKEPO / Investigasi klaim</span><span style={{ color: '#fff', background: '#206b4a', padding: '5px 12px', borderRadius: 7 }}>{String(current).padStart(2, '0')} / {String(total).padStart(2, '0')}</span></footer>; }
+function Icon({ type, size = 42 }: { type: 'search' | 'file' | 'shield' | 'flow' | 'spark' | 'tree', size?: number }) {
+  return <svg width={size} height={size} viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {type === 'search' && <><circle cx="21" cy="21" r="13" /><path d="m31 31 11 11M15 21h12M21 15v12" /></>}
+    {type === 'file' && <><path d="M12 5h17l9 9v29H12zM29 5v10h9M19 24h12M19 31h12M19 38h7" /></>}
+    {type === 'shield' && <><path d="m24 4 16 7v12c0 10-9 17-16 21C17 40 8 33 8 23V11zM16 23l6 6 11-13" /></>}
+    {type === 'flow' && <><rect x="17" y="4" width="14" height="12" rx="3"/><rect x="3" y="32" width="14" height="12" rx="3"/><rect x="31" y="32" width="14" height="12" rx="3"/><path d="M24 16v9H10v7M24 25h14v7"/></>}
+    {type === 'spark' && <><path d="m24 4 5 14 15 6-15 5-5 15-5-15-15-5 15-6zM38 4v8M34 8h8"/></>}
+    {type === 'tree' && <><path d="M24 6v13M10 31V19h28v12M4 40h12M32 40h12"/><circle cx="24" cy="6" r="4"/><circle cx="10" cy="35" r="5"/><circle cx="38" cy="35" r="5"/></>}
+  </svg>;
+}
+function Tag({ children, light = false }: { children: React.ReactNode, light?: boolean }) { return <span style={{ display: 'inline-block', padding: '13px 20px', borderRadius: 100, border: `1px solid ${light ? '#617969' : '#b8c8bd'}`, color: light ? '#d4e4d9' : green, fontSize: 23 }}>{children}</span>; }
+
+const Cover: Page = () => <div style={root}>
+  <div style={{ position: 'absolute', top: 28, right: 28, width: 870, height: 1024, borderRadius: 32, background: `url(${hero}) 51% center / cover` }} />
+  <Header section="Sistem investigasi klaim" />
+  <main style={{ width: 820, marginTop: 151 }}>
+    <p style={{ ...eyebrow, color: green }}>Kelayakan klaim & pola overbilling</p>
+    <h1 style={{ fontSize: 'var(--osd-size-hero)', lineHeight: 1.05, letterSpacing: '-.065em', fontWeight: 500, margin: '38px 0' }}><span style={{ color: '#8b928c' }}>Klaim terjaga.</span><br />Keputusan<br />lebih tepat.</h1>
+    <p style={{ ...copy, maxWidth: 690 }}>Investigasi berbasis aturan, machine learning, dan penjelasan AI.</p>
+    <div style={{ marginTop: 40 }}><Tag>SIKEPO untuk pemeriksaan klaim BPJS/JKN</Tag></div>
+  </main><Footer />
+</div>;
+
+function RiskRow({ no, title, children }: { no: string, title: string, children: React.ReactNode }) { return <div style={{ display: 'grid', gridTemplateColumns: '65px 1fr', gap: 16, padding: '28px 0', borderBottom: '1px solid #cdd4ce' }}><span style={{ ...eyebrow, color: green, paddingTop: 9 }}>{no}</span><div><h3 style={{ fontSize: 36, fontWeight: 500, letterSpacing: '-.035em', margin: '0 0 10px' }}>{title}</h3><p style={{ ...copy, fontSize: 29 }}>{children}</p></div></div>; }
+const Problem: Page = () => <div style={root}><Header section="01 / Tantangan" />
+  <div style={{ display: 'grid', gridTemplateColumns: '940px 710px', gap: 50, marginTop: 83 }}>
+    <div><h2 style={heading}>Banyak sinyal.<br /><span style={{ color: '#8b948d' }}>Mana yang ditelusuri?</span></h2>
+      <div style={{ marginTop: 38, maxWidth: 830 }}><RiskRow no="01" title="Finansial">Biaya dan rincian tagihan perlu dicocokkan.</RiskRow><RiskRow no="02" title="Pelayanan">Layanan perlu didukung bukti yang sesuai.</RiskRow><RiskRow no="03" title="Administratif">Pengajuan berulang perlu ditelusuri.</RiskRow></div>
+    </div>
+    <div style={{ position: 'relative', height: 706 }}><img alt="Ilustrasi arsip dan investigasi klaim" src={claims} style={{ width: '100%', height: 610, borderRadius: 30, objectFit: 'cover', objectPosition: '65% center' }} /><p style={{ fontSize: 25, color: muted, margin: '22px 0 0', lineHeight: 1.4 }}>Konteks yang terhubung membantu<br />menentukan prioritas pemeriksaan.</p></div>
+  </div><Footer />
+</div>;
+
+function Value({ icon, title, children }: { icon: 'search' | 'flow' | 'shield', title: string, children: React.ReactNode }) { return <div style={{ display: 'flex', gap: 24, padding: '28px 0', borderTop: '1px solid #4a5b4e' }}><div style={{ color: '#a8c7b2' }}><Icon type={icon} /></div><div><h3 style={{ fontSize: 34, margin: '0 0 8px', fontWeight: 500 }}>{title}</h3><p style={{ ...copy, fontSize: 28, color: '#bdcdc2' }}>{children}</p></div></div>; }
+const Solution: Page = () => <div style={{ ...root, background: dark, color: '#fff' }}>
+  <img alt="Visual hubungan dokumen klaim" src={claims} style={{ position: 'absolute', right: 0, top: 190, width: 1090, height: 760, objectFit: 'cover', borderRadius: '32px 0 0 32px' }} />
+  <div style={{ position: 'absolute', top: 190, right: 730, width: 380, height: 760, background: `linear-gradient(90deg,${dark},transparent)` }} />
+  <Header section="02 / Solusi" light />
+  <div style={{ position: 'relative', width: 800, marginTop: 95 }}><h2 style={{ ...heading, fontSize: 96 }}>Dari sinyal risiko<br /><span style={{ color: '#a0bea9' }}>ke konteks klaim.</span></h2>
+    <div style={{ marginTop: 55, width: 680 }}><Value icon="search" title="Temukan prioritas">Kenali klaim yang perlu ditinjau.</Value><Value icon="flow" title="Hubungkan temuan">Baca aturan, anomali, dan bukti bersama.</Value><Value icon="shield" title="Pertahankan kendali">Keputusan ada pada verifikator.</Value></div>
+  </div><Footer light />
+</div>;
+
+function Stage({ id, name, desc, icon, output, accent = false }: { id: string, name: string, desc: string, icon: 'file' | 'tree' | 'spark', output: string, accent?: boolean }) { return <div style={{ position: 'relative', boxSizing: 'border-box', width: 540, height: 490, borderRadius: 28, background: accent ? '#1f4934' : '#fff', color: accent ? '#fff' : ink, padding: 40 }}><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', color: accent ? '#bad6c4' : green }}><span style={eyebrow}>{id}</span><Icon type={icon} size={55} /></div><h3 style={{ fontSize: 43, letterSpacing: '-.04em', fontWeight: 500, margin: '55px 0 20px' }}>{name}</h3><p style={{ ...copy, fontSize: 30, color: accent ? '#d2e1d7' : muted }}>{desc}</p><div style={{ position: 'absolute', bottom: 35, left: 40, right: 40, borderTop: `1px solid ${accent ? '#597c65' : '#d7dfd9'}`, paddingTop: 22, fontSize: 25, color: accent ? '#bad6c4' : green }}>{output}</div></div>; }
+const Pipeline: Page = () => <div style={root}><Header section="03 / Pipeline" /><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginTop: 85 }}><h2 style={heading}>Tiga tahap.<br /><span style={{ color: '#8b948d' }}>Satu alur penelaahan.</span></h2><p style={{ ...copy, width: 570 }}>Setiap tahap memperkaya konteks sebelum keputusan review.</p></div>
+  <div style={{ display: 'flex', gap: 40, marginTop: 62, position: 'relative' }}><Stage id="A1 / Aturan" name="Triase kelayakan" desc="Pemeriksaan rasio biaya, durasi rawat, dan obat restriksi." icon="file" output="Keluaran: temuan aturan" /><Stage id="A2 / Machine learning" name="Investigasi anomali" desc="Isolation Forest mengenali pola numerik yang tidak biasa." icon="tree" output="Keluaran: skor risiko 0–99" /><Stage id="A3 / NALAR" name="Penjelasan temuan" desc="AI merangkum sinyal dan bukti yang perlu diperiksa." icon="spark" output="Keluaran: konteks penelaahan" accent /><span style={{ position: 'absolute', top: 228, left: 540, width: 40, textAlign: 'center', fontSize: 31, color: green }}>→</span><span style={{ position: 'absolute', top: 228, left: 1120, width: 40, textAlign: 'center', fontSize: 31, color: green }}>→</span></div><Footer />
+</div>;
+
+function SplitRow({ value, label, width, color }: { value: string, label: string, width: number, color: string }) { return <div style={{ marginTop: 28 }}><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 15 }}><span style={{ fontSize: 28, color: muted }}>{label}</span><strong style={{ fontSize: 40, fontWeight: 500, letterSpacing: '-.04em' }}>{value}</strong></div><div style={{ height: 18, width: 850, borderRadius: 20, background: '#dbe2dc' }}><div style={{ height: 18, width, borderRadius: 20, background: color }} /></div></div>; }
+const Data: Page = () => <div style={root}><Header section="04 / Fondasi data" />
+  <div style={{ display: 'grid', gridTemplateColumns: '750px 850px', gap: 100, marginTop: 115 }}>
+    <div><p style={{ ...eyebrow, color: green }}>Klaim sintetis / 2019–2025</p><h2 style={{ fontSize: 174, lineHeight: 1, letterSpacing: '-.075em', fontWeight: 500, margin: '35px 0' }}>5 juta<span style={{ color: green }}>.</span></h2><p style={{ ...copy, fontSize: 36, color: ink, maxWidth: 640 }}>Fondasi pengembangan<br />deteksi anomali SiKePO.</p><div style={{ display: 'flex', gap: 18, marginTop: 52, paddingTop: 30, borderTop: '1px solid #bdcbbf', width: 660, color: green }}><Icon type="shield" size={42} /><p style={{ ...copy, fontSize: 27, maxWidth: 580 }}>Dibuat sepenuhnya secara sintetis,<br />tanpa identitas peserta JKN asli.</p></div></div>
+    <div style={{ paddingTop: 12 }}><h3 style={{ fontSize: 38, margin: '0 0 20px', fontWeight: 500, letterSpacing: '-.03em' }}>Pemisahan berdasarkan waktu</h3><p style={{ ...copy, fontSize: 27 }}>Data masa depan dipisahkan dari pelatihan.</p><div style={{ marginTop: 42 }}><SplitRow value="3.105.497" label="Pelatihan · 2019–2023" width={850} color="#206b4a" /><SplitRow value="912.883" label="Kalibrasi · 2024" width={250} color="#6e937c" /><SplitRow value="981.620" label="Pengujian · 2025" width={269} color="#9bb39f" /></div><p style={{ fontSize: 23, color: muted, marginTop: 43 }}>Skenario normal dan anomali buatan.<br />Hasil pengujian berlaku pada distribusi sintetis.</p></div>
+  </div><Footer />
+</div>;
+
+const Models: Page = () => <div style={{ ...root, background: dark, color: '#fff' }}><Header section="05 / Machine learning & NALAR" light />
+  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 80, alignItems: 'end' }}><h2 style={heading}>Mengenali pola.<br /><span style={{ color: '#a0bea9' }}>Menjelaskan konteks.</span></h2><img alt="Identitas NALAR" src={nalar} style={{ width: 88, height: 88, objectFit: 'contain', background: '#e2ece4', borderRadius: 22, padding: 18, boxSizing: 'border-box' }} /></div>
+  <div style={{ display: 'grid', gridTemplateColumns: '540px 540px 540px', gap: 40, marginTop: 65 }}>
+    <div style={{ borderTop: '1px solid #617969', paddingTop: 30 }}><p style={{ ...eyebrow, color: '#a0bea9' }}>Deteksi anomali</p><h3 style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-.04em', margin: '27px 0' }}>Isolation Forest</h3><p style={{ ...copy, color: '#d2dfd5', fontSize: 30 }}>Pola numerik klaim menjadi dasar penentuan prioritas pemeriksaan.</p><div style={{ marginTop: 40 }}><Tag light>Skor risiko 0–99</Tag></div><p style={{ fontSize: 24, lineHeight: 1.5, color: '#a7bdae', marginTop: 25 }}>Skor menunjukkan anomali,<br />bukan probabilitas fraud.</p></div>
+    <div style={{ borderTop: '1px solid #617969', paddingTop: 30 }}><p style={{ ...eyebrow, color: '#a0bea9' }}>Penjelasan AI</p><h3 style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-.04em', margin: '27px 0' }}>NALAR</h3><p style={{ ...copy, color: '#d2dfd5', fontSize: 30 }}>Adapter LoRA Qwen 4B untuk merangkum temuan dan kebutuhan bukti.</p><div style={{ marginTop: 40 }}><Tag light>8.000 instruksi sintetis</Tag></div><p style={{ fontSize: 24, lineHeight: 1.5, color: '#a7bdae', marginTop: 25 }}>Penjelasan terikat konteks klaim<br />yang tersedia di sistem.</p></div>
+    <img alt="Ilustrasi inti penalaran AI" src={reasoning} style={{ width: 540, height: 450, borderRadius: 28, objectFit: 'cover', objectPosition: '62% center' }} />
+  </div><Footer light />
+</div>;
+
+function FlowNode({ no, title, text, last = false }: { no: string, title: string, text: string, last?: boolean }) { return <div style={{ width: 400, position: 'relative' }}><div style={{ height: 76, width: 76, display: 'grid', placeItems: 'center', background: last ? green : '#fff', color: last ? '#fff' : green, borderRadius: 22, fontSize: 28, position: 'relative', zIndex: 1 }}>{no}</div><h3 style={{ fontSize: 36, letterSpacing: '-.04em', fontWeight: 500, margin: '32px 0 17px' }}>{title}</h3><p style={{ ...copy, fontSize: 29, maxWidth: 330 }}>{text}</p></div>; }
+const Workflow: Page = () => <div style={root}><Header section="06 / Alur operasional" /><h2 style={{ ...heading, marginTop: 85 }}>Dari antrean klaim<br /><span style={{ color: '#8b948d' }}>ke review yang tercatat.</span></h2>
+  <div style={{ position: 'relative', display: 'flex', gap: 33, marginTop: 85 }}><div style={{ position: 'absolute', top: 37, left: 40, width: 1300, height: 2, background: '#a6bcac' }} /><FlowNode no="01" title="Telusuri klaim" text="Pilih dari antrean aktif atau arsip historis." /><FlowNode no="02" title="Periksa indikator" text="Baca temuan aturan dan skor anomali." /><FlowNode no="03" title="Dalami konteks" text="Tinjau penjelasan NALAR dan bukti pendukung." /><FlowNode no="04" title="Simpan review" text="Catat status dan alasan oleh petugas berwenang." last /></div>
+  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '28px 35px', background: pale, borderRadius: 24, marginTop: 80 }}><div style={{ display: 'flex', alignItems: 'center', gap: 20, fontSize: 29, color: green }}><Icon type="shield" />Akses sesuai peran</div><span style={{ fontSize: 26, color: '#45634f' }}>Verifikator KC · Satgas anti fraud · Auditor · Super admin</span></div><Footer />
+</div>;
+
+function TrustBlock({ icon, title, body, line }: { icon: 'shield' | 'search', title: string, body: string, line: string }) { return <div style={{ boxSizing: 'border-box', width: 825, height: 445, background: '#fff', padding: 44, borderRadius: 28 }}><div style={{ color: green }}><Icon type={icon} size={58} /></div><h3 style={{ fontSize: 44, fontWeight: 500, letterSpacing: '-.04em', margin: '30px 0 22px' }}>{title}</h3><p style={{ ...copy, fontSize: 31, maxWidth: 710 }}>{body}</p><p style={{ fontSize: 24, color: green, marginTop: 30 }}>{line}</p></div>; }
+const Trust: Page = () => <div style={root}><Header section="07 / Tata kelola" /><h2 style={{ ...heading, marginTop: 85 }}>Transparan tentang data.<br /><span style={{ color: '#8b948d' }}>Jelas tentang kewenangan.</span></h2><div style={{ display: 'flex', gap: 50, marginTop: 65 }}><TrustBlock icon="shield" title="Privasi sejak sumber data" body="Dataset dibangun dari parameter dan skenario buatan, tanpa data peserta JKN asli." line="Data sintetis · identitas peserta tidak digunakan" /><TrustBlock icon="search" title="Keputusan oleh manusia" body="Indikator dan penjelasan AI membantu investigasi. Review klaim dilakukan pengguna berwenang." line="Sinyal risiko memerlukan pemeriksaan bukti" /></div><p style={{ fontSize: 25, color: muted, marginTop: 32 }}>Pengujian sintetis menjadi dasar pengembangan; penerapan pada klaim nyata memerlukan validasi lanjutan.</p><Footer /></div>;
+
+const Close: Page = () => <div style={{ ...root, background: dark, color: '#fff' }}><Header section="Terima kasih" light /><div style={{ marginTop: 100 }}><p style={{ ...eyebrow, color: '#a0bea9' }}>Klaim terjaga. Keputusan lebih tepat.</p><h2 style={{ fontSize: 96, fontWeight: 500, lineHeight: 1.08, letterSpacing: '-.06em', margin: '28px 0' }}>Penelaahan lebih jelas.<br /><span style={{ color: '#a0bea9' }}>Keputusan lebih terarah.</span></h2></div><a href="https://sikepo.tech" style={{ position: 'absolute', right: 110, top: 310, display: 'inline-flex', gap: 48, alignItems: 'center', background: '#fff', color: '#183b28', padding: '22px 32px', borderRadius: 22, textDecoration: 'none', fontSize: 32 }}>sikepo.tech <span>↗</span></a><img alt="SIKEPO dalam lanskap hutan" src={forest} style={{ position: 'absolute', left: 110, top: 540, width: 1700, height: 420, objectFit: 'cover', borderRadius: 28 }} /><Footer light /></div>;
+
+export const notes = [
+  'SIKEPO adalah Sistem Investigasi Kelayakan Klaim dan Pola Overbilling. Fokusnya membantu pemeriksaan klaim BPJS/JKN sebelum pencairan dengan menggabungkan aturan, machine learning, dan penjelasan AI.',
+  'Tantangan pemeriksaan mencakup aspek finansial, pelayanan, dan administratif. Satu indikator belum cukup untuk menyimpulkan fraud. Pemeriksa memerlukan konteks yang saling terhubung.',
+  'SiKePO membantu menemukan prioritas, menghubungkan temuan, dan mempertahankan kendali di tangan verifikator. Keluaran sistem adalah dukungan investigasi dan bukan keputusan pembayaran otomatis.',
+  'A1 memeriksa aturan awal. A2 menggunakan Isolation Forest untuk mendeteksi pola yang tidak biasa. A3 menggunakan NALAR untuk merangkum temuan dan kebutuhan bukti. Hasil ketiganya menjadi bahan review.',
+  'Lima juta klaim dibuat sepenuhnya secara sintetis untuk periode 2019 sampai 2025. Data 2019–2023 digunakan untuk pelatihan, 2024 untuk kalibrasi, dan 2025 untuk pengujian temporal. Tidak ada data peserta JKN asli dan tidak ada data tahun 2026. Karakteristik sintetis membatasi generalisasi ke klaim nyata.',
+  'Isolation Forest menghasilkan skor anomali yang dikonversi menjadi prioritas risiko 0–99. NALAR adalah adapter LoRA Qwen 4B yang dilatih menggunakan delapan ribu instruksi sintetis. Kedua model memiliki fungsi berbeda dan tidak menggantikan keputusan verifikator.',
+  'Pengguna menelusuri antrean atau arsip, memeriksa indikator, mendalami penjelasan, lalu mencatat review. Akses disesuaikan dengan peran. Tunjukkan aplikasi bila waktu presentasi memungkinkan.',
+  'Privasi dijaga dengan menggunakan data yang sepenuhnya sintetis. Penggunaan nyata tetap membutuhkan validasi, kontrol akses, dan tata kelola. Temuan risiko harus diperiksa bersama bukti dan keputusan tetap oleh pihak berwenang.',
+  'SiKePO menawarkan pemeriksaan yang lebih terarah dengan konteks yang dapat ditelusuri. Aplikasi dapat diakses melalui sikepo.tech. Terima kasih, kami siap menerima pertanyaan.',
+];
+export default [Cover, Problem, Solution, Pipeline, Data, Models, Workflow, Trust, Close] satisfies Page[];
