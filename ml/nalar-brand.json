@@ -3,6 +3,7 @@
   "displayName": "NALAR by SIKEPO",
   "role": "Model penjelasan klaim SiKePO",
   "mark": "Original N monogram with two internal stems representing linked evidence",
-  "status": "awaiting-independent-evaluation",
-  "deploymentGate": "Publish landing stack entry only after selected model completes independent evaluation; never claim the custom model is active before inference integration is verified."
+  "status": "inference-service-verified",
+  "deploymentGate": "Publish landing stack entry only after selected model completes independent evaluation; never claim the custom model is active before inference integration is verified.",
+  "modelRevision": "f93d42c68503f6b9f8d18dd2d018cb5bff91edd8"
 }

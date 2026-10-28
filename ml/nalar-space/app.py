@@ -14,7 +14,7 @@ SYSTEM = 'Jelaskan sinyal klaim sintetis untuk verifikator. Jangan menyatakan fr
 EVIDENCE = {'COST_RATIO':'rincian biaya','LONG_STAY':'catatan durasi rawat','DRUG_EVIDENCE':'bukti penggunaan obat','SERVICE_MISMATCH':'catatan layanan','BILLING_MISMATCH':'rincian tagihan','DUPLICATE':'identitas episode klaim'}
 tokenizer = AutoTokenizer.from_pretrained(REPO, revision=REVISION)
 base = AutoModelForCausalLM.from_pretrained(BASE, torch_dtype=torch.float16, low_cpu_mem_usage=True)
-model = PeftModel.from_pretrained(base, REPO, revision=REVISION).eval().to('cuda')
+model = PeftModel.from_pretrained(base, REPO, revision=REVISION, torch_device='cpu').eval().to('cuda')
 
 @spaces.GPU(duration=25)
 def explain(payload):

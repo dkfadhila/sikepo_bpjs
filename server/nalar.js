@@ -16,13 +16,13 @@ export function validateNalarResponse(response, claim) {
   return result;
 }
 
-export function createNalarInvestigator(token, {connect=Client.connect,timeoutMs=45000}={}) {
+export function createNalarInvestigator(token, {connect=(...args)=>Client.connect(...args),timeoutMs=45000}={}) {
   return async input => {
     const claim = claimSchema.parse(input);
     if (!token) throw Object.assign(new Error('NALAR belum dikonfigurasi.'),{status:503});
     let client, timer, expired=false;
     const task = (async()=>{
-      client = await connect('konigiri/sikepo-nalar',{hf_token:token});
+      client = await connect('konigiri/sikepo-nalar',{token:token});
       if(expired) {client.close(); throw new Error('NALAR timed out');}
       // Only trained indicators leave the server; no IDs or claim documents.
       const payload = JSON.stringify({signals:claim.signals,mlAnomaly:claim.mlAnomaly,score:claim.score});
