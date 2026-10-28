@@ -63,6 +63,15 @@
     "url": "https://huggingface.co/"
   },
   {
+    "id": "nalar",
+    "name": "NALAR",
+    "group": "AI & aplikasi",
+    "role": "Model penjelasan klaim SiKePO dalam pengembangan.",
+    "description": "NALAR adalah model bahasa yang disesuaikan melalui fine-tuning untuk menjelaskan sinyal pemeriksaan klaim sintetis SiKePO dan membantu menyusun daftar bukti yang perlu ditelaah.",
+    "detail": "Status: training dan pengujian. Model tambahan ini belum aktif di dashboard; layanan penjelasan saat ini tetap menggunakan Gemma. NALAR dikembangkan melalui fine-tuning model dasar terbuka memakai instruksi sintetis.",
+    "url": "https://sikepo.tech/data-methodology.html"
+  },
+  {
     "id": "nodejs",
     "name": "Node.js",
     "group": "AI & aplikasi",
