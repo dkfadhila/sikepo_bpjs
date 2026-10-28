@@ -29,5 +29,5 @@ function renderNode(n:ShellNode,key:number):React.ReactNode{
  else if(tag==='span'&&cls==='demo-badge')Component=Badge
  return React.createElement(Component,p,...children.map((c,i)=>renderNode(c,i)))
 }
-function App(){useEffect(()=>{let disposed=false;const controller=document.createElement('script');controller.src='/dashboard/dashboard.js?v=historical-archive-1';controller.onload=()=>{if(disposed)return;const auth=document.createElement('script');auth.src='/dashboard/auth.js?v=historical-archive-1';document.body.append(auth)};document.body.append(controller);return()=>{disposed=true}},[]);return <>{(shell as ShellNode[]).map((n,i)=>renderNode(n,i))}</>}
+function App(){useEffect(()=>{let disposed=false;const controller=document.createElement('script');controller.src='/dashboard/dashboard.js?v=summary-unified-1';controller.onload=()=>{if(disposed)return;const auth=document.createElement('script');auth.src='/dashboard/auth.js?v=summary-unified-1';document.body.append(auth)};document.body.append(controller);return()=>{disposed=true}},[]);return <>{(shell as ShellNode[]).map((n,i)=>renderNode(n,i))}</>}
 createRoot(document.getElementById('root')!).render(<App/>);

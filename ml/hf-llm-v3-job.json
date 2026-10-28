@@ -1,0 +1,15 @@
+{
+  "jobId": "6ae183a43fb22a235dd3a752",
+  "namespace": "konigiri",
+  "url": "https://huggingface.co/jobs/konigiri/6ae183a43fb22a235dd3a752",
+  "sourceRevision": "e23e5215d6ff4978d787b567804b744e5e555db2",
+  "modelRepo": "konigiri/sikepo-explainer-lora-experiment-v3",
+  "hardware": "l4x1",
+  "hourlyUSD": 0.8,
+  "timeoutMinutes": 120,
+  "maxComputeUSD": 1.6,
+  "attempts": 1,
+  "baseModel": "Qwen/Qwen3-4B-Instruct-2507",
+  "status": "submitted",
+  "note": "Experimental synthetic LoRA, model is not deployed automatically."
+}

@@ -25,6 +25,21 @@ export function createHistoryStore(db){
    return {year,claims:await Promise.all(rows.map(attach)),next:hasMore?rows.at(-1)._id:null,imported:progress?.count||0,complete:progress?.state==='ready',expected:historicalManifest.yearCounts[year]};
   },
   async get(id){const p=historicalId(id);if(!p)return null;return attach(await col.findOne({_id:p.id,y:p.year}));},
+  async summary(scope){
+   const years=scope==='all'?[2019,2020,2021,2022,2023,2024,2025]:scope==='30'?[2025]:/^(2019|202[0-5])$/.test(String(scope))?[Number(scope)]:null;
+   if(!years)throw Object.assign(new Error('Periode ringkasan tidak valid.'),{status:400});
+   const ready=await db.collection('historical_summary_status').find({_id:{$in:years.map(y=>`historical-v3-${y}`)},state:'ready'}).toArray();
+   if(ready.length!==years.length)throw Object.assign(new Error('Ringkasan periode ini sedang dihitung. Coba kembali setelah selesai.'),{status:503});
+   const start=scope==='30'?'2025-12-02':`${years[0]}-01-01`,end=scope==='30'?'2025-12-31':`${years.at(-1)}-12-31`;
+   const daily=await db.collection('historical_daily_summary_v3').find({_id:{$gte:start,$lte:end}}).sort({_id:1}).toArray();
+   const rangeStart=Date.parse(start+'T00:00:00Z'),rangeEnd=Date.parse(end+'T00:00:00Z'),days=Math.round((rangeEnd-rangeStart)/86400000)+1,buckets=Array.from({length:7},()=>({all:0,reviewed:0})),groups=[0,0,0];
+   let count=0,amount=0,hold=0,high=0,exposure=0;const bucket=date=>Math.min(6,Math.floor(((Date.parse(date+'T00:00:00Z')-rangeStart)/86400000)*7/days));
+   for(const d of daily){count+=d.count;amount+=d.amount;hold+=d.hold;high+=d.high;exposure+=d.exposure;d.groups.forEach((n,i)=>groups[i]+=n);buckets[bucket(d._id)].all+=d.count;}
+   const reviewsList=await reviews.find({},{projection:{_id:1,status:1}}).toArray();
+   if(reviewsList.length){const byId=new Map(reviewsList.map(r=>[r._id,r]));for await(const raw of col.find({_id:{$in:[...byId.keys()]},d:{$gte:start,$lte:end}})){const prior=expandHistorical(raw),status=byId.get(raw._id).status;hold+=Number(status==='HOLD')-Number(prior.status==='HOLD');if(['APPROVED','REJECTED'].includes(status))buckets[bucket(raw.d)].reviewed++;}}
+   const labels=Array.from({length:7},(_,i)=>new Date(rangeStart+Math.floor(i*days/7)*86400000).toLocaleDateString('id-ID',{day:'numeric',month:'short',year:scope==='all'?'2-digit':undefined,timeZone:'UTC'}));
+   return {count,amount,hold,high,exposure,groups,buckets,labels,rangeLabel:`${start} – ${end}`,metadata:{anchorDate:'2025-12-31'},storage:'MongoDB',scope};
+  },
   async review(id,review,actor){const p=historicalId(id);if(!p)return null;const base=await col.findOne({_id:p.id,y:p.year});if(!base)return null;
    await reviews.updateOne({_id:p.id},{$setOnInsert:{status:expandHistorical(base).status,reviewVersion:0}},{upsert:true});
    const before=await reviews.findOne({_id:p.id,reviewVersion:review.version});if(!before)return null;

@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { gzipSync } from 'node:zlib';
 import { finished } from 'node:stream/promises';
+import { createHistoryStore, historicalId } from './history-store.js';
 
 const version = dataInfo.version;
 const safe = row => { if(!row)return null; const {_id,...value}=row;return value; };
@@ -40,13 +41,27 @@ export async function seedClaimDatabase(db){
   await db.collection('datasets').updateOne({_id:version},{$set:{...dataInfo,count,state:'ready',artifacts,storage:'MongoDB + private GridFS',updatedAt:new Date()}},{upsert:true});
 }
 export function createClaimStore(db){
-  const col=db.collection('claims');
+  const col=db.collection('claims'),reviews=db.collection('historical_reviews_v3'),history=createHistoryStore(db);
+  async function overlay(rows){
+    const keys=rows.map(c=>historicalId(c.sourceId||'')?.id).filter(Number.isSafeInteger);
+    const items=keys.length?await reviews.find({_id:{$in:keys}}).toArray():[], byId=new Map(items.map(r=>[r._id,r]));
+    return rows.map(c=>{const item=byId.get(historicalId(c.sourceId||'')?.id);return item?{...safe(c),status:item.status,reviewVersion:item.reviewVersion,lastReview:item.lastReview,reviewHistory:item.reviewHistory||[]}:safe(c);});
+  }
+  async function makeFilter(q){
+    const filter=criteria(q),status=filter.status;if(!status)return filter;
+    const sourceById=new Map(assessedClaims.map(c=>[historicalId(c.sourceId||'')?.id,c.sourceId]));
+    const changed=await reviews.find({},{projection:{_id:1,status:1}}).toArray(), relevant=changed.filter(r=>sourceById.has(r._id));
+    const all=relevant.map(r=>sourceById.get(r._id)),desired=relevant.filter(r=>r.status===status).map(r=>sourceById.get(r._id));
+    delete filter.status;const statusClause={$or:[{sourceId:{$in:desired}},{status,sourceId:{$nin:all}}]};
+    if(filter.$or){filter.$and=[{$or:filter.$or},statusClause];delete filter.$or;}else Object.assign(filter,statusClause);
+    return filter;
+  }
   return {
-    async list(q={}){const filter=criteria(q),total=await col.countDocuments(filter),limit=Math.min(100,Math.max(1,Math.trunc(Number(q.limit))||6)),pages=Math.max(1,Math.ceil(total/limit)),page=Math.min(pages,Math.max(1,Math.trunc(Number(q.page))||1));const rows=await col.find(filter).sort({score:q.sort==='asc'?1:-1,id:1}).skip((page-1)*limit).limit(limit).toArray();return {metadata:dataInfo,claims:rows.map(safe),total,page,pages,limit};},
-    async get(id){return safe(await col.findOne({datasetVersion:version,id}));},
-    async summary(period){const rows=await col.find(criteria({period}),{projection:{_id:0,amount:1,tariff:1,score:1,status:1,daysAgo:1}}).toArray();return summarize(rows,period);},
-    async *export(q){for await(const c of col.find(criteria(q)).sort({score:q.sort==='asc'?1:-1,id:1}))yield safe(c);},
-    async review(id,review,actor){const before=await col.findOne({datasetVersion:version,id,reviewVersion:review.version});if(!before)return null;const event={actor,at:new Date(),previousStatus:before.status,status:review.status,note:review.note};const after=await col.findOneAndUpdate({datasetVersion:version,id,reviewVersion:review.version},{$set:{status:review.status,lastReview:event},$inc:{reviewVersion:1},$push:{reviewHistory:event}},{returnDocument:'after'});return safe(after);}
+    async list(q={}){const filter=await makeFilter(q),total=await col.countDocuments(filter),limit=Math.min(100,Math.max(1,Math.trunc(Number(q.limit))||6)),pages=Math.max(1,Math.ceil(total/limit)),page=Math.min(pages,Math.max(1,Math.trunc(Number(q.page))||1));const rows=await col.find(filter).sort({score:q.sort==='asc'?1:-1,id:1}).skip((page-1)*limit).limit(limit).toArray();return {metadata:dataInfo,claims:await overlay(rows),total,page,pages,limit};},
+    async get(id){const c=await col.findOne({datasetVersion:version,id});return c?(await overlay([c]))[0]:null;},
+    async summary(period){const rows=await col.find(criteria({period}),{projection:{_id:0,sourceId:1,amount:1,tariff:1,score:1,status:1,daysAgo:1}}).toArray();return summarize(await overlay(rows),period);},
+    async *export(q){const filter=await makeFilter(q);let batch=[];for await(const c of col.find(filter).sort({score:q.sort==='asc'?1:-1,id:1})){batch.push(c);if(batch.length===100){yield* await overlay(batch);batch=[];}}if(batch.length)yield* await overlay(batch);},
+    async review(id,review,actor){const c=await col.findOne({datasetVersion:version,id});if(!c||!historicalId(c.sourceId||''))return null;const result=await history.review(c.sourceId,review,actor);return result?{...safe(c),status:result.status,reviewVersion:result.reviewVersion,lastReview:result.lastReview,reviewHistory:result.reviewHistory}:null;}
   };
 }
 export function summarize(rows,period){const buckets=Array.from({length:7},()=>({all:0,reviewed:0}));const groups=[0,0,0];let amount=0,hold=0,high=0,exposure=0;for(const c of rows){amount+=c.amount;if(c.status==='HOLD')hold++;if(c.score>=70){high++;exposure+=Math.max(0,c.amount-c.tariff);}groups[c.score>=70?2:c.score>=35?1:0]++;const b=Number(period)===7?6-c.daysAgo:Math.min(6,Math.floor((29-c.daysAgo)*7/30));if(b>=0&&b<7){buckets[b].all++;if(['APPROVED','REJECTED'].includes(c.status))buckets[b].reviewed++;}}return {count:rows.length,amount,hold,high,exposure,groups,buckets,metadata:dataInfo,storage:'MongoDB'};}

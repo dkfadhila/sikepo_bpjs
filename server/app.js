@@ -58,6 +58,7 @@ export function createApp({ db, investigate, claimStore, historyStore, config, c
   app.get('/api/claims',auth,storeRequired,async(req,res)=>res.json(await claimStore.list(req.query)));
   app.get('/api/claims/summary',auth,storeRequired,async(req,res)=>res.json(await claimStore.summary(req.query.period)));
   app.get('/api/history',auth,async(req,res)=>historyStore?res.json(await historyStore.list(req.query)):res.status(503).json({error:'Arsip historis belum tersedia.'}));
+  app.get('/api/history/summary',auth,async(req,res)=>historyStore?res.json(await historyStore.summary(req.query.scope)):res.status(503).json({error:'Ringkasan historis belum tersedia.'}));
   app.get('/api/claims/export',auth,storeRequired,async(req,res)=>{
     res.type('text/csv').attachment('sikepo-claims.csv');
     const cell=v=>'"'+String(v).replace(/"/g,'""')+'"';

@@ -1,0 +1,12 @@
+import 'dotenv/config';import {MongoClient} from 'mongodb';import {createReadStream,readFileSync} from 'node:fs';import {createGunzip} from 'node:zlib';import {createInterface} from 'node:readline';import {createHash} from 'node:crypto';import {assessClaim} from '../server/claims.js';
+const manifest=JSON.parse(readFileSync('ml/artifacts/historical-manifest.json','utf8'));
+const audit=JSON.parse(readFileSync('ml/artifacts/dataset-audit.json','utf8'));if(!audit.passed||audit.rowsChecked!==5000000)throw Error('Historical audit required');
+if((process.env.MONGODB_DATABASE||'sikepo')!=='sikepo')throw Error('Wrong database');
+const client=new MongoClient(process.env.MONGODB_URI,{maxPoolSize:3});await client.connect();try{
+const db=client.db('sikepo'),out=db.collection('historical_daily_summary_v3'),jobs=db.collection('historical_summary_status');
+for(const file of manifest.files){const year=Number(file.path.match(/\d{4}/)[0]),key=`historical-v3-${year}`,prev=await jobs.findOne({_id:key});if(prev?.state==='ready'&&prev.count===manifest.yearCounts[year]){console.log(JSON.stringify({year,state:'ready',count:prev.count}));continue;}
+const filePath=`artifacts/hf-audit/dataset/${file.path}`,hash=createHash('sha256');for await(const bytes of createReadStream(filePath))hash.update(bytes);if(hash.digest('hex')!==file.sha256)throw Error(`Checksum error ${year}`);
+const sums=new Map();let count=0;for await(const line of createInterface({input:createReadStream(filePath).pipe(createGunzip())})){const raw=JSON.parse(line);if(Number(raw.date.slice(0,4))!==year)throw Error('Year mismatch');const c=assessClaim(raw);let d=sums.get(c.date);if(!d){d={_id:c.date,count:0,amount:0,hold:0,high:0,exposure:0,groups:[0,0,0]};sums.set(c.date,d);}d.count++;d.amount+=c.amount;d.hold+=Number(c.status==='HOLD');d.high+=Number(c.score>=70);if(c.score>=70)d.exposure+=Math.max(0,c.amount-c.tariff);d.groups[c.score>=70?2:c.score>=35?1:0]++;count++;if(count%100000===0)console.log(JSON.stringify({year,processed:count}));}
+if(count!==manifest.yearCounts[year])throw Error('Year count mismatch');await out.bulkWrite([...sums.values()].map(v=>({replaceOne:{filter:{_id:v._id},replacement:v,upsert:true}})));await jobs.updateOne({_id:key},{$set:{state:'ready',count,days:sums.size,model:'iforest-historical-3.0',updatedAt:new Date()}},{upsert:true});console.log(JSON.stringify({year,state:'ready',count,days:sums.size}));
+}
+}finally{await client.close()}

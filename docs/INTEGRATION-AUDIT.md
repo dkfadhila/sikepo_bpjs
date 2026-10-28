@@ -9,4 +9,4 @@ Tanggal pemeriksaan: 28 Oktober 2026.
 - Impor MongoDB: sikepo-operational-3.0, 10000 klaim aktif, satu model versi baru, sembilan artefak GridFS.
 - Uji browser lokal: login Verifikator, grafik Desember 2025, detail SYN-2512-00078 dengan lima indikator, skor anomali 0.6767 di atas ambang 0.3959, status HOLD. Catatan HOLD tersimpan. Gemma melalui Mastra menjelaskan indikator dan meminta bukti; tidak mengubah keputusan atau melakukan pembayaran.
 
-Batas: 10000 adalah irisan aktif dashboard, bukan keseluruhan korpus. Full corpus privat di Hugging Face. Akses dashboard untuk seluruh 5 juta membutuhkan perluasan penyimpanan/query; pilihan penyimpanan masih menunggu pengguna. Tidak ada klaim validasi pada data operasional BPJS, tidak ada training LLM baru.
+Pembaruan: seluruh 5 juta klaim historis telah masuk ke MongoDB dan dapat ditelusuri melalui arsip. Ringkasan per tahun dan seluruh periode memakai agregat harian; antrean tetap irisan aktif 10.000. Review terhubung melalui identitas sumber bersama. Full corpus juga tersimpan privat di Hugging Face. Tidak ada klaim validasi pada data operasional BPJS, tidak ada training LLM baru.
