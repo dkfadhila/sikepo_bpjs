@@ -13,3 +13,11 @@
 @media(max-width:480px){.login-shell{padding:16px 12px max(12px,env(safe-area-inset-bottom));gap:16px}.login-card{border-radius:20px}.login-form-inner{padding:24px 20px}.form-heading h2{font-size:28px}.form-heading{margin-bottom:22px}.brand{font-size:16px}.brand img{width:26px;height:26px}.demo-tabs{margin-top:22px}.login-footer{padding:0 4px}}
 @media(max-height:650px){.login-shell{gap:10px;padding-top:12px;padding-bottom:8px}.login-form-inner{padding-top:22px;padding-bottom:22px}.form-heading{margin-bottom:18px}.form-heading h2{font-size:27px}.visual-message{padding:18px 0}.login-visual{padding:24px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+/* Gentle motion follows the landing page while keeping the form immediately usable. */
+@media(prefers-reduced-motion:no-preference){
+ .login-form-inner,.visual-message{animation:login-enter .5s cubic-bezier(.22,1,.36,1) both}
+ .login-submit,.role-button{transition:background-color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+ @media(hover:hover){.login-submit:hover,.role-button:hover{transform:translateY(-1px)}}
+ @keyframes login-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+}
