@@ -5,13 +5,14 @@ import { rateLimit } from 'express-rate-limit';
 import path from 'node:path';
 import { z } from 'zod';
 import { newToken, sessionHash, verifyPassword, publicUser, allowedOrigin } from './security.js';
-import { claimSchema } from './agent.js';
 import { dataInfo } from './claims.js';
 import { historicalId } from './history-store.js';
+import { nalarInput, explainClaim, reserveAiBudget } from './workflow.js';
+import { intakeSchema } from './intake.js';
 
 const publicRoot = path.resolve('spartanai-recreation/dist');
 const loginSchema = z.object({ email: z.string().email().max(120), password: z.string().min(1).max(128) }).strict();
-export function createApp({ db, investigate, claimStore, historyStore, config, captureException = () => {} }) {
+export function createApp({ db, investigate, claimStore, historyStore, intake, config, captureException = () => {} }) {
   const app = express(), production = config.production;
   const origins = [config.appOrigin, config.dashboardOrigin];
   const cookie = { httpOnly: true, secure: production, sameSite: 'lax', path: '/', ...(production ? { domain: '.sikepo.tech' } : {}) };
@@ -26,7 +27,7 @@ export function createApp({ db, investigate, claimStore, historyStore, config, c
     if (!['GET','HEAD','OPTIONS'].includes(req.method) && !allowedOrigin(req.get('origin'), origins)) return res.status(403).json({ error: 'Origin tidak diizinkan.' });
     next();
   });
-  app.get('/api/health', (_req,res) => res.json({ status: db ? 'ok' : 'not-ready', service: 'sikepo', database: Boolean(db), nalar: Boolean(config.nalarEnabled), monitoring: Boolean(config.sentryDsn), dataset: dataInfo.version }));
+  app.get('/api/health', (_req,res) => res.json({ status: db ? 'ok' : 'not-ready', service: 'sikepo', database: Boolean(db), nalar: Boolean(config.nalarEnabled), intake:Boolean(intake), workflowVersion:'intake-1', monitoring: Boolean(config.sentryDsn), dataset: dataInfo.version }));
   const dbRequired = (_req,res,next) => db ? next() : res.status(503).json({ error: 'Database belum tersambung. Login belum tersedia.' });
   async function session(req) {
     const token = req.cookies.sikepo_session;
@@ -55,6 +56,16 @@ export function createApp({ db, investigate, claimStore, historyStore, config, c
   });
   app.get('/api/auth/me', auth, (req,res) => res.json({ user: publicUser(req.auth.user), csrf: req.auth.csrf }));
   const storeRequired=(_req,res,next)=>claimStore?next():res.status(503).json({error:'Penyimpanan klaim belum tersedia.'});
+  const intakeLimiter=rateLimit({windowMs:3600000,limit:30,standardHeaders:'draft-8',legacyHeaders:false,message:{error:'Batas pengajuan per jam tercapai. Coba kembali nanti.'}});
+  app.get('/api/intake/info',auth,(_req,res)=>res.json({source:'structured-intake',acceptedDataClass:'SYNTHETIC',liveBpjsConnected:false,documentExtraction:false,nalarConfigured:Boolean(config.nalarEnabled),dateRange:['2019-01-01','2025-12-31'],documentation:'/intake-guide.html'}));
+  app.post('/api/claims',auth,storeRequired,intakeLimiter,async(req,res)=>{
+    if(req.get('x-csrf-token')!==req.auth.csrf)return res.status(403).json({error:'Sesi tidak valid.'});
+    if(!['SA','VK'].includes(req.auth.user.role))return res.status(403).json({error:'Pengajuan memerlukan peran verifikator atau super admin.'});
+    if(!intake)return res.status(503).json({error:'Jalur pengajuan belum tersedia.'});
+    const parsed=intakeSchema.safeParse(req.body);
+    if(!parsed.success)return res.status(400).json({error:'Data pengajuan tidak sesuai. Gunakan data sintetis 2019–2025 tanpa nama, NIK atau nomor peserta.',fields:parsed.error.issues.map(i=>i.path.join('.'))});
+    res.status(202).json(await intake.submit(parsed.data,req.auth.user));
+  });
   app.get('/api/claims',auth,storeRequired,async(req,res)=>res.json(await claimStore.list(req.query)));
   app.get('/api/claims/summary',auth,storeRequired,async(req,res)=>res.json(await claimStore.summary(req.query.period)));
   app.get('/api/history',auth,async(req,res)=>historyStore?res.json(await historyStore.list(req.query)):res.status(503).json({error:'Arsip historis belum tersedia.'}));
@@ -91,17 +102,15 @@ export function createApp({ db, investigate, claimStore, historyStore, config, c
     if (!request.success) return res.status(400).json({ error: 'Pilih klaim dari dataset workspace.' });
     const claim = historicalId(request.data.id)?await historyStore?.get(request.data.id):await claimStore.get(request.data.id);
     if (!claim) return res.status(404).json({ error: 'Klaim tidak ditemukan.' });
-    const { id, amount, tariff, los, normalLos, score } = claim;
-    const parsed = claimSchema.safeParse({ id, amount, tariff, los, normalLos, score, signals: claim.signals.map(s => s.code), mlAnomaly:claim.ml.isAnomaly, recommendation:claim.recommendation });
-    if (!parsed.success) return res.status(500).json({ error: 'Dataset belum dapat diproses.' });
+    let input;
+    try { input=nalarInput(claim); } catch { return res.status(500).json({error:'Dataset belum dapat diproses.'}); }
+    if(claim.pipeline?.explanation)return res.json(claim.pipeline.explanation);
+    if(claim.intake)return res.status(202).json({pending:true,pipeline:claim.pipeline,message:claim.pipeline?.message||'Penjelasan diproses melalui antrean otomatis.'});
     if (!config.nalarEnabled) return res.status(503).json({ error: 'Layanan penjelasan AI belum dikonfigurasi.' });
     // Global demo budget persists across restarts and is updated atomically.
-    const day = new Date().toISOString().slice(0,10), budget = db.collection('ai_budget');
-    await budget.updateOne({ _id: day }, { $setOnInsert: { count: 0, expiresAt: new Date(Date.now()+3*86400000) } }, { upsert: true });
-    const usage = await budget.findOneAndUpdate({ _id: day, count: { $lt: config.aiDailyLimit } }, { $inc: { count: 1 } }, { returnDocument: 'after' });
-    if (!usage) return res.status(429).json({ error: 'Kuota penjelasan AI hari ini sudah terpakai.' });
+    if (!await reserveAiBudget(db,config.aiDailyLimit)) return res.status(429).json({ error: 'Kuota penjelasan AI hari ini sudah terpakai.' });
     try {
-      res.json({ ...await investigate(parsed.data), recommendation:claim.recommendation, requiresHumanDecision:true });
+      res.json(explainClaim(claim,await investigate(input)));
     } catch (error) {
       captureException(error);
       res.status(503).json({ error: 'NALAR sementara tidak tersedia. Silakan coba lagi nanti.' });

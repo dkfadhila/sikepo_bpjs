@@ -21,10 +21,10 @@ services:
         value: sikepo
       - key: MONGODB_URI
         sync: false
-      - key: GOOGLE_GENERATIVE_AI_API_KEY
+      - key: HF_TOKEN
         sync: false
-      - key: GEMMA_MODEL
-        value: gemma-4-26b-a4b-it
+      - key: NALAR_ENABLED
+        value: 'true'
       - key: SENTRY_DSN
         sync: false
       - key: AI_DAILY_LIMIT

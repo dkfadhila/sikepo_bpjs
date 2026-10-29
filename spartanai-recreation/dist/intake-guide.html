@@ -1,0 +1,21 @@
+<!doctype html><html lang="id"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pengajuan & integrasi — SIKEPO</title><style>body{font:16px/1.7 system-ui;background:#f0f2ee;color:#1a3022;margin:0}main{max-width:900px;margin:auto;padding:50px 24px}section{background:white;border:1px solid #dae2d9;border-radius:16px;padding:24px;margin:24px 0}h1{font-size:38px;line-height:1.2}h2{font-size:23px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#163326;color:#e2eee5;padding:20px;border-radius:12px}a{color:#206b4a}td,th{padding:12px;text-align:left;border-bottom:1px solid #dce4db}table{width:100%}</style><main><a href="/dashboard/#intake">← Pengajuan baru</a><h1>Input pengajuan SiKePO</h1><p>Jalur yang tersedia saat ini adalah form dan API JSON untuk data sintetis terstruktur. Belum ada koneksi operasional ke BPJS, SIMRS atau e-Klaim. Unggahan dan ekstraksi PDF belum tersedia.</p>
+<section><h2>Alur otomatis</h2><ol><li>Pengajuan divalidasi dan disimpan di MongoDB. Request ID mencegah pengajuan yang sama tersimpan dua kali.</li><li>Aturan dan Isolation Forest langsung dihitung.</li><li>NALAR masuk antrean tersimpan di database. Worker memproses satu pengajuan pada satu waktu; pekerjaan yang terputus dapat diambil kembali setelah lease kedaluwarsa.</li><li>Rekomendasi: siap ditelaah, perlu bukti, atau perlu investigasi. Status persetujuan/penolakan ditetapkan verifikator.</li></ol><p>Kuota NALAR dibagi dengan permintaan penjelasan manual. Saat kuota habis, pemrosesan ditunda sampai periode kuota berikutnya. Kegagalan layanan dicoba ulang hingga tiga kali. Hasil aturan dan ML tetap tersedia; tidak diganti dengan ringkasan AI buatan.</p></section>
+<section><h2>Format API</h2><p><code>POST /api/claims</code> memerlukan sesi login verifikator/super admin, Origin yang diizinkan, dan header <code>X-CSRF-Token</code> dari <code>GET /api/auth/me</code>. Ini belum merupakan kredensial integrasi antarsistem. Respons 202 berisi ID klaim dan status pipeline; baca perkembangannya melalui <code>GET /api/claims/:id</code>.</p><pre>{
+  "requestId": "1d2879f1-1e72-4a16-841a-7db56a403f22",
+  "dataClass": "SYNTHETIC",
+  "date": "2025-12-31",
+  "facilityCode": "TEST01",
+  "episodeKey": "EP-TEST01",
+  "icd": "J18.9",
+  "amount": 15000000,
+  "tariff": 6000000,
+  "invoiceTotal": 15000000,
+  "los": 8,
+  "normalLos": 4,
+  "restrictedDrug": false,
+  "drugEvidence": true,
+  "serviceCount": 3,
+  "documentedServiceCount": 3,
+  "duplicateCount": 1
+}</pre><p>Tanggal sintetis dibatasi 2019–2025. Semua kolom wajib. Nama, NIK, nomor peserta, teks rekam medis, dan kolom tambahan ditolak. Referensi fasilitas dan episode harus buatan. Duplikasi episode berasal dari jumlah pengajuan yang dikirim sistem sumber; rekonsiliasi otomatis lintas sistem belum tersedia.</p></section>
+<section><h2>Dari mana data live nantinya?</h2><table><thead><tr><th>Sumber</th><th>Data yang diperlukan</th></tr></thead><tbody><tr><td>SIMRS / sistem klaim fasilitas</td><td>Referensi pengajuan, tanggal, diagnosis, durasi, layanan, dan biaya.</td></tr><tr><td>Sumber tarif dan ketentuan yang disetujui</td><td>Tarif, versi ketentuan, masa berlaku dan kriteria pemeriksaan.</td></tr><tr><td>Dokumen pendukung yang diizinkan</td><td>Bukti layanan dan obat; ekstraksi dokumen memerlukan modul tambahan.</td></tr></tbody></table><p>Integrasi live memerlukan izin pemilik data, pemetaan skema, autentikasi antarsistem, kontrol akses fasilitas, validasi acuan resmi, dan prosedur penanganan data pribadi. Jangan mengirim data peserta nyata melalui form sintetis ini. Masking saja tidak otomatis membuat data anonim atau menjamin kepatuhan hukum.</p><p>NALAR saat ini hanya menerima kode indikator, penanda anomali ML dan skor prioritas. Nama, ID klaim, invoice, atau rekam medis tidak dikirim ke Hugging Face. Detail angka dan daftar bukti pada UI disusun server dari indikator terverifikasi; ringkasan AI diberi bagian terpisah.</p></section></main></html>

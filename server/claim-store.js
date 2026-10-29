@@ -26,7 +26,7 @@ export async function seedClaimDatabase(db){
   await col.createIndex({datasetVersion:1,score:-1,id:1});
   await col.createIndex({datasetVersion:1,daysAgo:1});
   const existing=await db.collection('datasets').findOne({_id:version});
-  if(existing?.state==='ready' && existing.count===dataInfo.count && await col.countDocuments({datasetVersion:version})===dataInfo.count)return;
+  if(existing?.state==='ready' && existing.count===dataInfo.count && await col.countDocuments({datasetVersion:version,'intake.key':{$exists:false}})===dataInfo.count)return;
   for(let i=0;i<assessedClaims.length;i+=500){await col.bulkWrite(assessedClaims.slice(i,i+500).map(c=>({updateOne:{filter:{datasetVersion:version,id:c.id},update:{$setOnInsert:{...c,datasetVersion:version,reviewVersion:0}},upsert:true}})),{ordered:false});}
   const bucket=new GridFSBucket(db,{bucketName:'artifacts'}), artifacts=[];
   for(const name of ['data/synthetic/claims.json','data/synthetic/claims.csv','data/synthetic/manifest.json','ml/artifacts/isolation-forest.json','ml/artifacts/evaluation.json','ml/artifacts/dataset-audit.json','ml/artifacts/model-case-audit.json','ml/artifacts/historical-manifest.json','ml/artifacts/provenance.json']){
@@ -36,7 +36,7 @@ export async function seedClaimDatabase(db){
     artifacts.push({source:name,fileId:file._id,sha256:hash,bytes:bytes.length});
   }
   await db.collection('models').updateOne({_id:dataInfo.model.modelVersion},{$setOnInsert:{...dataInfo.model,artifacts,createdAt:new Date()}},{upsert:true});
-  const count=await col.countDocuments({datasetVersion:version});
+  const count=await col.countDocuments({datasetVersion:version,'intake.key':{$exists:false}});
   if(count!==dataInfo.count)throw new Error('Dataset count mismatch');
   await db.collection('datasets').updateOne({_id:version},{$set:{...dataInfo,count,state:'ready',artifacts,storage:'MongoDB + private GridFS',updatedAt:new Date()}},{upsert:true});
 }
@@ -61,7 +61,9 @@ export function createClaimStore(db){
     async get(id){const c=await col.findOne({datasetVersion:version,id});return c?(await overlay([c]))[0]:null;},
     async summary(period){const rows=await col.find(criteria({period}),{projection:{_id:0,sourceId:1,amount:1,tariff:1,score:1,status:1,daysAgo:1}}).toArray();return summarize(await overlay(rows),period);},
     async *export(q){const filter=await makeFilter(q);let batch=[];for await(const c of col.find(filter).sort({score:q.sort==='asc'?1:-1,id:1})){batch.push(c);if(batch.length===100){yield* await overlay(batch);batch=[];}}if(batch.length)yield* await overlay(batch);},
-    async review(id,review,actor){const c=await col.findOne({datasetVersion:version,id});if(!c||!historicalId(c.sourceId||''))return null;const result=await history.review(c.sourceId,review,actor);return result?{...safe(c),status:result.status,reviewVersion:result.reviewVersion,lastReview:result.lastReview,reviewHistory:result.reviewHistory}:null;}
+    async review(id,review,actor){const c=await col.findOne({datasetVersion:version,id});if(!c)return null;
+      if(c.intake){const entry={status:review.status,note:review.note,actor,at:new Date()};return safe(await col.findOneAndUpdate({datasetVersion:version,id,reviewVersion:review.version},{$set:{status:review.status,lastReview:entry},$inc:{reviewVersion:1},$push:{reviewHistory:entry}},{returnDocument:'after'}));}
+      if(!historicalId(c.sourceId||''))return null;const result=await history.review(c.sourceId,review,actor);return result?{...safe(c),status:result.status,reviewVersion:result.reviewVersion,lastReview:result.lastReview,reviewHistory:result.reviewHistory}:null;}
   };
 }
 export function summarize(rows,period){const buckets=Array.from({length:7},()=>({all:0,reviewed:0}));const groups=[0,0,0];let amount=0,hold=0,high=0,exposure=0;for(const c of rows){amount+=c.amount;if(c.status==='HOLD')hold++;if(c.score>=70){high++;exposure+=Math.max(0,c.amount-c.tariff);}groups[c.score>=70?2:c.score>=35?1:0]++;const b=Number(period)===7?6-c.daysAgo:Math.min(6,Math.floor((29-c.daysAgo)*7/30));if(b>=0&&b<7){buckets[b].all++;if(['APPROVED','REJECTED'].includes(c.status))buckets[b].reviewed++;}}return {count:rows.length,amount,hold,high,exposure,groups,buckets,metadata:dataInfo,storage:'MongoDB'};}
