@@ -1,0 +1,13 @@
+{
+  "mode": "Built-in image_gen",
+  "assets": [
+    {
+      "file": "claims-intelligence.png",
+      "prompt": "Use case: stylized-concept. Asset type: SIKEPO presentation artwork, wide landscape 16:9. Create a premium cinematic 3D still life about Indonesian health-insurance claims intelligence: sculptural forest-green glass document sheets and brushed silver medical archive blocks connected by delicate flowing emerald light threads, a precision magnifying lens foreground, subtle botanical shadows. Editorial architectural product photography, dark charcoal and deep forest green, warm sunlight and refined realistic glass reflections. Composition clustered on right two thirds, left third dark clean negative space. No text, no letters, no numbers, no invented interface, no logos, no people. Sophisticated tactile materials and restrained detail, visually aligned with lush green premium healthcare AI branding."
+    },
+    {
+      "file": "nalar-reasoning.png",
+      "prompt": "Use case: stylized-concept. Asset type: premium AI presentation artwork for SIKEPO NALAR. Wide landscape 16:9. A sculptural reasoning core made of interlocking translucent forest-green glass ribbons and satin silver arcs floating above a dark stone plinth. Thin luminous threads connect a few small glass document tablets to the core. A quiet abstract metaphor for evidence-grounded language model reasoning. Museum-quality cinematic product photography, emerald green, charcoal black, small warm gold highlights, soft volumetric studio light, realistic refraction, strong silhouette, minimal sophisticated composition. Subject centered slightly right, ample dark negative space surrounding. No text, no letters, no logos, no human faces, no brain anatomy, no interface. Match luxury botanical technology branding."
+    }
+  ]
+}

@@ -10,7 +10,7 @@ import { parse } from 'acorn';
 const root=path.dirname(fileURLToPath(import.meta.url)),dist=path.join(root,'dist'),assets=path.join(dist,'assets');
 const names=fs.readdirSync(assets),find=prefix=>names.find(name=>name.startsWith(prefix)&&name.endsWith('.mjs'));
 const main=find('script_main.'),page=find('iHx0Y'),faq=find('jOQBH'),button=find('AuyE7'),card=find('d3MrXgarR');
-const version='sikepo-source-sync-21';
+const version='sikepo-source-sync-22';
 const copy=JSON.parse(fs.readFileSync(path.join(root,'sikepo-copy.json'),'utf8'));
 Object.assign(copy,{
   'SIKEPO · Audit klaim lebih terarah':'SIKEPO',
@@ -18,7 +18,7 @@ Object.assign(copy,{
   'Streamlining data ingestion and processing using advanced RAG systems for real-time business intelligence.':'Rangkum temuan aturan dan anomali menjadi alasan serta rekomendasi yang dapat ditelaah oleh pengguna.',
   'USD Billed ':'',
   'Peran pengguna':'Peran pengguna',
-  'SiKePO � Keputusan lebih tepat. Membantu pemeriksaan klaim BPJS/JKN sebelum pencairan.':'SiKePO — Keputusan lebih tepat. Membantu pemeriksaan klaim BPJS/JKN sebelum pencairan.',
+  'SiKePO � Keputusan lebih tepat. Membantu pemeriksaan klaim BPJS/JKN sebelum pencairan.':'SiKePo: Sistem Investigasi Kelayakan Klaim dan Pola Overbilling berbasis AI',
 });
 const summary=fs.readFileSync(path.join(root,'sikepo-summary.html'),'utf8').trim();
 const pipeline=fs.readFileSync(path.join(dist,'pipeline-section.html'),'utf8').trim();

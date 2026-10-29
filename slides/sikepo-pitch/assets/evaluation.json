@@ -1,0 +1,48 @@
+{
+  "modelVersion": "iforest-historical-3.0",
+  "datasetVersion": "sikepo-historical-3.0",
+  "rows": 5000000,
+  "features": [
+    "cost_ratio",
+    "los_ratio",
+    "missing_drug_evidence",
+    "service_gap_ratio",
+    "invoice_gap_ratio",
+    "duplicate_count",
+    "log_tariff"
+  ],
+  "seed": 2802025,
+  "splitMethod": "Temporal: train 2019-2023, calibration 2024, held-out development test 2025; duplicate pairs inherit dates",
+  "splitCounts": {
+    "train": 3105497,
+    "validation": 912883,
+    "test": 981620
+  },
+  "threshold": 0.39587304792183614,
+  "thresholdMethod": "95th percentile of non-injected validation records; never test",
+  "test": {
+    "precision": 0.878550625599974,
+    "recall": 0.9229430747562594,
+    "f1": 0.9001998903020694,
+    "rocAuc": 0.9825856963675506,
+    "averagePrecision": 0.9688208371497395,
+    "confusionMatrixTN_FP_FN_TP": [
+      651774,
+      37322,
+      22541,
+      269983
+    ]
+  },
+  "sklearn": "1.7.2",
+  "numpy": "2.2.6",
+  "python": "3.12.16",
+  "hardware": "Hugging Face CPU Upgrade, 8 vCPU",
+  "elapsedSeconds": 368,
+  "limitations": [
+    "Synthetic scenario classification, not confirmed fraud",
+    "No validation on BPJS operational data",
+    "Temporal test remains development evidence, not independent clinical validation",
+    "Labels describe injection rather than rule outcomes; distributions overlap",
+    "No automatic payment, approval or rejection"
+  ]
+}

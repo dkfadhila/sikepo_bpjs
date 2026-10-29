@@ -176,7 +176,7 @@
   "Human-Centric Automation: Designing AI That Empowers Your Workforce": "Menelaah indikasi upcoding dan pola overbilling",
   "Why the most successful AI implementations focus on augmenting human talent rather than simply replacing it.": "Sinyal risiko perlu ditelusuri bersama diagnosis, rincian pelayanan, dan berkas pendukung.",
   "Deborah Reachie": "SiKePO",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac ultrices massa. Vivamus faucibus egestas nulla": "SiKePO — Keputusan lebih tepat. Membantu pemeriksaan klaim BPJS/JKN sebelum pencairan.",
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac ultrices massa. Vivamus faucibus egestas nulla": "SiKePo: Sistem Investigasi Kelayakan Klaim dan Pola Overbilling berbasis AI",
   "Subscribe": "Buka dashboard",
   "Enable JavaScript to submit this form.": "Buka dashboard untuk menjelajahi prototipe.",
   "Follow Us:": "WORKSPACE SIKEPO",
@@ -198,5 +198,6 @@
   "Automate the manual, accelerate the future. Our custom AI solutions deliver measurable growth and operational excellence.": "Telusuri risikonya. Pahami klaimnya. SIKEPO membantu audit klaim menjadi lebih terarah.",
   "We believe that AI should not just automate tasks, but amplify the creative and strategic potential of every human.": "SIKEPO membantu menyatukan temuan aturan dan anomali agar setiap klaim dapat ditelaah dengan konteks.",
   "Initial neural audits take 1 week, followed by a 4-week rapid prototyping phase before full-scale production deployment.": "A1 menilai aturan awal, A2 mendeteksi anomali dengan IsolationForest, lalu A3 merangkum temuan menjadi rekomendasi adjudikasi.",
-  "SiKePo": "SiKePO"
+  "SiKePo": "SiKePO",
+  "SiKePO — Keputusan lebih tepat. Membantu pemeriksaan klaim BPJS/JKN sebelum pencairan.": "SiKePo: Sistem Investigasi Kelayakan Klaim dan Pola Overbilling berbasis AI"
 }
