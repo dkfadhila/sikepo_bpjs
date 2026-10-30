@@ -1,0 +1,19 @@
+{
+  "provider": "ElevenLabs web panel",
+  "model": "Eleven v4",
+  "script": "Halo, perkenalkan, aku Decka Fadhila Tirta. Ee... saya ikut ini sendirian. Hmm... jadi, semuanya saya kerjain sendiri.",
+  "voices": [
+    {
+      "file": "01-pratama-v4.mp3",
+      "name": "Pratama - Clear, Confident and Warm"
+    },
+    {
+      "file": "02-dakocan-v4.mp3",
+      "name": "Dakocan - Expressive, Cheerful and Clear"
+    },
+    {
+      "file": "03-zephlyn-v4.mp3",
+      "name": "Zephlyn - Calm, Neutral and Measured"
+    }
+  ]
+}
