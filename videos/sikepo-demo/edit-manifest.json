@@ -1,0 +1,71 @@
+{
+  "source": "2026-10-30 22-21-20.mp4",
+  "output": "SIKEPO-demo-presentasi.mp4",
+  "audio": "Silent; explanatory on-screen captions for live presentation",
+  "scenes": [
+    {
+      "sourceStart": 10,
+      "sourceEnd": 16,
+      "speed": 1,
+      "framing": "wide",
+      "duration": 6.0,
+      "title": "Ringkasan pemeriksaan",
+      "caption": "Antrean klaim dan prioritas risiko dalam satu workspace."
+    },
+    {
+      "sourceStart": 16,
+      "sourceEnd": 22,
+      "speed": 1,
+      "framing": "wide",
+      "duration": 6.0,
+      "title": "Alur pemeriksaan",
+      "caption": "Aturan, deteksi anomali, lalu penjelasan NALAR."
+    },
+    {
+      "sourceStart": 22,
+      "sourceEnd": 48,
+      "speed": 1.2,
+      "framing": "form",
+      "duration": 21.666666666666668,
+      "title": "Masukkan\ndata klaim",
+      "caption": "Biaya, tarif acuan, durasi rawat, serta bukti layanan.\n\nSeluruh masukan pada rekaman ini adalah data sintetis."
+    },
+    {
+      "sourceStart": 48,
+      "sourceEnd": 56,
+      "speed": 1,
+      "framing": "form",
+      "duration": 8.0,
+      "title": "Kirim dan\nperiksa",
+      "caption": "Pengajuan tersimpan. Aturan dan ML diperiksa; NALAR diproses melalui antrean."
+    },
+    {
+      "sourceStart": 60,
+      "sourceEnd": 81,
+      "speed": 1,
+      "framing": "modal",
+      "duration": 21.0,
+      "title": "Telusuri\ntemuan NALAR",
+      "caption": "Rasio biaya 2,50× acuan.\n\nSistem menandai selisih tagihan dan pola anomali untuk diperiksa."
+    },
+    {
+      "sourceStart": 81,
+      "sourceEnd": 99,
+      "speed": 1,
+      "framing": "modal",
+      "duration": 18.0,
+      "title": "Keputusan\nverifikator",
+      "caption": "Petugas memilih status dan mencatat alasan.\n\nSinyal anomali bukan bukti fraud. NALAR tidak menetapkan penolakan otomatis."
+    },
+    {
+      "sourceStart": 99,
+      "sourceEnd": 101,
+      "speed": 1,
+      "framing": "wide",
+      "duration": 2.0,
+      "title": "Status tersimpan",
+      "caption": "Hasil review dicatat dan dapat ditelusuri kembali pada antrean klaim."
+    }
+  ],
+  "closingSeconds": 4
+}
