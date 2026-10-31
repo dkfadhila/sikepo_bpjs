@@ -39,7 +39,9 @@ try:
  if state['status']=='COMPLETED':
   url=payload.get('result',{}).get('video',{}).get('url')
   if url:
-   urllib.request.urlretrieve(url,work/'test-720p.mp4')
+   download=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'video/mp4,*/*'})
+   with urllib.request.urlopen(download,timeout=120) as media:
+    (work/'test-720p.mp4').write_bytes(media.read())
    print('Test video saved locally.')
 except urllib.error.HTTPError as e:
  state['status']='HTTP_ERROR';state['httpStatus']=e.code

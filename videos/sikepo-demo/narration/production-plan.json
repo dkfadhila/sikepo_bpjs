@@ -22,7 +22,7 @@
   },
   "videoResolution": "720p",
   "veedSpendCapUSD": 45,
-  "status": "Three final audio blocks generated and locally transcribed for content/timing QA. An 11-second 720p Fabric test was accepted and is processing; full render is waiting on the user budget choice.",
+  "status": "Three audio blocks ready; short 720p Fabric test complete. Awaiting user choice between USD45 cap with partial presenter visibility or a higher full-avatar budget. No long render submitted.",
   "audioDurationsSeconds": {
     "01-pre-demo.mp3": 157.648938,
     "02-demo.mp3": 86.633333,
@@ -36,7 +36,12 @@
     "jobId": "8377760a-d68a-4d41-863d-7234b9a76db1",
     "inputSeconds": 11,
     "estimatedCreditsReturned": 450,
-    "chargedCredits": null,
-    "note": "API estimate units are not assumed to be USD; inspect settled charge. No duplicate POSTs."
+    "chargedCredits": 165,
+    "note": "API estimate units are not assumed to be USD; inspect settled charge. No duplicate POSTs.",
+    "status": "COMPLETED",
+    "estimatedUSDAtPublishedRate": 1.65,
+    "video": "../presenter/veed-test-720p.mp4",
+    "outputResolution": "1280x720 (normalized from native 1312x736)",
+    "visualQA": "Face, glasses, hair and room appear consistent in sampled frames. Hands still gesture; Fabric does not lock pose. No full-video motion/lipsync guarantee from a contact sheet."
   }
 }
