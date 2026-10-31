@@ -1,0 +1,2 @@
+# Layout
+Canvas 1280×720. Existing slides/demo 1040×585 at (16,42); right rail 192 px. Facecam 192×108 at (1072,529), corner radius10px, border2px. Source audio drives ten exact chapter timings recorded in ../narration/timing.json. Slide entrances use a260ms fade and8px translation, matching the deck transition. Demo source is used once at its original duration86.633s. No nested browser controls or download scene. Voice remains unchanged.

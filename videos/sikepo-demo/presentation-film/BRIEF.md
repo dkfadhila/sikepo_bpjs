@@ -1,0 +1,2 @@
+# SIKEPO presentation film
+Combine the existing ten OpenSlide pages, edited dashboard demonstration, three continuous narration/presenter blocks, and rounded facecam. 1280×720, 30 fps, 417.213 seconds. Keep every slide element and demonstration detail visible by reserving a right-hand presenter rail. No new paid media or background music. Existing speech is the master clock. The photo placeholder is replaced in this video edition with the approved generated presenter, explicitly labelled as AI.

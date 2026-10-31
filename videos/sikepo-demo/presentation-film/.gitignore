@@ -1,0 +1,5 @@
+# Generated local copies; rebuild from the committed source assets with ../build_presentation_film.py.
+assets/*.mp4
+.hyperframes/
+node_modules/
+*.log
