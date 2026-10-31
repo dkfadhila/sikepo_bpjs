@@ -1,0 +1,31 @@
+{
+  "status": "Full narration restored in notes; audio v3 not generated",
+  "spokenWords": 816,
+  "slides": 12,
+  "videoAllowed": false,
+  "expectedMinutes": "6–7, estimated only; measure after synthesis",
+  "source": "Full earlier narration split over current twelve slides; final question invitation removed",
+  "blocks": [
+    {
+      "id": "01-pre-demo",
+      "slideRange": [
+        1,
+        5
+      ]
+    },
+    {
+      "id": "02-demo",
+      "slideRange": [
+        6,
+        6
+      ]
+    },
+    {
+      "id": "03-after-demo",
+      "slideRange": [
+        7,
+        12
+      ]
+    }
+  ]
+}

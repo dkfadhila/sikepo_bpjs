@@ -1,0 +1,18 @@
+Dari demo tadi, ada tiga fitur utama. Pertama, pengajuan dan antrean pemeriksaan otomatis. Kedua, penjelasan NALAR yang dilengkapi angka pembanding dan bukti yang perlu ditelaah. Ketiga, review dan penelusuran arsip.
+Hak akses dibedakan menurut peran. Dengan begitu, hasil pemeriksaan dapat dibaca, ditindaklanjuti, dan ditelusuri kembali sesuai kewenangan pengguna.
+
+[pause] Ada dua proses pelatihan yang berbeda di balik sistem ini.
+Untuk machine learning, saya menggunakan dataset lima juta klaim sintetis periode 2019 sampai 2025. Sebanyak tiga koma satu juta klaim tahun 2019 sampai 2023 digunakan untuk melatih Isolation Forest. Data tahun 2024 digunakan untuk kalibrasi ambang, dan tahun 2025 untuk pengujian.
+
+[pause] Untuk large language model, atau LLM, saya memakai model dasar Qwen tiga, dengan empat miliar parameter. Model ini kemudian di-fine-tuning dengan metode LoRA menggunakan delapan ribu instruksi sintetis. Hasil pengembangan ini saya beri nama NALAR.
+Hmm... pembagian tugasnya begini: ML menghasilkan sinyal anomali, sedangkan NALAR membantu menjelaskan sinyal tersebut. NALAR menerima indikator pemeriksaan, penanda anomali, dan skor; bukan identitas atau rekam medis peserta. Seluruh data pelatihan pada pengembangan ini dibuat sintetis.
+
+[pause] Pada pengujian Isolation Forest dengan sembilan ratus delapan puluh satu ribu enam ratus dua puluh klaim sintetis tahun 2025, precision mencapai delapan puluh tujuh koma delapan enam persen, recall sembilan puluh dua koma dua sembilan persen, dan F1-score sembilan puluh koma nol dua persen.
+Angka ini menunjukkan hasil deteksi pada skenario sintetis. Masih ada alarm keliru dan anomali yang terlewat, seperti yang terlihat pada tabel. Karena itu, hasil ini belum dapat dianggap sebagai akurasi deteksi fraud pada klaim BPJS nyata.
+
+[pause] Sebagai rangkuman kasus pada demo, biaya pengajuan lima belas juta rupiah dibandingkan dengan acuan enam juta rupiah, atau dua setengah kali lipat. Selain itu, ada selisih total tagihan.
+Aturan menandai ketidaksesuaian tersebut, dan skor anomali sekitar nol koma empat sembilan enam berada di atas ambang sekitar nol koma tiga sembilan enam. NALAR lalu merangkum alasan untuk investigasi.
+Tindak lanjut yang diperlukan adalah mencocokkan rincian biaya dan invoice dengan bukti layanan. Status akhirnya dicatat oleh verifikator.
+
+[pause] Demikian pengenalan SiKePo. Harapannya, pemeriksa dapat memulai dari klaim yang perlu perhatian, memahami alasan temuannya, dan mencatat keputusan secara lebih terarah.
+Saya Decka Fadhila Tirta. Terima kasih atas perhatian Bapak dan Ibu.

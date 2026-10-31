@@ -1,0 +1,13 @@
+{
+  "scriptSlideAlignment": "passed for all twelve revised notes",
+  "fullScriptWords": 816,
+  "currentAudioVersion": "v2 shortened, not aligned with restored full script",
+  "v2TotalSeconds": 326.190876,
+  "demoAudioSeconds": 74.919125,
+  "demoVideoSeconds": 86.633333,
+  "demoMismatchSeconds": 11.714208,
+  "category": "Written on slide2, intentionally not spoken as user allowed",
+  "finalAudioTiming": "pending full-script synthesis",
+  "intonation": "listener review pending; decoder QA does not establish expressiveness",
+  "videoGate": "Do not generate video; synchronize and review complete new audio first"
+}
