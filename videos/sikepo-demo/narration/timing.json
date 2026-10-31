@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 417.212834,
+  "totalSeconds": 414.742271,
   "method": "Slide transitions aligned to generated audio using local transcript timestamps; review visually when rendering. Audio remains three continuous blocks.",
   "blocks": [
     {
@@ -17,7 +17,7 @@
     {
       "id": "03-after-demo",
       "start": 244.28227099999998,
-      "end": 417.212834,
+      "end": 414.742271,
       "image": "../presenter/after-demo-gesture.png"
     }
   ],
@@ -70,7 +70,12 @@
     {
       "page": 10,
       "startSeconds": 399.382,
-      "endSeconds": 417.213
+      "endSeconds": 414.742271
     }
-  ]
+  ],
+  "closingEdit": {
+    "reason": "End after Terima kasih atas perhatian Bapak dan Ibu; omit Saya siap menerima pertanyaan.",
+    "afterDemoSourceOutSeconds": 170.46,
+    "previousTotalSeconds": 417.212834
+  }
 }
