@@ -1,0 +1,20 @@
+[
+  {
+    "block": "01-pre-demo",
+    "audioPacketCount": 6791,
+    "maxPositivePacketGapSeconds": 0,
+    "result": "continuous AAC packet timestamps"
+  },
+  {
+    "block": "02-demo",
+    "audioPacketCount": 3732,
+    "maxPositivePacketGapSeconds": 0,
+    "result": "continuous AAC packet timestamps"
+  },
+  {
+    "block": "03-after-demo",
+    "audioPacketCount": 7449,
+    "maxPositivePacketGapSeconds": 0,
+    "result": "continuous AAC packet timestamps"
+  }
+]

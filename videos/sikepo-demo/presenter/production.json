@@ -1,6 +1,10 @@
 {
   "master": "master-neutral-v1.png",
-  "sourceReferences": ["d5e60a98-987b-44ec-9db9-bc2da32b99d4.png", "66f114f1-7957-4867-9d1a-76e9447ad371.png", "65a9ae0e-8624-4705-b2ff-e539d6206dfe.png"],
+  "sourceReferences": [
+    "d5e60a98-987b-44ec-9db9-bc2da32b99d4.png",
+    "66f114f1-7957-4867-9d1a-76e9447ad371.png",
+    "65a9ae0e-8624-4705-b2ff-e539d6206dfe.png"
+  ],
   "imageTool": "built-in image_gen",
   "promptSummary": "Preserve the same face, skin texture, glasses, highlighted hairstyle, black polo, room geometry, green and amber lighting. Change only pose: seated upright, head level, direct eye contact, closed relaxed lips, forearms on desk, hands resting together. Landscape 16:9. No raised gestures, beautification, text, or new accessories.",
   "voice": "Zephlyn - Calm, Neutral and Measured",
@@ -9,6 +13,11 @@
   "timingTargetSeconds": 400,
   "demoVideoSeconds": 86.633333,
   "method": "Keep narration continuous. Generate presenter shots per short paragraph using one master image; hide cuts on slide changes. Show slides and dashboard unobstructed during detailed analysis.",
-  "status": "Master image ready; full narration and VEED rendering not started. Awaiting credential and an agreed render budget. Test a short clip before full generation.",
-  "limitations": "Image identity matching and Fabric motion continuity are not guaranteed; inspect every generated clip. Do not publish API keys or use a reused moving loop as if it were synchronized speech."
+  "status": "Complete: three presenter blocks and continuous combined export verified at 1280x720, 30 fps. See final/verification.json and final/audio-continuity.json.",
+  "limitations": "Fabric gestures are generated and not pose-locked. Short visual dissolves join separate generations; audio remains continuous. This is a presenter layer, not a slide/dashboard composite.",
+  "photoAssignment": {
+    "preDemo": "master-neutral-v1.png",
+    "demo": "demo-mouse.png",
+    "afterDemo": "after-demo-gesture.png"
+  }
 }

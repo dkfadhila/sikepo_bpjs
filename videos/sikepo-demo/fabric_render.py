@@ -70,14 +70,18 @@ def poll(plan):
   state=json.loads(record.read_text(encoding='utf8'));job_id=state.get('job_id')
   if not job_id:print(j['id'],state['status']);continue
   video=WORK/(j['id']+'.mp4')
-  if state['status']=='COMPLETED' and video.exists():counts['DOWNLOADED']=counts.get('DOWNLOADED',0)+1;continue
+  if state['status']=='COMPLETED' and video.exists() and video.stat().st_size>1000:counts['DOWNLOADED']=counts.get('DOWNLOADED',0)+1;continue
   response=api(j['account'],'GET','https://api.veed.io/v1/fabric-1.0/'+job_id)
   payload=response.get('data',response);state.update({'response':response,'status':payload.get('status','UNKNOWN')});write(record,state)
   if state['status']=='COMPLETED':
    url=payload.get('result',{}).get('video',{}).get('url')
    if url:
     req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Accept':'video/mp4,*/*'})
-    with urllib.request.urlopen(req,timeout=120) as media:video.write_bytes(media.read())
+    with urllib.request.urlopen(req,timeout=120) as media:content=media.read()
+    if len(content)<1000:
+     print(j['id'],'CDN media not ready; download will be retried without regenerating',flush=True)
+     continue
+    temporary=video.with_suffix('.part');temporary.write_bytes(content);temporary.replace(video)
     state['downloadedBytes']=video.stat().st_size;write(record,state)
   counts[state['status']]=counts.get(state['status'],0)+1
   print(j['id'],state['status'],'credits',payload.get('credits_charged'),flush=True)

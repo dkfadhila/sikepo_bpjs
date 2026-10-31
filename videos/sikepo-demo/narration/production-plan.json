@@ -22,7 +22,7 @@
   },
   "videoResolution": "720p",
   "veedSpendCapUSD": 45,
-  "status": "Three audio blocks ready; short 720p Fabric test complete. Awaiting user choice between USD45 cap with partial presenter visibility or a higher full-avatar budget. No long render submitted.",
+  "status": "Complete: three 1280x720 presenter blocks rendered, assembled, decoded, and checked for continuous audio packet timestamps. Full presenter-only video exported to the local Videos/SIKEPO-Presenter folder.",
   "audioDurationsSeconds": {
     "01-pre-demo.mp3": 157.648938,
     "02-demo.mp3": 86.633333,
@@ -43,5 +43,23 @@
     "video": "../presenter/veed-test-720p.mp4",
     "outputResolution": "1280x720 (normalized from native 1312x736)",
     "visualQA": "Face, glasses, hair and room appear consistent in sampled frames. Hands still gesture; Fabric does not lock pose. No full-video motion/lipsync guarantee from a contact sheet."
-  }
+  },
+  "accountCapsUSD": {
+    "primary": 45,
+    "afterDemo": 50
+  },
+  "settledVeedCreditsIncludingTest": {
+    "primary": 3866,
+    "afterDemo": 2632,
+    "total": 6498
+  },
+  "equivalentUSDAtPublishedRate": 64.98,
+  "pendingBudgetChoice": false,
+  "additionalCredential": ".secrets/veed-after-demo.env (never committed)",
+  "finalPresenterBlocks": [
+    "../presenter/final/01-pre-demo-720p.mp4",
+    "../presenter/final/02-demo-720p.mp4",
+    "../presenter/final/03-after-demo-720p.mp4"
+  ],
+  "joinTreatment": "4-frame visual dissolve; three original continuous narration blocks"
 }

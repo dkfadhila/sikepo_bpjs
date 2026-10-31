@@ -1,0 +1,87 @@
+{
+  "jobs": [
+    {
+      "id": "01-pre-demo-01",
+      "account": "primary",
+      "status": "COMPLETED",
+      "creditsCharged": 798,
+      "expectedInputSeconds": 53.3,
+      "returnedSeconds": 53.28,
+      "bytes": 24478773
+    },
+    {
+      "id": "01-pre-demo-02",
+      "account": "primary",
+      "status": "COMPLETED",
+      "creditsCharged": 796,
+      "expectedInputSeconds": 53.2,
+      "returnedSeconds": 53.2,
+      "bytes": 24433350
+    },
+    {
+      "id": "01-pre-demo-03",
+      "account": "primary",
+      "status": "COMPLETED",
+      "creditsCharged": 796,
+      "expectedInputSeconds": 53.148934,
+      "returnedSeconds": 53.12,
+      "bytes": 24006144
+    },
+    {
+      "id": "02-demo-01",
+      "account": "primary",
+      "status": "COMPLETED",
+      "creditsCharged": 631,
+      "expectedInputSeconds": 42.166667,
+      "returnedSeconds": 42.16,
+      "bytes": 18873395
+    },
+    {
+      "id": "02-demo-02",
+      "account": "primary",
+      "status": "COMPLETED",
+      "creditsCharged": 680,
+      "expectedInputSeconds": 45.466667,
+      "returnedSeconds": 45.44,
+      "bytes": 20209142
+    },
+    {
+      "id": "03-after-demo-01",
+      "account": "after",
+      "status": "COMPLETED",
+      "creditsCharged": 791,
+      "expectedInputSeconds": 52.8,
+      "returnedSeconds": 52.8,
+      "bytes": 27069365
+    },
+    {
+      "id": "03-after-demo-02",
+      "account": "after",
+      "status": "COMPLETED",
+      "creditsCharged": 817,
+      "expectedInputSeconds": 54.6,
+      "returnedSeconds": 54.6,
+      "bytes": 27547712
+    },
+    {
+      "id": "03-after-demo-03",
+      "account": "after",
+      "status": "COMPLETED",
+      "creditsCharged": 751,
+      "expectedInputSeconds": 50.2,
+      "returnedSeconds": 50.2,
+      "bytes": 25522817
+    },
+    {
+      "id": "03-after-demo-04",
+      "account": "after",
+      "status": "COMPLETED",
+      "creditsCharged": 273,
+      "expectedInputSeconds": 18.330567,
+      "returnedSeconds": 18.32,
+      "bytes": 9022019
+    }
+  ],
+  "priorTestCredits": 165,
+  "allCompleted": true
+}
