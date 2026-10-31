@@ -1,0 +1,76 @@
+{
+  "totalSeconds": 417.212834,
+  "method": "Slide transitions aligned to generated audio using local transcript timestamps; review visually when rendering. Audio remains three continuous blocks.",
+  "blocks": [
+    {
+      "id": "01-pre-demo",
+      "start": 0,
+      "end": 157.648938,
+      "image": "../presenter/master-neutral-v1.png"
+    },
+    {
+      "id": "02-demo",
+      "start": 157.648938,
+      "end": 244.28227099999998,
+      "image": "../presenter/demo-mouse.png"
+    },
+    {
+      "id": "03-after-demo",
+      "start": 244.28227099999998,
+      "end": 417.212834,
+      "image": "../presenter/after-demo-gesture.png"
+    }
+  ],
+  "slides": [
+    {
+      "page": 1,
+      "startSeconds": 0,
+      "endSeconds": 20.0
+    },
+    {
+      "page": 2,
+      "startSeconds": 20.0,
+      "endSeconds": 52.8
+    },
+    {
+      "page": 3,
+      "startSeconds": 52.8,
+      "endSeconds": 89.9
+    },
+    {
+      "page": 4,
+      "startSeconds": 89.9,
+      "endSeconds": 157.649
+    },
+    {
+      "page": 5,
+      "startSeconds": 157.649,
+      "endSeconds": 244.282
+    },
+    {
+      "page": 6,
+      "startSeconds": 244.282,
+      "endSeconds": 270.682
+    },
+    {
+      "page": 7,
+      "startSeconds": 270.682,
+      "endSeconds": 331.682
+    },
+    {
+      "page": 8,
+      "startSeconds": 331.682,
+      "endSeconds": 365.782
+    },
+    {
+      "page": 9,
+      "startSeconds": 365.782,
+      "endSeconds": 399.382
+    },
+    {
+      "page": 10,
+      "startSeconds": 399.382,
+      "endSeconds": 417.213
+    }
+  ]
+}
