@@ -1,0 +1,172 @@
+{
+  "status": "Measured audio timing aligned to twelve slides; listener review of intonation remains",
+  "totalSeconds": 433.193333,
+  "blocks": [
+    {
+      "id": "01-pre-demo",
+      "seconds": 161.28
+    },
+    {
+      "id": "02-demo",
+      "seconds": 86.633333
+    },
+    {
+      "id": "03-after-demo",
+      "seconds": 185.28
+    }
+  ],
+  "slides": [
+    {
+      "slide": 1,
+      "start": 0,
+      "end": 20.592,
+      "block": "01-pre-demo",
+      "localStart": 0
+    },
+    {
+      "slide": 2,
+      "start": 20.592,
+      "end": 53.984,
+      "block": "01-pre-demo",
+      "localStart": 20.592
+    },
+    {
+      "slide": 3,
+      "start": 53.984,
+      "end": 91.504,
+      "block": "01-pre-demo",
+      "localStart": 53.984
+    },
+    {
+      "slide": 4,
+      "start": 91.504,
+      "end": 126.213,
+      "block": "01-pre-demo",
+      "localStart": 91.504
+    },
+    {
+      "slide": 5,
+      "start": 126.213,
+      "end": 161.28,
+      "block": "01-pre-demo",
+      "localStart": 126.213
+    },
+    {
+      "slide": 6,
+      "start": 161.28,
+      "end": 247.913333,
+      "block": "02-demo",
+      "localStart": 0
+    },
+    {
+      "slide": 7,
+      "start": 247.913333,
+      "end": 274.713333,
+      "block": "03-after-demo",
+      "localStart": 0
+    },
+    {
+      "slide": 8,
+      "start": 274.713333,
+      "end": 303.273333,
+      "block": "03-after-demo",
+      "localStart": 26.8
+    },
+    {
+      "slide": 9,
+      "start": 303.273333,
+      "end": 342.777333,
+      "block": "03-after-demo",
+      "localStart": 55.36
+    },
+    {
+      "slide": 10,
+      "start": 342.777333,
+      "end": 382.79333299999996,
+      "block": "03-after-demo",
+      "localStart": 94.864
+    },
+    {
+      "slide": 11,
+      "start": 382.79333299999996,
+      "end": 417.993333,
+      "block": "03-after-demo",
+      "localStart": 134.88
+    },
+    {
+      "slide": 12,
+      "start": 417.993333,
+      "end": 433.193333,
+      "block": "03-after-demo",
+      "localStart": 170.08
+    }
+  ],
+  "demoScenes": [
+    {
+      "scene": 1,
+      "rawStart": 0,
+      "rawEnd": 11.6,
+      "audioStart": 0,
+      "audioEnd": 12,
+      "tempo": 0.9666666666666667,
+      "tailPauseSeconds": 0
+    },
+    {
+      "scene": 2,
+      "rawStart": 11.6,
+      "rawEnd": 27.28,
+      "audioStart": 12,
+      "audioEnd": 33.6666667,
+      "tempo": 0.85,
+      "tailPauseSeconds": 3.2196078764705867
+    },
+    {
+      "scene": 3,
+      "rawStart": 27.28,
+      "rawEnd": 35.2,
+      "audioStart": 33.6666667,
+      "audioEnd": 41.6666667,
+      "tempo": 0.9900000000000002,
+      "tailPauseSeconds": 0
+    },
+    {
+      "scene": 4,
+      "rawStart": 35.2,
+      "rawEnd": 54.64,
+      "audioStart": 41.6666667,
+      "audioEnd": 62.6666667,
+      "tempo": 0.9257142857142856,
+      "tailPauseSeconds": 0
+    },
+    {
+      "scene": 5,
+      "rawStart": 54.64,
+      "rawEnd": 70.32,
+      "audioStart": 62.6666667,
+      "audioEnd": 80.6666667,
+      "tempo": 0.8711111111111111,
+      "tailPauseSeconds": 0
+    },
+    {
+      "scene": 6,
+      "rawStart": 70.32,
+      "rawEnd": 74.16,
+      "audioStart": 80.6666667,
+      "audioEnd": 86.6333333,
+      "tempo": 0.85,
+      "tailPauseSeconds": 1.4490195411764768
+    }
+  ],
+  "videoGenerated": false,
+  "timingSource": "ElevenLabs character-level alignment; demo synchronized per source scene, with pitch-preserving tempo and short pauses",
+  "contentAudit": {
+    "method": "Local faster-whisper small CPU int8 transcript inspected against script and slide content",
+    "blocksChecked": 3,
+    "keyFigures": "5 million; 2019–2025; 8,000; 4 billion; 981,620; 87.86; 92.29; 90.02; 15 million / 6 million; 0.496 / 0.396 all present",
+    "closing": "Ends at thanks; no invitation for questions",
+    "pronunciationCaveat": "Proper-name ASR spellings differ; listen to Decka Fadhila Tirta, SiKePo, Qwen3 and technical names",
+    "humanIntonationReview": "pending user listening",
+    "decoder": "all three passed",
+    "timingCoverage": "all twelve slides contiguous and complete"
+  }
+}

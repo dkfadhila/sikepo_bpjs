@@ -1,0 +1,17 @@
+{
+  "block": "03-after-demo",
+  "voice": "3mAVBNEqop5UbHtD8oxQ",
+  "model": "eleven_v4",
+  "characters": 2608,
+  "textSha256": "bd259ae1218035bde748d747b12f6a7aa982bc23d5d5a3511fd3191e35abc9f7",
+  "status": "succeeded",
+  "settings": {
+    "stability": 0.35,
+    "similarity_boost": 0.75,
+    "speed": 0.94
+  },
+  "requestId": "yu4l1Z0YiDxddPD3WiQ1",
+  "characterCost": "1148",
+  "durationSeconds": 185.28,
+  "decoder": "passed"
+}

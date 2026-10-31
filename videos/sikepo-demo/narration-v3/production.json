@@ -1,40 +1,26 @@
 {
-  "status": "Blocked by ElevenLabs user quota before first new generation",
+  "status": "Three full audio blocks generated, demo scene-aligned, full decode passed",
   "spokenWords": 816,
   "slides": 12,
   "videoAllowed": false,
-  "expectedMinutes": "6â€“7, estimated only; measure after synthesis",
+  "expectedMinutes": "6Ã¢â‚¬â€œ7, estimated only; measure after synthesis",
   "source": "Full earlier narration split over current twelve slides; final question invitation removed",
   "blocks": [
     {
       "id": "01-pre-demo",
-      "slideRange": [
-        1,
-        5
-      ]
+      "seconds": 161.28
     },
     {
       "id": "02-demo",
-      "slideRange": [
-        6,
-        6
-      ]
+      "seconds": 86.633333
     },
     {
       "id": "03-after-demo",
-      "slideRange": [
-        7,
-        12
-      ]
+      "seconds": 185.28
     }
   ],
   "voice": "Zephlyn - Calm, Neutral and Measured",
   "model": "Eleven v4",
-  "quotaEvidence": {
-    "userLimit": 20000,
-    "creditsRemaining": 1383,
-    "preDemoCreditsRequired": 2315,
-    "request": "Rejected; no new audio returned"
-  },
-  "totalScriptCharacters": 6023
+  "totalScriptCharacters": 6023,
+  "totalSeconds": 433.193333
 }
