@@ -2,10 +2,11 @@
   "version": 3,
   "resolution": "720p",
   "rateUSDPerSecond": 0.15,
-  "estimatedUSD": 65.88,
+  "estimatedUSD": 66.03,
   "accountEstimatesUSD": {
-    "third": 44.61,
-    "after": 21.27
+    "primary": 4.88,
+    "after": 23.52,
+    "third": 37.64
   },
   "accountGuardUSD": {
     "third": 50,
@@ -85,18 +86,32 @@
       "audio_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/narration-v3/fabric-inputs/v3-02-demo-02.mp3"
     },
     {
-      "id": "v3-03-after-demo-01",
+      "id": "v3-03-after-demo-01r1",
       "block": "03-after-demo",
-      "account": "third",
+      "account": "primary",
       "image": "after-demo-gesture-v2.png",
       "start": 0,
-      "end": 46.5,
-      "inputSeconds": 46.5,
+      "end": 32.5,
+      "inputSeconds": 32.5,
       "coreStart": 0,
-      "coreEnd": 46,
-      "estimatedUSD": 6.975,
+      "coreEnd": 32,
+      "estimatedUSD": 4.875,
       "image_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/presenter/after-demo-gesture-v2.png",
-      "audio_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/narration-v3/fabric-inputs/v3-03-after-demo-01.mp3"
+      "audio_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/narration-v3/fabric-inputs/v3-03-after-demo-01r1.mp3"
+    },
+    {
+      "id": "v3-03-after-demo-01r2",
+      "block": "03-after-demo",
+      "account": "after",
+      "image": "after-demo-gesture-v2.png",
+      "start": 31.5,
+      "end": 46.5,
+      "inputSeconds": 15.0,
+      "coreStart": 32,
+      "coreEnd": 46,
+      "estimatedUSD": 2.25,
+      "image_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/presenter/after-demo-gesture-v2.png",
+      "audio_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/narration-v3/fabric-inputs/v3-03-after-demo-01r2.mp3"
     },
     {
       "id": "v3-03-after-demo-02",
@@ -139,6 +154,14 @@
       "estimatedUSD": 6.267,
       "image_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/presenter/after-demo-gesture-v2.png",
       "audio_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/narration-v3/fabric-inputs/v3-03-after-demo-04.mp3"
+    }
+  ],
+  "failedUnbilledJobs": [
+    {
+      "id": "v3-03-after-demo-01",
+      "job_id": "56ddd2de-8ba2-42ea-9d51-f1f17c843a92",
+      "reason": "insufficient_credits",
+      "replacement": "Two smaller pieces on primary and after accounts; original failed job is not retried."
     }
   ]
 }

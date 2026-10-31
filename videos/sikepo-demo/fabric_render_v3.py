@@ -8,7 +8,7 @@ base.WORK=ROOT/'artifacts/demo-edit/fabric-production-v3'
 base.WORK.mkdir(exist_ok=True)
 base.PLAN=ROOT/'videos/sikepo-demo/presenter/render-plan-v3.json'
 def key(account):
- file=ROOT/'.secrets'/('veed-third.env' if account=='third' else 'veed-after-demo.env')
+ file=ROOT/'.secrets'/({'third':'veed-third.env','primary':'veed.env','after':'veed-after-demo.env'}[account])
  value=next((x.split('=',1)[1].strip().strip('"').strip("'") for x in file.read_text(encoding='utf-8-sig').splitlines() if x.startswith('VEED_API_KEY=')),'')
  if not value:raise SystemExit('Missing configured credential: '+account)
  return value
