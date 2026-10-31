@@ -1,0 +1,16 @@
+Selamat pagi, Bapak dan Ibu juri. Perkenalkan, saya Decka Fadhila Tirta, dari tim “Coba namanya ini aja”. Saya mengikuti kegiatan ini secara individu. Hari ini saya akan memperkenalkan SiKePo, aplikasi yang saya kembangkan untuk membantu investigasi kelayakan klaim dan pola overbilling.
+
+Nama lengkapnya adalah SiKePo: Sistem Investigasi Kelayakan Klaim dan Pola Overbilling berbasis AI.
+Tujuannya membantu pemeriksa menelaah klaim sebelum pencairan: klaim mana yang perlu diprioritaskan, ketidaksesuaian apa yang ditemukan, dan bukti apa yang perlu diperiksa.
+Jadi, pemeriksa tidak hanya melihat sebuah skor. Ia juga mendapat konteks untuk menelusuri temuan tersebut. Sistem melakukan pemeriksaan awal secara otomatis, sementara keputusan akhir tetap berada pada petugas yang berwenang.
+
+Latar belakangnya berangkat dari kebutuhan mencocokkan banyak informasi dalam sebuah klaim. Ada biaya, diagnosis, durasi rawat, layanan yang ditagihkan, dan bukti pendukung.
+Nah... biaya yang tinggi belum tentu salah. Tetapi ketika ada selisih tagihan atau pola pengajuan yang tidak biasa, pemeriksa perlu tahu bagian mana yang harus ditelusuri lebih dulu.
+SiKePo menyusun prioritas itu dan menampilkan alasan pemeriksaannya. Manfaat yang dituju adalah penelaahan yang lebih terarah; dampak penghematan pada operasional BPJS belum saya ukur.
+
+Sekarang kita lihat pipelinenya. Pengajuan masuk melalui formulir atau API terstruktur, kemudian divalidasi dan disimpan di MongoDB.
+Di sini ada dua jalur analisis. A1 adalah pemeriksaan berbasis aturan. Misalnya, membandingkan biaya dengan tarif acuan skenario, durasi rawat, kesesuaian layanan, dan bukti penggunaan obat.
+A2 adalah deteksi anomali menggunakan machine learning, yaitu Isolation Forest. Tugasnya mencari pola numerik yang tidak biasa pada klaim.
+
+Hasil keduanya digabungkan menjadi konteks dan prioritas risiko. Setelah itu masuk ke A3, yaitu NALAR. NALAR menyusun ringkasan temuan serta poin yang perlu diperiksa. Angka pembanding dan bukti pendukung ditampilkan bersama ringkasan tersebut.
+Jadi, aturan memeriksa ketentuan skenario, ML membaca pola, dan LLM menjelaskan temuan. Rekomendasinya kemudian ditelaah verifikator. Saat ini sumber input masih data sintetis; belum ada koneksi langsung ke sistem BPJS atau SIMRS.

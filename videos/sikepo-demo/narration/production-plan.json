@@ -1,0 +1,35 @@
+{
+  "voice": "Zephlyn - Calm, Neutral and Measured",
+  "model": "Eleven v4",
+  "parts": [
+    {
+      "id": "01-pre-demo",
+      "script": "01-pre-demo.txt"
+    },
+    {
+      "id": "02-demo",
+      "script": "02-demo.txt"
+    },
+    {
+      "id": "03-after-demo",
+      "script": "03-after-demo.txt"
+    }
+  ],
+  "imageMapping": {
+    "01-pre-demo": "../presenter/master-neutral-v1.png",
+    "02-demo": "66f114f1-7957-4867-9d1a-76e9447ad371.png",
+    "03-after-demo": "d5e60a98-987b-44ec-9db9-bc2da32b99d4.png"
+  },
+  "videoResolution": "720p",
+  "veedSpendCapUSD": 45,
+  "status": "All three narrations generated; local ASR content/timing audit completed and files decode successfully. Full avatar budget decision pending; planned 11-second 720p quality test only.",
+  "audioDurationsSeconds": {
+    "01-pre-demo.mp3": 157.648938,
+    "02-demo.mp3": 86.633333,
+    "03-after-demo.mp3": 172.930563
+  },
+  "totalNarrationSeconds": 417.212834,
+  "veedFullLengthEstimateUSD": 62.58,
+  "veedRateUSDPerSecond720p": 0.15,
+  "audit": "Local faster-whisper small; proper-name spelling in ASR can differ from source. Transcript checks do not establish perceptual naturalness."
+}

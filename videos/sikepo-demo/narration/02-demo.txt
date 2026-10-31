@@ -1,0 +1,11 @@
+Ini tampilan aplikasi yang sudah berjalan. Dashboard menampilkan antrean dan prioritas risiko. Menu pipeline menjelaskan hubungan antara aturan, model anomali, dan NALAR.
+
+Saya masuk ke pengajuan baru dan mengisi klaim sintetis. Ada kode episode, diagnosis, biaya pengajuan, tarif acuan, durasi rawat, serta jumlah layanan. Angka ini merupakan skenario pengujian, bukan data peserta JKN.
+
+Setelah dikirim, data tersimpan. Aturan dan ML diperiksa, kemudian penjelasan NALAR diproses melalui antrean.
+
+Nah, di hasilnya terlihat rasio biaya dua setengah kali acuan dan ketidaksesuaian total tagihan. Skor anomali juga melewati ambang model. NALAR merangkum temuan itu dan menunjukkan rincian biaya serta invoice yang perlu dicocokkan. Temuan ini adalah alasan untuk memeriksa, bukan bukti fraud.
+
+Pada bagian keputusan, verifikator memilih status dan mengisi alasan. Penolakan yang terlihat di rekaman adalah pilihan pengguna pada klaim sintetis. Sistem mencatat review tersebut; NALAR sendiri tidak memutus penolakan atau pembayaran otomatis.
+
+Itulah alur dari pengajuan sampai pencatatan hasil review.
