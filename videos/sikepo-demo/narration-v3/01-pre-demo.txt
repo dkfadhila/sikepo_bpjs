@@ -6,10 +6,10 @@ Jadi, pemeriksa tidak hanya melihat sebuah skor. Ia juga mendapat konteks untuk 
 
 [pause] Latar belakangnya berangkat dari kebutuhan mencocokkan banyak informasi dalam sebuah klaim. Ada biaya, diagnosis, durasi rawat, layanan yang ditagihkan, dan bukti pendukung.
 Nah... biaya yang tinggi belum tentu salah. Tetapi ketika ada selisih tagihan atau pola pengajuan yang tidak biasa, pemeriksa perlu tahu bagian mana yang harus ditelusuri lebih dulu.
-SiKePo menyusun prioritas itu dan menampilkan alasan pemeriksaannya. Manfaat yang dituju adalah penelaahan yang lebih terarah; dampak penghematan pada operasional BPJS belum saya ukur.
+SiKePo menyusun prioritas itu dan menampilkan alasan pemeriksaannya. Manfaat yang dituju adalah penelaahan yang lebih terarah. Dampak penghematan pada operasional BPJS belum saya ukur.
 
 [pause] Sekarang kita lihat pipelinenya. Pengajuan masuk melalui formulir atau API terstruktur, kemudian divalidasi dan disimpan di MongoDB.
-Di sini ada dua jalur analisis. A satu adalah pemeriksaan berbasis aturan. Misalnya, membandingkan biaya dengan tarif acuan skenario, durasi rawat, kesesuaian layanan, dan bukti penggunaan obat.
+Di sini ada DUA jalur analisis. A satu adalah pemeriksaan berbasis aturan. Misalnya, membandingkan biaya dengan tarif acuan skenario, durasi rawat, kesesuaian layanan, dan bukti penggunaan obat.
 A dua adalah deteksi anomali menggunakan machine learning, yaitu Isolation Forest. Tugasnya mencari pola numerik yang tidak biasa pada klaim.
 
 [pause] Hasil keduanya digabungkan menjadi konteks dan prioritas risiko. Setelah itu masuk ke A tiga, yaitu NALAR. NALAR menyusun ringkasan temuan serta poin yang perlu diperiksa. Angka pembanding dan bukti pendukung ditampilkan bersama ringkasan tersebut.

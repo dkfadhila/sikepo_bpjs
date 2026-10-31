@@ -1,0 +1,66 @@
+{
+  "status": "Reference timing only, based on earlier full narration; replace with measured v3 timing after successful synthesis",
+  "slides": [
+    {
+      "slide": 1,
+      "start": 0,
+      "end": 20
+    },
+    {
+      "slide": 2,
+      "start": 20,
+      "end": 52.8
+    },
+    {
+      "slide": 3,
+      "start": 52.8,
+      "end": 89.9
+    },
+    {
+      "slide": 4,
+      "start": 89.9,
+      "end": 123.02
+    },
+    {
+      "slide": 5,
+      "start": 123.02,
+      "end": 157.648938
+    },
+    {
+      "slide": 6,
+      "start": 157.648938,
+      "end": 244.282271
+    },
+    {
+      "slide": 7,
+      "start": 244.282271,
+      "end": 270.642271
+    },
+    {
+      "slide": 8,
+      "start": 270.642271,
+      "end": 296.542271
+    },
+    {
+      "slide": 9,
+      "start": 296.542271,
+      "end": 331.662271
+    },
+    {
+      "slide": 10,
+      "start": 331.662271,
+      "end": 365.742271
+    },
+    {
+      "slide": 11,
+      "start": 365.742271,
+      "end": 399.402271
+    },
+    {
+      "slide": 12,
+      "start": 399.402271,
+      "end": 414.742271
+    }
+  ],
+  "warning": "Do not use these timings with shortened v2 audio."
+}

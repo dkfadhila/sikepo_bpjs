@@ -1,9 +1,9 @@
 {
-  "status": "Full narration restored in notes; audio v3 not generated",
+  "status": "Blocked by ElevenLabs user quota before first new generation",
   "spokenWords": 816,
   "slides": 12,
   "videoAllowed": false,
-  "expectedMinutes": "6–7, estimated only; measure after synthesis",
+  "expectedMinutes": "6â€“7, estimated only; measure after synthesis",
   "source": "Full earlier narration split over current twelve slides; final question invitation removed",
   "blocks": [
     {
@@ -27,5 +27,14 @@
         12
       ]
     }
-  ]
+  ],
+  "voice": "Zephlyn - Calm, Neutral and Measured",
+  "model": "Eleven v4",
+  "quotaEvidence": {
+    "userLimit": 20000,
+    "creditsRemaining": 1383,
+    "preDemoCreditsRequired": 2315,
+    "request": "Rejected; no new audio returned"
+  },
+  "totalScriptCharacters": 6023
 }
