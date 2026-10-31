@@ -5,3 +5,5 @@ Reviewed rendered snapshots at 8, 100, 180, 290, 345, 380 and 404.696 seconds. A
 HyperFrames check: passed, 0 errors. Two maintainability warnings concern multiple sequential clips on a track; they do not overlap and the timings are intentional. Layout passed, 0 issues across the full 417.21-second composition.
 
 The video edition replaces the slide 1 empty photo slot with the approved generated presenter and labels it as AI. Original OpenSlide source remains intact.
+
+Delivery: the initial HyperFrames render was interrupted before completion. The reviewed layout was exported through the resumable local FFmpeg compositor. Final MP4 is 1280x720 at30fps,417.212834 seconds; complete decoder audit passed. Thirteen audio windows match their continuous source narration at zero measured offset. Ten seekable chapters are embedded. See delivery-audit.json for measured evidence.

@@ -1,0 +1,79 @@
+{
+  "output": "C:\\Users\\Administrator\\Videos\\SIKEPO-Presenter\\SIKEPO-presentasi-lengkap-720p.mp4",
+  "width": 1280,
+  "height": 720,
+  "fps": "30/1",
+  "durationSeconds": 417.212834,
+  "audioCodec": "aac",
+  "fullDecode": "passed",
+  "audioSourceCorrelation": [
+    {
+      "seconds": 5,
+      "correlation": 0.99997,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 24,
+      "correlation": 0.99997,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 60,
+      "correlation": 0.99996,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 100,
+      "correlation": 0.99996,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 150,
+      "correlation": 0.99996,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 160,
+      "correlation": 0.99342,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 195,
+      "correlation": 0.98996,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 230,
+      "correlation": 0.98855,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 248,
+      "correlation": 0.94652,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 280,
+      "correlation": 0.96028,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 320,
+      "correlation": 0.94414,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 360,
+      "correlation": 0.94677,
+      "offsetSeconds": 0.0
+    },
+    {
+      "seconds": 400,
+      "correlation": 0.93635,
+      "offsetSeconds": 0.0
+    }
+  ],
+  "chapters": 10,
+  "sha256": "4ba13b6c571c4d4096c31db1ceb56a21ce1a1c00ffcbf3c24b4bb6b080ab018a",
+  "bytes": 16964128
+}
