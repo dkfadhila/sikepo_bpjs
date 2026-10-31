@@ -1,0 +1,91 @@
+{
+  "totalCredits": 6592,
+  "totalUSD": 65.92,
+  "jobs": [
+    {
+      "id": "v3-01-pre-demo-01",
+      "account": "third",
+      "jobId": "16fdcf8b-724e-431e-912e-37a12e2db18d",
+      "creditsCharged": 815,
+      "status": "completed"
+    },
+    {
+      "id": "v3-01-pre-demo-02",
+      "account": "third",
+      "jobId": "2890220c-3b7d-45c2-a62f-4b46b307f579",
+      "creditsCharged": 795,
+      "status": "completed"
+    },
+    {
+      "id": "v3-01-pre-demo-03",
+      "account": "third",
+      "jobId": "abc4e93c-1b43-4672-a39b-acf637259fab",
+      "creditsCharged": 836,
+      "status": "completed"
+    },
+    {
+      "id": "v3-02-demo-01",
+      "account": "third",
+      "jobId": "be67e51b-9551-474d-8de9-228d27d76bd3",
+      "creditsCharged": 631,
+      "status": "completed"
+    },
+    {
+      "id": "v3-02-demo-02",
+      "account": "third",
+      "jobId": "da06d2b3-2724-445c-862c-1bdcaa995ac9",
+      "creditsCharged": 680,
+      "status": "completed"
+    },
+    {
+      "id": "v3-03-after-demo-01r1",
+      "account": "primary",
+      "jobId": "28926f48-8293-4071-a0e1-4f3c2d8df803",
+      "creditsCharged": 487,
+      "status": "completed"
+    },
+    {
+      "id": "v3-03-after-demo-01r3",
+      "account": "third",
+      "jobId": "79af7ca1-9c9b-40fd-8c46-d81dda51c0e8",
+      "creditsCharged": 225,
+      "status": "completed"
+    },
+    {
+      "id": "v3-03-after-demo-02",
+      "account": "after",
+      "jobId": "f2a017cf-2d40-45e8-9b1a-ec35f9abe5e4",
+      "creditsCharged": 746,
+      "status": "completed"
+    },
+    {
+      "id": "v3-03-after-demo-03",
+      "account": "after",
+      "jobId": "b9bcce38-c270-457f-9d79-692304e21a57",
+      "creditsCharged": 751,
+      "status": "completed"
+    },
+    {
+      "id": "v3-03-after-demo-04",
+      "account": "after",
+      "jobId": "76597fd4-4210-4422-8254-ef984435c441",
+      "creditsCharged": 626,
+      "status": "completed"
+    }
+  ],
+  "failedUnbilledJobs": [
+    {
+      "id": "v3-03-after-demo-01",
+      "job_id": "56ddd2de-8ba2-42ea-9d51-f1f17c843a92",
+      "reason": "insufficient_credits",
+      "replacement": "Two smaller pieces on primary and after accounts; original failed job is not retried."
+    },
+    {
+      "id": "v3-03-after-demo-01r2",
+      "job_id": "dd4d23ee-214e-40cd-b257-2426aad636d6",
+      "reason": "insufficient_credits",
+      "replacement": "same short input on third account, original failed job not retried"
+    }
+  ],
+  "visualQA": "Nine midpoints checked for identity, polo and studio continuity; gaze and gestures remain generative, demo may turn toward camera."
+}
