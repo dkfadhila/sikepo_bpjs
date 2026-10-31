@@ -33,7 +33,6 @@ for item,title in zip(timing['slides'],titles):
  lines.append(line)
  d.multiline_text((1072,157),'\n'.join(lines),font=font(19),fill='#f0f0ee',spacing=7)
  d.text((1072,652),'Decka Fadhila Tirta',font=font(13),fill='#d3dfd6')
- d.text((1072,673),'Presenter AI · narasi presentasi',font=font(10),fill='#9bb4a4')
  d.text((16,668),'Coba namanya ini aja · SiKePo: investigasi kelayakan klaim dan pola overbilling berbasis AI',font=font(12),fill='#a9bdb0')
  d.line((16,648,1056,648),fill='#3d5445',width=2)
  bg.save(WORK/f'{n:02}.png')

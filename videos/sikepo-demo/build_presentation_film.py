@@ -26,10 +26,6 @@ with sync_playwright() as p:
   page.wait_for_timeout(700)
   page.evaluate('document.fonts.ready')
   canvas=page.locator('[data-osd-canvas="true"]')
-  if number==1:
-   # Replace the empty photo placeholder only in the captured video edition.
-   canvas.evaluate('''(el,src)=>{const leaf=[...el.querySelectorAll('*')].find(e=>e.children.length===0&&e.textContent.includes('Foto asli Decka'));if(leaf){let box=leaf;while(box.parentElement&&box.getBoundingClientRect().width<500)box=box.parentElement;box.innerHTML='';box.style.cssText='width:570px;height:640px;position:relative;overflow:hidden;border-radius:18px';const img=new Image();img.src=src;img.style.cssText='width:100%;height:100%;object-fit:cover;object-position:50% 35%';box.append(img);const tag=document.createElement('span');tag.textContent='Visual presenter AI';tag.style.cssText='position:absolute;bottom:16px;left:18px;font:18px Arial;color:white;background:#181c19bb;padding:7px 12px;border-radius:8px';box.append(tag)}}''',neutral)
-   page.wait_for_timeout(200)
   canvas.screenshot(path=str(ASSETS/f'slide-{number:02}.png'))
   print(f'Captured slide {number}',flush=True)
   if number<10: page.keyboard.press('ArrowRight')
@@ -56,7 +52,7 @@ html='''<!doctype html><html lang="id"><head><meta charset="utf-8"><script src="
 </style></head><body><div id="root" data-composition-id="main" data-start="0" data-duration="TOTAL" data-width="1280" data-height="720">
 CONTENT
 <div id="brand" class="clip brand" data-start="0" data-duration="TOTAL" data-track-index="4"><img src="assets/logo.png">SIKEPO</div>
-<div id="name" class="clip name" data-start="0" data-duration="TOTAL" data-track-index="4">Decka Fadhila Tirta<br><span style="color:#9bb4a4;font-size:11px">Presenter AI · narasi presentasi</span></div>
+<div id="name" class="clip name" data-start="0" data-duration="TOTAL" data-track-index="4">Decka Fadhila Tirta</div>
 <div id="progress" class="clip progress" data-start="0" data-duration="TOTAL" data-track-index="4"><div id="progress-fill"></div></div>
 <div id="credit" class="clip credit" data-start="0" data-duration="TOTAL" data-track-index="4">Coba namanya ini aja · SiKePo: investigasi kelayakan klaim dan pola overbilling berbasis AI</div>
 </div><script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});tl.fromTo('#progress-fill',{scaleX:0},{scaleX:1,duration:TOTAL,ease:'none'},0);
