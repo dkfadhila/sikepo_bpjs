@@ -5,8 +5,8 @@
   "estimatedUSD": 66.03,
   "accountEstimatesUSD": {
     "primary": 4.88,
-    "after": 23.52,
-    "third": 37.64
+    "after": 21.27,
+    "third": 39.89
   },
   "accountGuardUSD": {
     "third": 50,
@@ -100,9 +100,9 @@
       "audio_url": "https://raw.githubusercontent.com/dkfadhila/sikepo_bpjs/main/videos/sikepo-demo/narration-v3/fabric-inputs/v3-03-after-demo-01r1.mp3"
     },
     {
-      "id": "v3-03-after-demo-01r2",
+      "id": "v3-03-after-demo-01r3",
       "block": "03-after-demo",
-      "account": "after",
+      "account": "third",
       "image": "after-demo-gesture-v2.png",
       "start": 31.5,
       "end": 46.5,
@@ -162,6 +162,12 @@
       "job_id": "56ddd2de-8ba2-42ea-9d51-f1f17c843a92",
       "reason": "insufficient_credits",
       "replacement": "Two smaller pieces on primary and after accounts; original failed job is not retried."
+    },
+    {
+      "id": "v3-03-after-demo-01r2",
+      "job_id": "dd4d23ee-214e-40cd-b257-2426aad636d6",
+      "reason": "insufficient_credits",
+      "replacement": "same short input on third account, original failed job not retried"
     }
   ]
 }
