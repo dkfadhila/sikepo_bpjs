@@ -1,0 +1,11 @@
+Dari demo tadi, ada tiga fitur utama: pengajuan dan antrean otomatis, penjelasan NALAR, serta review yang dapat ditelusuri kembali. Hak akses dibedakan menurut peran. Dengan begitu, pengguna melihat dan menindaklanjuti pemeriksaan sesuai kewenangannya.
+
+[coughing] Untuk machine learning, saya menggunakan lima juta klaim sintetis periode dua ribu sembilan belas sampai dua ribu dua puluh lima. Ada data normal dan skenario anomali. Sekitar tiga koma satu juta klaim dipakai untuk pelatihan. Data dua ribu dua puluh empat untuk kalibrasi ambang, dan dua ribu dua puluh lima untuk pengujian. Pemisahan ini mengikuti urutan waktu.
+
+[pause] Untuk model bahasa, saya menggunakan Qwen tiga dengan empat miliar parameter sebagai model dasar. Model ini disesuaikan melalui fine-tuning LoRA menggunakan delapan ribu instruksi sintetis. Hasilnya saya beri nama NALAR. Hmm... pembagian tugasnya sederhana: ML memberi sinyal anomali, NALAR membantu menjelaskan temuannya. Data pengembangannya tidak memakai identitas atau rekam medis peserta JKN.
+
+[pause] Pada sembilan ratus delapan puluh satu ribu enam ratus dua puluh klaim uji sintetis, [slowly] precision mencapai delapan puluh tujuh koma delapan enam persen. Recall, sembilan puluh dua koma dua sembilan persen. Dan F satu, sembilan puluh koma nol dua persen. [pause] Masih ada alarm keliru dan anomali yang terlewat. Hasil ini mengukur skenario sintetis, belum kinerja deteksi fraud pada klaim BPJS nyata.
+
+[pause] Kembali ke kasus demo: pengajuan lima belas juta rupiah, dengan acuan enam juta rupiah. Artinya, dua setengah kali acuan. Ada juga selisih total tagihan dan skor anomali yang melewati ambang model. NALAR merangkum alasan investigasinya. Pemeriksa tetap perlu mencocokkan rincian biaya, invoice, dan bukti layanan sebelum mencatat keputusan.
+
+[pause] Demikian pengenalan SiKePo. Harapannya, pemeriksa dapat memulai dari klaim yang perlu perhatian dan memahami alasan temuannya. Saya Decka Fadhila Tirta. [softly] Terima kasih atas perhatian Bapak dan Ibu.

@@ -1,0 +1,9 @@
+Selamat pagi, Bapak dan Ibu juri. Perkenalkan, saya Decka Fadhila Tirta, dari tim “Coba namanya ini aja”. Saya mengikuti kegiatan ini secara individu. Hari ini saya memperkenalkan SiKePo, aplikasi untuk membantu pemeriksaan klaim sebelum dana dicairkan.
+
+[pause] SiKePo adalah Sistem Investigasi Kelayakan Klaim dan Pola Overbilling berbasis AI. Tujuannya: membantu pemeriksa memilih klaim yang perlu perhatian, menemukan ketidaksesuaian, dan memahami bukti yang perlu dicocokkan. Pemeriksaan awal berjalan otomatis. Keputusan akhir tetap pada verifikator.
+
+[pause] Kenapa ini diperlukan? [pause] Dalam satu klaim, biaya, diagnosis, lama rawat, dan bukti layanan harus saling cocok. Nah... biaya tinggi belum tentu salah. Tetapi selisih tagihan atau pola pengajuan yang tidak biasa perlu ditelusuri. SiKePo menunjukkan bagian yang perlu diperiksa lebih dulu. Dampak penghematan pada operasional BPJS belum diukur.
+
+[pause] Alurnya dimulai dari formulir atau API. Klaim divalidasi dan disimpan, lalu masuk ke DUA jalur. A satu memeriksa aturan: biaya terhadap acuan, durasi rawat, layanan, dan bukti obat. A dua memakai Isolation Forest untuk mencari pola numerik yang tidak biasa. Temuan keduanya kemudian digabungkan.
+
+[pause] Dari sini masuk ke A tiga, yaitu NALAR. NALAR menyusun ringkasan, angka pembanding, serta bukti yang perlu dicocokkan. Jadi, pemeriksa dapat membaca alasan di balik sinyal risikonya. Verifikator lalu menelaah rekomendasi dan mencatat keputusan. Input yang dipakai sekarang masih sintetis; belum terhubung langsung ke BPJS atau SIMRS.

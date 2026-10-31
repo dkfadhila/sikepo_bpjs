@@ -1,0 +1,28 @@
+{
+  "tool": "built-in image_gen",
+  "identityReference": "slides/sikepo-pitch/assets/decka-photo-v2.jpg",
+  "images": [
+    {
+      "phase": "pre-demo",
+      "path": "master-neutral-v3.png",
+      "direction": "Three-quarter camera and torso, laptop directly in front, gaze at camera, relaxed hands."
+    },
+    {
+      "phase": "demo",
+      "path": "demo-mouse-v2.png",
+      "direction": "Three-quarter view, laptop directly in front, gaze at screen, hand on mouse."
+    },
+    {
+      "phase": "after-demo",
+      "path": "after-demo-gesture-v2.png",
+      "direction": "Same three-quarter set and laptop; gaze to camera, restrained explanatory gesture."
+    }
+  ],
+  "invariants": [
+    "same facial identity and short curly black hair",
+    "no glasses",
+    "black polo",
+    "same warm green and amber studio"
+  ],
+  "status": "Images only; not sent to VEED or substituted into existing rendered videos."
+}

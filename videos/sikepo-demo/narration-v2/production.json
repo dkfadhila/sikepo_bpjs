@@ -1,0 +1,28 @@
+{
+  "voice": "Zephlyn - Calm, Neutral and Measured",
+  "model": "Eleven v4",
+  "stability": 0.35,
+  "similarity": 0.75,
+  "status": "Three revised audio blocks generated and decoded",
+  "video": "Not requested in this revision; do not submit to VEED",
+  "slides": 12,
+  "files": [
+    {
+      "file": "01-pre-demo.mp3",
+      "seconds": 113.946063,
+      "decoder": "passed"
+    },
+    {
+      "file": "02-demo.mp3",
+      "seconds": 74.919125,
+      "decoder": "passed"
+    },
+    {
+      "file": "03-after-demo.mp3",
+      "seconds": 137.325688,
+      "decoder": "passed"
+    }
+  ],
+  "totalSeconds": 326.190876,
+  "note": "Prosody directions and lower stability were configured in the ElevenLabs UI; expressiveness is for listener review, not established by decoder QA."
+}
