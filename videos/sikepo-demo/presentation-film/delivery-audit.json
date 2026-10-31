@@ -3,7 +3,7 @@
   "width": 1280,
   "height": 720,
   "fps": "30/1",
-  "durationSeconds": 417.212834,
+  "durationSeconds": 414.75483,
   "audioCodec": "aac",
   "fullDecode": "passed",
   "audioSourceCorrelation": [
@@ -74,6 +74,6 @@
     }
   ],
   "chapters": 10,
-  "sha256": "4ba13b6c571c4d4096c31db1ceb56a21ce1a1c00ffcbf3c24b4bb6b080ab018a",
-  "bytes": 16964128
+  "sha256": "3b321303344fab617de6ab4bb8e5b206a3b5456a2ce97628042f0752f9ccced5",
+  "bytes": 16725295
 }

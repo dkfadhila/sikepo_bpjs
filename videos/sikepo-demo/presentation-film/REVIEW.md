@@ -7,3 +7,5 @@ HyperFrames check: passed, 0 errors. Two maintainability warnings concern multip
 The video edition replaces the slide 1 empty photo slot with the approved generated presenter and labels it as AI. Original OpenSlide source remains intact.
 
 Delivery: the initial HyperFrames render was interrupted before completion. The reviewed layout was exported through the resumable local FFmpeg compositor. Final MP4 is 1280x720 at30fps,417.212834 seconds; complete decoder audit passed. Thirteen audio windows match their continuous source narration at zero measured offset. Ten seekable chapters are embedded. See delivery-audit.json for measured evidence.
+
+Final revision: supplied opening portrait, proposal category on slide2, removed presenter subtitle, closing limited to414.742271s after thanks. Re-exported and audited. PPTX delivery has10 image-backed pages, speaker notes and an embedded demo on slide5; text is maintained in OpenSlide source. PPTX integrity/layout and first-party import passed.

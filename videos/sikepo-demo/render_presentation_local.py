@@ -4,7 +4,7 @@ import subprocess,json
 from PIL import Image,ImageDraw,ImageFont
 ROOT=Path(__file__).resolve().parents[2]
 PROJECT=ROOT/'videos/sikepo-demo/presentation-film'
-WORK=ROOT/'artifacts/demo-edit/presentation-local'
+WORK=ROOT/'artifacts/demo-edit/presentation-final-v3'
 WORK.mkdir(exist_ok=True)
 DEST=Path.home()/'Videos/SIKEPO-Presenter'
 timing=json.loads((ROOT/'videos/sikepo-demo/narration/timing.json').read_text())
