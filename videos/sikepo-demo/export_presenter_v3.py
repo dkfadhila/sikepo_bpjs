@@ -11,6 +11,6 @@ listing=WORK/'concat-presenter.txt';listing.write_text(''.join("file '"+(SOURCE/
 audio=ROOT/'videos/sikepo-demo/narration-v3/SIKEPO-narasi-lengkap.mp3'
 total=json.loads((ROOT/'videos/sikepo-demo/narration-v3/slide-timing.json').read_text())['totalSeconds']
 out=DEST/'SIKEPO-presenter-full-720p.mp4'
-subprocess.run(['ffmpeg','-v','error','-f','concat','-safe','0','-i',str(listing),'-i',str(audio),'-map','0:v','-map','1:a','-c','copy','-t',str(total),'-movflags','+faststart','-y',str(out)],check=True)
+subprocess.run(['ffmpeg','-v','error','-f','concat','-safe','0','-i',str(listing),'-i',str(audio),'-map','0:v','-map','1:a','-c:v','copy','-c:a','aac','-b:a','192k','-t',str(total),'-movflags','+faststart','-y',str(out)],check=True)
 subprocess.run(['ffmpeg','-v','error','-i',str(out),'-f','null','-'],check=True)
 print(out,flush=True)

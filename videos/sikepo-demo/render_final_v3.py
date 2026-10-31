@@ -10,4 +10,5 @@ code=code.replace('n!=5','n!=6').replace('n==5','n==6').replace('/10','/12').rep
 code=code.replace("PROJECT/'assets'/f'slide-","PROJECT/'assets-v2'/f'slide-")
 code=code.replace("ROOT/'artifacts/demo-edit/fabric-production/continuous-narration.m4a'","ROOT/'videos/sikepo-demo/narration-v3/SIKEPO-narasi-lengkap.mp3'")
 code=code.replace("'SIKEPO-presentasi-lengkap-720p.mp4'","'SIKEPO-presentasi-final-720p.mp4'")
+code=code.replace("'-c','copy'","'-c:v','copy','-c:a','aac','-b:a','192k'")
 exec(compile(code,str(source),'exec'))

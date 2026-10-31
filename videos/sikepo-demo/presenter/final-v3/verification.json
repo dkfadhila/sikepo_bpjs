@@ -1,0 +1,38 @@
+[
+  {
+    "block": "01-pre-demo",
+    "file": "videos/sikepo-demo/presenter/final-v3/01-pre-demo-720p.mp4",
+    "expectedSeconds": 161.28,
+    "actualSeconds": 161.28,
+    "differenceSeconds": 0.0,
+    "width": 1280,
+    "height": 720,
+    "sourceVideoSegments": 3,
+    "audio": "original continuous narration block",
+    "videoJoin": "4-frame dissolve centered at sentence boundary; shortened after visible ghosting in the initial 1-second dissolve"
+  },
+  {
+    "block": "02-demo",
+    "file": "videos/sikepo-demo/presenter/final-v3/02-demo-720p.mp4",
+    "expectedSeconds": 86.633333,
+    "actualSeconds": 86.633333,
+    "differenceSeconds": 0.0,
+    "width": 1280,
+    "height": 720,
+    "sourceVideoSegments": 2,
+    "audio": "original continuous narration block",
+    "videoJoin": "4-frame dissolve centered at sentence boundary; shortened after visible ghosting in the initial 1-second dissolve"
+  },
+  {
+    "block": "03-after-demo",
+    "file": "videos/sikepo-demo/presenter/final-v3/03-after-demo-720p.mp4",
+    "expectedSeconds": 185.28,
+    "actualSeconds": 185.28,
+    "differenceSeconds": 0.0,
+    "width": 1280,
+    "height": 720,
+    "sourceVideoSegments": 5,
+    "audio": "original continuous narration block",
+    "videoJoin": "4-frame dissolve centered at sentence boundary; shortened after visible ghosting in the initial 1-second dissolve"
+  }
+]

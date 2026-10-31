@@ -1,11 +1,9 @@
-# Review
+# Current delivery — v3
 
-Reviewed rendered snapshots at 8, 100, 180, 290, 345, 380 and 404.696 seconds. All slide content stays inside the slide panel; facecam occupies its own rail with rounded corners. Demo is the existing edited dashboard recording, without the download/CLI ending. Chapter timings follow the locally audited speech timestamps. Existing voice tracks are reused; no new paid generations.
+The latest delivery is SIKEPO-presentasi-final-v3-720p.mp4: 12 slides, new supplied opening portrait, three new black-polo presenter blocks and the existing dashboard demo. The original main-panel/right-facecam layout is preserved, including rounded facecam corners and no presenter subtitle. Closing ends after thanks.
 
-HyperFrames check: passed, 0 errors. Two maintainability warnings concern multiple sequential clips on a track; they do not overlap and the timings are intentional. Layout passed, 0 issues across the full 417.21-second composition.
+Measured output: 1280×720, 30 fps, 433.199674 seconds, H.264 video and AAC audio. Complete decoding passed. Thirteen sampled audio windows matched the narration with zero measured offset. Twelve chapters are embedded. See delivery-audit-v3.json. The 12-page contact sheet was visually reviewed; the demo fills the main panel.
 
-The video edition replaces the slide 1 empty photo slot with the approved generated presenter and labels it as AI. Original OpenSlide source remains intact.
+Settled VEED generation cost: 6,592 credits (US$65.92). Presenter movement and gaze are generative; the demo presenter occasionally looks at the camera.
 
-Delivery: the initial HyperFrames render was interrupted before completion. The reviewed layout was exported through the resumable local FFmpeg compositor. Final MP4 is 1280x720 at30fps,417.212834 seconds; complete decoder audit passed. Thirteen audio windows match their continuous source narration at zero measured offset. Ten seekable chapters are embedded. See delivery-audit.json for measured evidence.
-
-Final revision: supplied opening portrait, proposal category on slide2, removed presenter subtitle, closing limited to414.742271s after thanks. Re-exported and audited. PPTX delivery has10 image-backed pages, speaker notes and an embedded demo on slide5; text is maintained in OpenSlide source. PPTX integrity/layout and first-party import passed.
+The editable HyperFrames source has been updated to 12 slides and current presenter media. Its latest runtime check encountered a GSAP loading error. This does not affect the delivered MP4, which was rendered using the local FFmpeg compositor and audited independently. Earlier check-report.json and delivery-audit.json describe the previous delivery, not v3.
